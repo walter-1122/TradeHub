@@ -1,13 +1,17 @@
-function renderProductPage() {
+const SUPABASE_URL = "https://cgclqejzzlrxkuksqgav.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+  "sb_publishable_BI34HY1C7-HR9ZzDrXuabQ_QtTRwbBx";
+
+const productDetail = document.getElementById("productDetail");
+
+async function loadProductPage() {
   const id = new URLSearchParams(location.search).get("id");
 
-  const product = PRODUCTS.find(p => String(p.id) === String(id));
-
-  if (!product) {
-    document.getElementById("productDetail").innerHTML = `
+  if (!id) {
+    productDetail.innerHTML = `
       <div style="padding:60px 0;">
         <h2>Product not found</h2>
-        <p>Please return to the catalogue and select a product.</p>
         <a class="btn btn-gold" href="catalogue.html">
           Back to Catalogue
         </a>
@@ -16,140 +20,177 @@ function renderProductPage() {
     return;
   }
 
-  const relatedProducts = PRODUCTS
-    .filter(p => p.id !== product.id)
-    .slice(0, 4);
+  try {
+    const response = await fetch(
+      `${SUPABASE_URL}/rest/v1/products?select=*&id=eq.${encodeURIComponent(id)}&published=eq.true`,
+      {
+        headers: {
+          apikey: SUPABASE_PUBLISHABLE_KEY,
+          Authorization: `Bearer ${SUPABASE_PUBLISHABLE_KEY}`
+        }
+      }
+    );
 
-  document.getElementById("productDetail").innerHTML = `
+    const products = await response.json();
 
-    <div class="product-detail-image">
-      <img src="${product.image}" alt="${product.name}">
-    </div>
+    if (!response.ok || !products.length) {
+      throw new Error("Product could not be loaded.");
+    }
 
-    <div class="product-detail-copy">
+    const product = products[0];
 
-      <p class="eyebrow">
-        ${product.label} • WHOLESALE
-      </p>
+    const image =
+      product.image_url || "product-placeholder.svg";
 
-      <h1>${product.name}</h1>
+    const relatedResponse = await fetch(
+      `${SUPABASE_URL}/rest/v1/products?select=*&published=eq.true&id=neq.${encodeURIComponent(id)}&limit=4`,
+      {
+        headers: {
+          apikey: SUPABASE_PUBLISHABLE_KEY,
+          Authorization: `Bearer ${SUPABASE_PUBLISHABLE_KEY}`
+        }
+      }
+    );
 
-      <p>${product.desc || ""}</p>
+    const relatedProducts = await relatedResponse.json();
 
-      <div class="moq-box">
-        <small>MINIMUM ORDER QUANTITY</small>
-        <strong>${product.moq}</strong>
+    productDetail.innerHTML = `
+
+      <div class="product-detail-image">
+        <img src="${image}" alt="${product.name}">
       </div>
 
-      <p>
-        Public pricing is not displayed. Contact Trade Hub for
-        availability, wholesale terms and your order requirement.
-      </p>
+      <div class="product-detail-copy">
 
-      <a class="btn btn-gold" href="contact.html">
-        Request Wholesale Quote
-      </a>
+        <p class="eyebrow">
+          ${product.category} • WHOLESALE
+        </p>
 
-      <a class="back-link" href="catalogue.html">
-        ← Back to Catalogue
-      </a>
+        <h1>${product.name}</h1>
 
-    </div>
+        <p>${product.description || ""}</p>
 
-    <div style="
-      grid-column:1/-1;
-      margin-top:60px;
-      padding:35px 0;
-      border-top:1px solid #ddd8ce;
-      border-bottom:1px solid #ddd8ce;
-    ">
+        <div class="moq-box">
+          <small>MINIMUM ORDER QUANTITY</small>
+          <strong>${product.moq}</strong>
+        </div>
 
-      <p class="eyebrow">WHOLESALE SHIPPING</p>
+        <p>
+          Public pricing is not displayed. Contact Trade Hub for
+          availability, wholesale terms and your order requirement.
+        </p>
 
-      <h2 style="margin-bottom:15px;">
-        Worldwide wholesale delivery
-      </h2>
+        <a class="btn btn-gold" href="contact.html">
+          Request Wholesale Quote
+        </a>
 
-      <p style="max-width:750px;color:#77736b;line-height:1.8;">
-        Trade Hub supplies wholesale buyers in the UAE and international
-        markets. Products can be prepared for container-based and
-        international wholesale shipments. Shipping arrangements,
-        destination, quantity and delivery terms are confirmed according
-        to each order.
-      </p>
+        <a class="back-link" href="catalogue.html">
+          ← Back to Catalogue
+        </a>
 
-      <a class="back-link" href="shipping.html">
-        View Wholesale & Shipping →
-      </a>
+      </div>
 
-    </div>
+      <div style="
+        grid-column:1/-1;
+        margin-top:60px;
+        padding:40px 0;
+        border-top:1px solid #ddd8ce;
+      ">
 
-    <div style="
-      grid-column:1/-1;
-      margin-top:60px;
-    ">
+        <p class="eyebrow">WHOLESALE SHIPPING</p>
 
-      <p class="eyebrow">MORE FROM TRADE HUB</p>
+        <h2>Worldwide Wholesale Shipping</h2>
 
-      <h2 style="margin-bottom:30px;">
-        Other Products
-      </h2>
+        <p style="
+          max-width:750px;
+          color:#77736b;
+          line-height:1.8;
+        ">
+          Trade Hub supplies wholesale products from the UAE to
+          international markets. Shipping arrangements, destination,
+          quantity and delivery terms are confirmed according to each order.
+        </p>
 
-      <div class="product-grid">
+        <a class="back-link" href="shipping.html">
+          View Wholesale & Shipping →
+        </a>
 
-        ${
-          relatedProducts.length
-            ? relatedProducts.map(p => `
-              <article class="product-card">
+      </div>
 
-                <a href="product.html?id=${p.id}" class="product-image">
-                  <img src="${p.image}" alt="${p.name}">
-                  <span>${p.label}</span>
-                </a>
+      <div style="
+        grid-column:1/-1;
+        margin-top:60px;
+      ">
 
-                <div class="product-info">
+        <p class="eyebrow">MORE FROM TRADE HUB</p>
 
-                  <small>WHOLESALE</small>
+        <h2 style="margin-bottom:30px;">
+          Other Products
+        </h2>
 
-                  <h3>${p.name}</h3>
+        <div class="product-grid">
 
-                  <p>${p.desc || ""}</p>
+          ${
+            Array.isArray(relatedProducts) && relatedProducts.length
+              ? relatedProducts.map(p => `
+                <article class="product-card">
 
-                  <div class="product-bottom">
-                    <strong>MOQ: ${p.moq}</strong>
+                  <a href="product.html?id=${p.id}"
+                     class="product-image">
 
-                    <a href="product.html?id=${p.id}">
-                      View →
-                    </a>
+                    <img
+                      src="${p.image_url || "product-placeholder.svg"}"
+                      alt="${p.name}"
+                    >
+
+                    <span>${p.category}</span>
+
+                  </a>
+
+                  <div class="product-info">
+
+                    <small>WHOLESALE</small>
+
+                    <h3>${p.name}</h3>
+
+                    <p>${p.description || ""}</p>
+
+                    <div class="product-bottom">
+
+                      <strong>MOQ: ${p.moq}</strong>
+
+                      <a href="product.html?id=${p.id}">
+                        View →
+                      </a>
+
+                    </div>
+
                   </div>
 
-                </div>
+                </article>
+              `).join("")
+              : `<p>No other products available.</p>`
+          }
 
-              </article>
-            `).join("")
-            : `
-              <p>No other products available.</p>
-            `
-        }
+        </div>
 
       </div>
+    `;
 
-    </div>
-  `;
+  } catch (error) {
+
+    console.error("Product loading error:", error);
+
+    productDetail.innerHTML = `
+      <div style="padding:60px 0;">
+        <h2>Unable to load product</h2>
+        <p>Please return to the catalogue and try again.</p>
+        <a class="btn btn-gold" href="catalogue.html">
+          Back to Catalogue
+        </a>
+      </div>
+    `;
+  }
 }
 
-
-/*
-  Products are loaded from Supabase.
-  Wait until products.js finishes loading.
-*/
-window.addEventListener("productsLoaded", renderProductPage);
-
-
-/*
-  Safety check in case products are already loaded
-  before this script runs.
-*/
-if (PRODUCTS.length > 0) {
-  renderProductPage();
-}
+loadProductPage();
