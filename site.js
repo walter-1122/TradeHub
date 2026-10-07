@@ -52,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     (entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
+
           const card = entry.target;
           const index = [...cards].indexOf(card);
 
@@ -79,11 +80,136 @@ document.addEventListener('DOMContentLoaded', () => {
   const stats = document.querySelectorAll('.hero-stats > div');
 
   stats.forEach((stat, index) => {
+
     stat.classList.add('stat-reveal');
 
     setTimeout(() => {
       stat.classList.add('show');
     }, 500 + (index * 180));
+
   });
 
 });
+
+
+/* =========================================
+   HOME PAGE — FEATURED PRODUCTS
+========================================= */
+
+async function loadHomeProducts() {
+
+  const grid = document.getElementById('homeProductGrid');
+
+  if (!grid) return;
+
+  const SUPABASE_URL =
+    'https://cgclqejzzlrxkuksqgav.supabase.co';
+
+  const SUPABASE_KEY =
+    'sb_publishable_BI34HY1C7-HR9ZzDrXuabQ_QtTRwbBx';
+
+  try {
+
+    const response = await fetch(
+      `${SUPABASE_URL}/rest/v1/products?select=*&published=eq.true&order=created_at.desc&limit=4`,
+      {
+        headers: {
+          apikey: SUPABASE_KEY,
+          Authorization: `Bearer ${SUPABASE_KEY}`
+        }
+      }
+    );
+
+    const products = await response.json();
+
+    if (!products.length) {
+
+      grid.innerHTML = `
+        <p style="color:#77736b;">
+          No products available yet.
+        </p>
+      `;
+
+      return;
+    }
+
+
+    grid.innerHTML = products.map(product => `
+
+      <article class="product-card reveal-card">
+
+        <a
+          href="product.html?id=${product.id}"
+          class="product-image"
+        >
+
+          <img
+            src="${product.image_url || 'product-placeholder.svg'}"
+            alt="${product.name}"
+          >
+
+          <span>${product.category}</span>
+
+        </a>
+
+
+        <div class="product-info">
+
+          <small>WHOLESALE</small>
+
+          <h3>${product.name}</h3>
+
+          <p>
+            ${product.description || ''}
+          </p>
+
+
+          <div class="product-bottom">
+
+            <strong>
+              MOQ: ${product.moq}
+            </strong>
+
+            <a href="product.html?id=${product.id}">
+              View →
+            </a>
+
+          </div>
+
+        </div>
+
+      </article>
+
+    `).join('');
+
+
+    const productCards =
+      grid.querySelectorAll('.reveal-card');
+
+
+    productCards.forEach((card, index) => {
+
+      setTimeout(() => {
+        card.classList.add('show');
+      }, index * 120);
+
+    });
+
+
+  } catch (error) {
+
+    console.error('Home products error:', error);
+
+    grid.innerHTML = `
+      <p style="color:#77736b;">
+        Unable to load products.
+      </p>
+    `;
+
+  }
+
+}
+
+
+/* Load products on Home */
+loadHomeProducts();
