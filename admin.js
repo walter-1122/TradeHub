@@ -1,11 +1,11 @@
-const SUPABASE_URL = "https://cgclqejzzlrxkuksqgav.supabase.co";
+const SUPABASE_URL = "https://cgclqejzzlrxkuksqgav.supabaseClient.co";
 
 const SUPABASE_PUBLISHABLE_KEY =
   "sb_publishable_BI34HY1C7-HR9ZzDrXuabQ_QtTRwbBx";
 
 const OWNER_ID = "60fae016-d16f-40d3-8e96-63079637d574";
 
-const supabase = window.supabase.createClient(
+const supabaseClient = window.supabaseClient.createClient(
   SUPABASE_URL,
   SUPABASE_PUBLISHABLE_KEY
 );
@@ -41,7 +41,7 @@ function showDashboard(user) {
 
 async function checkSession() {
 
-  const { data, error } = await supabase.auth.getSession();
+  const { data, error } = await supabaseClient.auth.getSession();
 
   if (error) {
     showLogin("Unable to check login.");
@@ -57,7 +57,7 @@ async function checkSession() {
 
   if (session.user.id !== OWNER_ID) {
 
-    await supabase.auth.signOut();
+    await supabaseClient.auth.signOut();
 
     showLogin("This account is not authorized as the Trade Hub owner.");
     return;
@@ -83,7 +83,7 @@ loginBtn.addEventListener("click", async () => {
   loginBtn.textContent = "LOGGING IN...";
 
   const { data, error } =
-    await supabase.auth.signInWithPassword({
+    await supabaseClient.auth.signInWithPassword({
       email: email,
       password: password
     });
@@ -99,7 +99,7 @@ loginBtn.addEventListener("click", async () => {
 
   if (!data.user || data.user.id !== OWNER_ID) {
 
-    await supabase.auth.signOut();
+    await supabaseClient.auth.signOut();
 
     loginMessage.textContent =
       "This account is not authorized as the Trade Hub owner.";
@@ -113,7 +113,7 @@ loginBtn.addEventListener("click", async () => {
 
 logoutBtn.addEventListener("click", async () => {
 
-  await supabase.auth.signOut();
+  await supabaseClient.auth.signOut();
 
   showLogin("You have been logged out.");
 });
@@ -125,7 +125,7 @@ saveProduct.addEventListener("click", async () => {
 
   const {
     data: { user }
-  } = await supabase.auth.getUser();
+  } = await supabaseClient.auth.getUser();
 
   if (!user || user.id !== OWNER_ID) {
 
@@ -191,7 +191,7 @@ saveProduct.addEventListener("click", async () => {
 });
 
 
-supabase.auth.onAuthStateChange((event, session) => {
+supabaseClient.auth.onAuthStateChange((event, session) => {
 
   if (!session) {
     showLogin();
@@ -199,7 +199,7 @@ supabase.auth.onAuthStateChange((event, session) => {
   }
 
   if (session.user.id !== OWNER_ID) {
-    supabase.auth.signOut();
+    supabaseClient.auth.signOut();
     showLogin("This account is not authorized.");
     return;
   }
