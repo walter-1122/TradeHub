@@ -1,0 +1,1 @@
+document.getElementById('saveProduct').addEventListener('click',()=>{alert('Admin demo saved. Connect Supabase Auth + database to make product publishing permanent and owner-only.');});
