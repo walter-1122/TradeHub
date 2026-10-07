@@ -1,7 +1,7 @@
 const SUPABASE_URL = "https://cgclqejzzlrxkuksqgav.supabase.co";
 
 const SUPABASE_PUBLISHABLE_KEY =
-  "PASTE_YOUR_PUBLISHABLE_KEY_HERE";
+  "sb_publishable_BI34HY1C7-HR9ZzDrXuabQ_QtTRwbBx";
 
 const OWNER_ID = "60fae016-d16f-40d3-8e96-63079637d574";
 
