@@ -1,10 +1,159 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Trade Hub | Owner Admin</title><link rel="icon" href="favicon.svg"><link rel="stylesheet" href="style.css"></head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Trade Hub | Owner Admin</title>
+
+  <link rel="icon" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+
 <body class="admin-page">
-<header class="header"><a class="logo" href="index.html"><span>TH</span> TRADE HUB</a><a class="nav-cta" href="index.html">View Website</a></header>
+
+<header class="header">
+  <a class="logo" href="index.html">
+    <span>TH</span> TRADE HUB
+  </a>
+
+  <a class="nav-cta" href="index.html">View Website</a>
+</header>
+
 <main class="admin-wrap">
-<div class="admin-card"><p class="eyebrow">PRIVATE OWNER AREA</p><h1>Trade Hub <em>Product Manager</em></h1><p>This is the front-end admin layout. Connect it to Supabase before using it for real product publishing.</p>
-<div class="admin-warning">Owner login + database security must be enabled before putting this panel into production.</div>
-<div class="admin-form"><label>Product Name<input id="adminName" placeholder="e.g. Signature Perfume"></label><label>Category<select id="adminCategory"><option>Perfumes</option><option>Fashion</option><option>Bags</option><option>Shoes</option><option>Beauty</option></select></label><label>MOQ<input id="adminMoq" placeholder="e.g. 24 units"></label><label>Description<textarea id="adminDesc" placeholder="Product description"></textarea></label><label>Image URL<input id="adminImage" placeholder="https://..."></label><button class="btn btn-gold" id="saveProduct">Save Product</button></div>
-</div></main>
-<script src="admin.js"></script></body></html>
+
+  <!-- LOGIN -->
+  <section class="admin-card" id="loginPanel">
+
+    <p class="eyebrow">PRIVATE OWNER AREA</p>
+
+    <h1>Trade Hub <em>Admin Login</em></h1>
+
+    <p style="margin:15px 0 30px;color:#77736b;">
+      Sign in with the Trade Hub owner account.
+    </p>
+
+    <div class="admin-form">
+
+      <label>
+        Email
+        <input
+          type="email"
+          id="loginEmail"
+          placeholder="Owner email"
+          autocomplete="email"
+        >
+      </label>
+
+      <label>
+        Password
+        <input
+          type="password"
+          id="loginPassword"
+          placeholder="Password"
+          autocomplete="current-password"
+        >
+      </label>
+
+      <button class="btn btn-gold" id="loginBtn">
+        LOGIN
+      </button>
+
+    </div>
+
+    <p id="loginMessage" style="margin-top:20px;font-size:13px;"></p>
+
+  </section>
+
+
+  <!-- ADMIN DASHBOARD -->
+  <section class="admin-card" id="dashboardPanel" style="display:none;">
+
+    <p class="eyebrow">PRIVATE OWNER AREA</p>
+
+    <h1>Trade Hub <em>Product Manager</em></h1>
+
+    <p style="margin:15px 0;color:#77736b;">
+      Logged in as:
+      <strong id="ownerEmail"></strong>
+    </p>
+
+    <button
+      class="btn btn-outline"
+      id="logoutBtn"
+      style="margin:10px 0 30px;"
+    >
+      LOG OUT
+    </button>
+
+
+    <div class="admin-form">
+
+      <label>
+        Product Name
+        <input
+          id="adminName"
+          placeholder="e.g. Signature Perfume"
+        >
+      </label>
+
+      <label>
+        Category
+
+        <select id="adminCategory">
+          <option value="Perfumes">Perfumes</option>
+          <option value="Fashion">Fashion</option>
+          <option value="Bags">Bags</option>
+          <option value="Shoes">Shoes</option>
+          <option value="Beauty">Beauty</option>
+        </select>
+
+      </label>
+
+      <label>
+        Minimum Order Quantity
+        <input
+          id="adminMoq"
+          placeholder="e.g. 24 units"
+        >
+      </label>
+
+      <label>
+        Product Image URL
+        <input
+          id="adminImage"
+          placeholder="https://..."
+        >
+      </label>
+
+      <label>
+        Description
+
+        <textarea
+          id="adminDesc"
+          placeholder="Write product description..."
+        ></textarea>
+
+      </label>
+
+      <button class="btn btn-gold" id="saveProduct">
+        PUBLISH PRODUCT
+      </button>
+
+    </div>
+
+    <p id="saveMessage" style="margin-top:20px;font-size:13px;"></p>
+
+  </section>
+
+</main>
+
+
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<!-- Trade Hub Admin -->
+<script src="admin.js"></script>
+
+</body>
+</html>
