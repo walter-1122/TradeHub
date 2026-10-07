@@ -144,3 +144,111 @@
     transition: none !important;
   }
 }
+/* =========================================
+   TRADE HUB — PREMIUM ANIMATION SYSTEM
+========================================= */
+
+/* Continuous luxury marquee */
+.marquee {
+  display: inline-block;
+  white-space: nowrap;
+  animation: tradeHubMarquee 16s linear infinite;
+  will-change: transform;
+}
+
+@keyframes tradeHubMarquee {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(-120%);
+  }
+}
+
+
+/* Smooth section reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(45px);
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s cubic-bezier(.22, 1, .36, 1);
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* Category cards */
+.reveal-card {
+  opacity: 0;
+  transform: translateY(50px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s cubic-bezier(.22, 1, .36, 1);
+}
+
+.reveal-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* Hero statistics */
+.stat-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(.22, 1, .36, 1);
+}
+
+.stat-reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* Premium hover movement */
+.category-card {
+  transition:
+    transform 0.45s cubic-bezier(.22, 1, .36, 1),
+    border-color 0.45s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-7px);
+}
+
+
+/* Buttons */
+.btn {
+  transition:
+    transform 0.35s ease,
+    background-color 0.35s ease,
+    color 0.35s ease;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+
+/* Respect reduced-motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    animation: none;
+    transform: none;
+  }
+
+  .reveal,
+  .reveal-card,
+  .stat-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
