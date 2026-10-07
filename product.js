@@ -1,6 +1,6 @@
-const SUPABASE_URL = "https://cgclqejzzlrxkuksqgav.supabase.co";
+const PRODUCT_SUPABASE_URL = "https://cgclqejzzlrxkuksqgav.supabase.co";
 
-const SUPABASE_PUBLISHABLE_KEY =
+const PRODUCT_SUPABASE_KEY =
   "sb_publishable_BI34HY1C7-HR9ZzDrXuabQ_QtTRwbBx";
 
 const productDetail = document.getElementById("productDetail");
