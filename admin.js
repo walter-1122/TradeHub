@@ -1,11 +1,10 @@
-const SUPABASE_URL = "https://cgclqejzzlrxkuksqgav.supabaseClient.co";
+const SUPABASE_URL = "https://cgclqejzzlrxkuksqgav.supabase.co";
 
-const SUPABASE_PUBLISHABLE_KEY =
-  "sb_publishable_BI34HY1C7-HR9ZzDrXuabQ_QtTRwbBx";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_BI34HY1C7-HR9ZzDrXuabQ_QtTRwbBx";
 
 const OWNER_ID = "60fae016-d16f-40d3-8e96-63079637d574";
 
-const supabaseClient = window.supabaseClient.createClient(
+const supabaseClient = window.supabase.createClient(
   SUPABASE_URL,
   SUPABASE_PUBLISHABLE_KEY
 );
@@ -40,11 +39,10 @@ function showDashboard(user) {
 
 
 async function checkSession() {
-
   const { data, error } = await supabaseClient.auth.getSession();
 
   if (error) {
-    showLogin("Unable to check login.");
+    showLogin(error.message);
     return;
   }
 
@@ -56,10 +54,8 @@ async function checkSession() {
   }
 
   if (session.user.id !== OWNER_ID) {
-
     await supabaseClient.auth.signOut();
-
-    showLogin("This account is not authorized as the Trade Hub owner.");
+    showLogin("This account is not authorized.");
     return;
   }
 
@@ -92,18 +88,15 @@ loginBtn.addEventListener("click", async () => {
   loginBtn.textContent = "LOGIN";
 
   if (error) {
-
     loginMessage.textContent = error.message;
     return;
   }
 
   if (!data.user || data.user.id !== OWNER_ID) {
-
     await supabaseClient.auth.signOut();
 
     loginMessage.textContent =
-      "This account is not authorized as the Trade Hub owner.";
-
+      "This account is not authorized.";
     return;
   }
 
@@ -112,9 +105,7 @@ loginBtn.addEventListener("click", async () => {
 
 
 logoutBtn.addEventListener("click", async () => {
-
   await supabaseClient.auth.signOut();
-
   showLogin("You have been logged out.");
 });
 
@@ -128,13 +119,10 @@ saveProduct.addEventListener("click", async () => {
   } = await supabaseClient.auth.getUser();
 
   if (!user || user.id !== OWNER_ID) {
-
     saveMessage.textContent =
       "You are not authorized to publish products.";
-
     return;
   }
-
 
   const name = document.getElementById("adminName").value.trim();
   const category = document.getElementById("adminCategory").value;
@@ -142,21 +130,16 @@ saveProduct.addEventListener("click", async () => {
   const image = document.getElementById("adminImage").value.trim();
   const description = document.getElementById("adminDesc").value.trim();
 
-
   if (!name || !moq || !description) {
-
     saveMessage.textContent =
       "Please fill Product Name, MOQ and Description.";
-
     return;
   }
-
 
   saveProduct.disabled = true;
   saveProduct.textContent = "PUBLISHING...";
 
-
-  const { error } = await supabase
+  const { error } = await supabaseClient
     .from("products")
     .insert({
       name: name,
@@ -167,19 +150,13 @@ saveProduct.addEventListener("click", async () => {
       published: true
     });
 
-
   saveProduct.disabled = false;
   saveProduct.textContent = "PUBLISH PRODUCT";
 
-
   if (error) {
-
-    saveMessage.textContent =
-      "Error: " + error.message;
-
+    saveMessage.textContent = "Error: " + error.message;
     return;
   }
-
 
   saveMessage.textContent =
     "Product published successfully.";
