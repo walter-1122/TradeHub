@@ -2,9 +2,10 @@ const grid = document.getElementById("productGrid");
 
 function render(filter = "all") {
   const items = PRODUCTS.filter(
-    p => filter === "all" || p.category === filter
-  );
-
+  p =>
+    filter === "all" ||
+    String(p.category).trim().toLowerCase() === String(filter).trim().toLowerCase()
+);
   if (!items.length) {
     grid.innerHTML = `
       <div style="padding:40px 0;">
