@@ -127,7 +127,7 @@ saveProduct.addEventListener("click", async () => {
   const name = document.getElementById("adminName").value.trim();
   const category = document.getElementById("adminCategory").value;
   const moq = document.getElementById("adminMoq").value.trim();
-  const image = document.getElementById("adminImage").value.trim();
+  const imageFile = document.getElementById("adminImage").files[0];
   const description = document.getElementById("adminDesc").value.trim();
 
   if (!name || !moq || !description) {
@@ -136,35 +136,88 @@ saveProduct.addEventListener("click", async () => {
     return;
   }
 
-  saveProduct.disabled = true;
-  saveProduct.textContent = "PUBLISHING...";
-
-  const { error } = await supabaseClient
-    .from("products")
-    .insert({
-      name: name,
-      category: category,
-      description: description,
-      moq: moq,
-      image_url: image || null,
-      published: true
-    });
-
-  saveProduct.disabled = false;
-  saveProduct.textContent = "PUBLISH PRODUCT";
-
-  if (error) {
-    saveMessage.textContent = "Error: " + error.message;
+  if (!imageFile) {
+    saveMessage.textContent =
+      "Please select a product image.";
     return;
   }
 
-  saveMessage.textContent =
-    "Product published successfully.";
+  saveProduct.disabled = true;
+  saveProduct.textContent = "UPLOADING IMAGE...";
 
-  document.getElementById("adminName").value = "";
-  document.getElementById("adminMoq").value = "";
-  document.getElementById("adminImage").value = "";
-  document.getElementById("adminDesc").value = "";
+  try {
+
+    const fileExtension =
+      imageFile.name.split(".").pop().toLowerCase();
+
+    const fileName =
+      OWNER_ID + "/" +
+      Date.now() +
+      "-" +
+      Math.random().toString(36).substring(2, 8) +
+      "." +
+      fileExtension;
+
+    const { error: uploadError } =
+      await supabaseClient.storage
+        .from("product-images")
+        .upload(fileName, imageFile, {
+          cacheControl: "3600",
+          upsert: false
+        });
+
+    if (uploadError) {
+      throw new Error(
+        "Image upload failed: " + uploadError.message
+      );
+    }
+
+    saveProduct.textContent = "PUBLISHING PRODUCT...";
+
+    const { data: publicUrlData } =
+      supabaseClient.storage
+        .from("product-images")
+        .getPublicUrl(fileName);
+
+    const imageUrl = publicUrlData.publicUrl;
+
+    const { error: productError } =
+      await supabaseClient
+        .from("products")
+        .insert({
+          name: name,
+          category: category,
+          description: description,
+          moq: moq,
+          image_url: imageUrl,
+          published: true
+        });
+
+    if (productError) {
+      throw new Error(
+        "Product save failed: " + productError.message
+      );
+    }
+
+    saveMessage.textContent =
+      "Product published successfully.";
+
+    document.getElementById("adminName").value = "";
+    document.getElementById("adminMoq").value = "";
+    document.getElementById("adminImage").value = "";
+    document.getElementById("adminDesc").value = "";
+
+  } catch (error) {
+
+    saveMessage.textContent =
+      "Error: " + error.message;
+
+  } finally {
+
+    saveProduct.disabled = false;
+    saveProduct.textContent = "PUBLISH PRODUCT";
+
+  }
 });
 
 
