@@ -14,7 +14,7 @@ document.getElementById('quoteForm')?.addEventListener('submit', function (e) {
     `Country: ${encodeURIComponent(f.get('country') || '')}%0A` +
     `Products/Quantity: ${encodeURIComponent(f.get('message') || '')}`;
 
-  const phone = 'YOUR_WHATSAPP_NUMBER_WITHOUT_PLUS';
+  const phone = '971558699837';
 
   if (!phone.includes('YOUR_')) {
     window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
