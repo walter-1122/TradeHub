@@ -1,91 +1,155 @@
-document.getElementById('quoteForm')?.addEventListener('submit', function(e) {
+/* =========================================
+   TRADE HUB — WHATSAPP QUOTE FORM
+========================================= */
+
+document.getElementById('quoteForm')?.addEventListener('submit', function (e) {
   e.preventDefault();
 
   const f = new FormData(this);
 
-  const text = `Trade Hub Wholesale Enquiry%0AName: ${f.get('name')}%0ABusiness: ${f.get('company')}%0ACountry: ${f.get('country')}%0AProducts/Quantity: ${f.get('message')}`;
+  const text =
+    `Trade Hub Wholesale Enquiry%0A` +
+    `Name: ${encodeURIComponent(f.get('name') || '')}%0A` +
+    `Business: ${encodeURIComponent(f.get('company') || '')}%0A` +
+    `Country: ${encodeURIComponent(f.get('country') || '')}%0A` +
+    `Products/Quantity: ${encodeURIComponent(f.get('message') || '')}`;
 
   const phone = 'YOUR_WHATSAPP_NUMBER_WITHOUT_PLUS';
 
   if (!phone.includes('YOUR_')) {
     window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
   } else {
-    document.getElementById('formMessage').textContent =
-      'Thank you. Your enquiry form is ready. Add the final WhatsApp number to activate direct messaging.';
+    const message = document.getElementById('formMessage');
+
+    if (message) {
+      message.textContent =
+        'Thank you. Your enquiry form is ready. Add the final WhatsApp number to activate direct messaging.';
+    }
   }
 });
 
 
 /* =========================================
    TRADE HUB — PREMIUM SCROLL ANIMATIONS
+   SAFE VERSION
 ========================================= */
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function () {
 
-  /* Scroll reveal */
+  /* -----------------------------------------
+     SCROLL REVEAL
+  ----------------------------------------- */
+
   const revealItems = document.querySelectorAll('.reveal');
 
-  const revealObserver = new IntersectionObserver(
-    (entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    {
-      threshold: 0.12,
-      rootMargin: '0px 0px -60px 0px'
-    }
-  );
+  /*
+    Safety:
+    If IntersectionObserver is unavailable,
+    immediately show everything instead of
+    leaving the content invisible.
+  */
 
-  revealItems.forEach(item => {
-    revealObserver.observe(item);
-  });
+  if ('IntersectionObserver' in window) {
+
+    const revealObserver = new IntersectionObserver(
+      function (entries, observer) {
+
+        entries.forEach(function (entry) {
+
+          if (entry.isIntersecting) {
+
+            entry.target.classList.add('show');
+
+            observer.unobserve(entry.target);
+          }
+
+        });
+
+      },
+      {
+        threshold: 0.05,
+        rootMargin: '0px 0px -30px 0px'
+      }
+    );
+
+    revealItems.forEach(function (item) {
+      revealObserver.observe(item);
+    });
+
+  } else {
+
+    revealItems.forEach(function (item) {
+      item.classList.add('show');
+    });
+
+  }
 
 
-  /* Category cards — elegant stagger */
+  /* -----------------------------------------
+     CATEGORY CARDS
+  ----------------------------------------- */
+
   const cards = document.querySelectorAll('.category-card');
 
-  const cardObserver = new IntersectionObserver(
-    (entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
+  if ('IntersectionObserver' in window) {
 
-          const card = entry.target;
-          const index = [...cards].indexOf(card);
+    const cardObserver = new IntersectionObserver(
+      function (entries, observer) {
 
-          setTimeout(() => {
-            card.classList.add('show');
-          }, index * 100);
+        entries.forEach(function (entry) {
 
-          observer.unobserve(card);
-        }
-      });
-    },
-    {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    }
-  );
+          if (entry.isIntersecting) {
 
-  cards.forEach(card => {
-    card.classList.add('reveal-card');
-    cardObserver.observe(card);
-  });
+            const card = entry.target;
+            const index = Array.from(cards).indexOf(card);
+
+            setTimeout(function () {
+              card.classList.add('show');
+            }, Math.max(0, index * 100));
+
+            observer.unobserve(card);
+          }
+
+        });
+
+      },
+      {
+        threshold: 0.05,
+        rootMargin: '0px 0px -30px 0px'
+      }
+    );
 
 
-  /* Hero stats reveal */
+    cards.forEach(function (card) {
+
+      card.classList.add('reveal-card');
+
+      cardObserver.observe(card);
+
+    });
+
+  } else {
+
+    cards.forEach(function (card) {
+      card.classList.add('show');
+    });
+
+  }
+
+
+  /* -----------------------------------------
+     HERO STATS
+  ----------------------------------------- */
+
   const stats = document.querySelectorAll('.hero-stats > div');
 
-  stats.forEach((stat, index) => {
+  stats.forEach(function (stat, index) {
 
     stat.classList.add('stat-reveal');
 
-    setTimeout(() => {
+    setTimeout(function () {
       stat.classList.add('show');
-    }, 500 + (index * 180));
+    }, 400 + (index * 150));
 
   });
 
@@ -102,17 +166,20 @@ async function loadHomeProducts() {
 
   if (!grid) return;
 
+
   const SUPABASE_URL =
     'https://cgclqejzzlrxkuksqgav.supabase.co';
 
   const SUPABASE_KEY =
     'sb_publishable_BI34HY1C7-HR9ZzDrXuabQ_QtTRwbBx';
 
+
   try {
 
     const response = await fetch(
       `${SUPABASE_URL}/rest/v1/products?select=*&published=eq.true&order=created_at.desc&limit=4`,
       {
+        method: 'GET',
         headers: {
           apikey: SUPABASE_KEY,
           Authorization: `Bearer ${SUPABASE_KEY}`
@@ -120,9 +187,20 @@ async function loadHomeProducts() {
       }
     );
 
+
+    if (!response.ok) {
+      throw new Error(`Products request failed: ${response.status}`);
+    }
+
+
     const products = await response.json();
 
-    if (!products.length) {
+
+    /* -----------------------------------------
+       NO PRODUCTS
+    ----------------------------------------- */
+
+    if (!Array.isArray(products) || products.length === 0) {
 
       grid.innerHTML = `
         <p style="color:#77736b;">
@@ -134,75 +212,119 @@ async function loadHomeProducts() {
     }
 
 
-    grid.innerHTML = products.map(product => `
+    /* -----------------------------------------
+       CREATE PRODUCT CARDS
+    ----------------------------------------- */
 
-      <article class="product-card reveal-card">
+    grid.innerHTML = products.map(function (product) {
 
-        <a
-          href="product.html?id=${product.id}"
-          class="product-image"
-        >
+      const image =
+        product.image_url || 'product-placeholder.svg';
 
-          <img
-            src="${product.image_url || 'product-placeholder.svg'}"
-            alt="${product.name}"
+      const name =
+        product.name || 'Wholesale Product';
+
+      const category =
+        product.category || 'Wholesale';
+
+      const description =
+        product.description || '';
+
+      const moq =
+        product.moq || 'Contact us';
+
+
+      return `
+
+        <article class="product-card reveal-card">
+
+          <a
+            href="product.html?id=${encodeURIComponent(product.id)}"
+            class="product-image"
           >
 
-          <span>${product.category}</span>
+            <img
+              src="${image}"
+              alt="${name}"
+              loading="lazy"
+            >
 
-        </a>
+            <span>${category}</span>
 
-
-        <div class="product-info">
-
-          <small>WHOLESALE</small>
-
-          <h3>${product.name}</h3>
-
-          <p>
-            ${product.description || ''}
-          </p>
+          </a>
 
 
-          <div class="product-bottom">
+          <div class="product-info">
 
-            <strong>
-              MOQ: ${product.moq}
-            </strong>
+            <small>WHOLESALE</small>
 
-            <a href="product.html?id=${product.id}">
-              View →
-            </a>
+            <h3>${name}</h3>
+
+            <p>
+              ${description}
+            </p>
+
+
+            <div class="product-bottom">
+
+              <strong>
+                MOQ: ${moq}
+              </strong>
+
+              <a
+                href="product.html?id=${encodeURIComponent(product.id)}"
+              >
+                View →
+              </a>
+
+            </div>
 
           </div>
 
-        </div>
+        </article>
 
-      </article>
+      `;
 
-    `).join('');
+    }).join('');
 
+
+    /* -----------------------------------------
+       PRODUCT CARD ANIMATION
+    ----------------------------------------- */
 
     const productCards =
-      grid.querySelectorAll('.reveal-card');
+      grid.querySelectorAll('.product-card');
 
 
-    productCards.forEach((card, index) => {
+    productCards.forEach(function (card, index) {
 
-      setTimeout(() => {
+      /*
+        Small delay for premium stagger effect.
+        Content is NOT removed if animation fails.
+      */
+
+      setTimeout(function () {
+
         card.classList.add('show');
-      }, index * 120);
+
+      }, 100 + (index * 120));
 
     });
 
 
   } catch (error) {
 
-    console.error('Home products error:', error);
+    console.error('Trade Hub Home Products Error:', error);
+
+
+    /*
+      Do NOT leave the homepage looking broken.
+    */
 
     grid.innerHTML = `
       <p style="color:#77736b;">
-        Unable to load products.
+        Products are temporarily unavailable.
+        Please check the full catalogue.
       </p>
     `;
 
@@ -211,5 +333,8 @@ async function loadHomeProducts() {
 }
 
 
-/* Load products on Home */
+/* =========================================
+   LOAD HOME PRODUCTS
+========================================= */
+
 loadHomeProducts();
