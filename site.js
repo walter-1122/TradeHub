@@ -1,3 +1,4 @@
+
 /* =========================================
    TRADE HUB — WHATSAPP QUOTE FORM
 ========================================= */
@@ -7,64 +8,39 @@ document.getElementById('quoteForm')?.addEventListener('submit', function (e) {
 
   const f = new FormData(this);
 
-  const text =
-    `Trade Hub Wholesale Enquiry%0A` +
-    `Name: ${encodeURIComponent(f.get('name') || '')}%0A` +
-    `Business: ${encodeURIComponent(f.get('company') || '')}%0A` +
-    `Country: ${encodeURIComponent(f.get('country') || '')}%0A` +
-    `Products/Quantity: ${encodeURIComponent(f.get('message') || '')}`;
+  const lines = [
+    'Trade Hub Wholesale Enquiry',
+    `Name: ${f.get('name') || ''}`,
+    `Business: ${f.get('company') || ''}`,
+    `Country: ${f.get('country') || ''}`,
+    `Products/Quantity: ${f.get('message') || ''}`
+  ];
 
   const phone = '971558699837';
+  const text = encodeURIComponent(lines.join('\n'));
 
-  if (!phone.includes('YOUR_')) {
-    window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
-  } else {
-    const message = document.getElementById('formMessage');
+  window.open(`https://wa.me/${phone}?text=${text}`, '_blank', 'noopener');
 
-    if (message) {
-      message.textContent =
-        'Thank you. Your enquiry form is ready. Add the final WhatsApp number to activate direct messaging.';
-    }
-  }
 });
 
 
 /* =========================================
    TRADE HUB — PREMIUM SCROLL ANIMATIONS
-   SAFE VERSION
 ========================================= */
 
 document.addEventListener('DOMContentLoaded', function () {
 
-  /* -----------------------------------------
-     SCROLL REVEAL
-  ----------------------------------------- */
-
   const revealItems = document.querySelectorAll('.reveal');
 
-  /*
-    Safety:
-    If IntersectionObserver is unavailable,
-    immediately show everything instead of
-    leaving the content invisible.
-  */
-
   if ('IntersectionObserver' in window) {
-
     const revealObserver = new IntersectionObserver(
       function (entries, observer) {
-
         entries.forEach(function (entry) {
-
           if (entry.isIntersecting) {
-
             entry.target.classList.add('show');
-
             observer.unobserve(entry.target);
           }
-
         });
-
       },
       {
         threshold: 0.05,
@@ -77,29 +53,21 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
   } else {
-
     revealItems.forEach(function (item) {
       item.classList.add('show');
     });
-
   }
 
 
-  /* -----------------------------------------
-     CATEGORY CARDS
-  ----------------------------------------- */
+  /* CATEGORY CARDS */
 
   const cards = document.querySelectorAll('.category-card');
 
   if ('IntersectionObserver' in window) {
-
     const cardObserver = new IntersectionObserver(
       function (entries, observer) {
-
         entries.forEach(function (entry) {
-
           if (entry.isIntersecting) {
-
             const card = entry.target;
             const index = Array.from(cards).indexOf(card);
 
@@ -109,9 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             observer.unobserve(card);
           }
-
         });
-
       },
       {
         threshold: 0.05,
@@ -119,45 +85,35 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     );
 
-
     cards.forEach(function (card) {
-
       card.classList.add('reveal-card');
-
       cardObserver.observe(card);
-
     });
 
   } else {
-
     cards.forEach(function (card) {
       card.classList.add('show');
     });
-
   }
 
 
-  /* -----------------------------------------
-     HERO STATS
-  ----------------------------------------- */
+  /* HERO STATS */
 
   const stats = document.querySelectorAll('.hero-stats > div');
 
   stats.forEach(function (stat, index) {
-
     stat.classList.add('stat-reveal');
 
     setTimeout(function () {
       stat.classList.add('show');
     }, 400 + (index * 150));
-
   });
 
 });
 
 
 /* =========================================
-   HOME PAGE — FEATURED PRODUCTS
+   HOME PAGE — CATEGORY-WISE PRODUCTS
 ========================================= */
 
 async function loadHomeProducts() {
@@ -166,18 +122,58 @@ async function loadHomeProducts() {
 
   if (!grid) return;
 
-
   const SUPABASE_URL =
     'https://cgclqejzzlrxkuksqgav.supabase.co';
 
   const SUPABASE_KEY =
     'sb_publishable_BI34HY1C7-HR9ZzDrXuabQ_QtTRwbBx';
 
+  /*
+    Map homepage sections to your Supabase category names.
+    Add alternative spellings to each list if your admin
+    uses different category names.
+  */
+
+  const categoryGroups = [
+    {
+      title: 'Perfumes',
+      names: ['perfumes', 'perfume', 'fragrance', 'fragrances']
+    },
+    {
+      title: 'Trousers & Fashion',
+      names: ['fashion', 'trousers', 'trouser', 'clothing', 'apparel']
+    },
+    {
+      title: 'Premium Bags',
+      names: ['bags', 'bag', 'handbags', 'handbag']
+    },
+    {
+      title: 'Shoes & Sneakers',
+      names: ['shoes', 'shoe', 'footwear', 'sneakers', 'sneaker']
+    },
+    {
+      title: 'Skincare',
+      names: ['skincare', 'skin care']
+    },
+    {
+      title: 'Makeup',
+      names: ['makeup', 'cosmetics', 'beauty']
+    }
+  ];
 
   try {
 
+    grid.innerHTML = `
+      <p style="color:#77736b;">Loading wholesale products...</p>
+    `;
+
+    /*
+      Fetch published products without a tiny limit so we can
+      choose products from each category.
+    */
+
     const response = await fetch(
-      `${SUPABASE_URL}/rest/v1/products?select=*&published=eq.true&order=created_at.desc&limit=4`,
+      `${SUPABASE_URL}/rest/v1/products?select=*&published=eq.true&order=created_at.desc`,
       {
         method: 'GET',
         headers: {
@@ -187,36 +183,96 @@ async function loadHomeProducts() {
       }
     );
 
-
     if (!response.ok) {
       throw new Error(`Products request failed: ${response.status}`);
     }
 
-
     const products = await response.json();
 
-
-    /* -----------------------------------------
-       NO PRODUCTS
-    ----------------------------------------- */
-
     if (!Array.isArray(products) || products.length === 0) {
-
       grid.innerHTML = `
         <p style="color:#77736b;">
-          No products available yet.
+          Products are being prepared. Contact us for wholesale availability.
         </p>
       `;
-
       return;
     }
 
+    /*
+      Normalize categories so capitalization and extra spaces
+      do not cause products to disappear.
+    */
 
-    /* -----------------------------------------
-       CREATE PRODUCT CARDS
-    ----------------------------------------- */
+    function normalize(value) {
+      return String(value || '')
+        .trim()
+        .toLowerCase()
+        .replace(/&/g, 'and')
+        .replace(/[^a-z0-9]+/g, '');
+    }
 
-    grid.innerHTML = products.map(function (product) {
+    const usedIds = new Set();
+    const selectedProducts = [];
+
+    /*
+      Pick up to two products per category.
+    */
+
+    categoryGroups.forEach(function (group) {
+
+      const acceptedNames = group.names.map(normalize);
+
+      const matchingProducts = products.filter(function (product) {
+        const productCategory = normalize(product.category);
+
+        return acceptedNames.includes(productCategory);
+      });
+
+      matchingProducts.slice(0, 2).forEach(function (product) {
+        const id = String(product.id);
+
+        if (!usedIds.has(id)) {
+          usedIds.add(id);
+          selectedProducts.push(product);
+        }
+      });
+
+    });
+
+    /*
+      If some categories have no products, fill remaining slots
+      with the newest products not already selected.
+      This keeps the homepage useful while categories are added.
+    */
+
+    if (selectedProducts.length < 6) {
+      products.forEach(function (product) {
+        if (selectedProducts.length >= 6) return;
+
+        const id = String(product.id);
+
+        if (!usedIds.has(id)) {
+          usedIds.add(id);
+          selectedProducts.push(product);
+        }
+      });
+    }
+
+    if (selectedProducts.length === 0) {
+      grid.innerHTML = `
+        <p style="color:#77736b;">
+          No products available yet. Please check back soon.
+        </p>
+      `;
+      return;
+    }
+
+    /*
+      Render product cards using the existing CSS classes
+      and product.html detail links.
+    */
+
+    grid.innerHTML = selectedProducts.map(function (product, index) {
 
       const image =
         product.image_url || 'product-placeholder.svg';
@@ -228,108 +284,89 @@ async function loadHomeProducts() {
         product.category || 'Wholesale';
 
       const description =
-        product.description || '';
+        product.description || 'Contact Trade Hub for product details.';
 
       const moq =
         product.moq || 'Contact us';
 
+      const safeId = encodeURIComponent(product.id);
 
       return `
-
-        <article class="product-card reveal-card">
+        <article class="product-card reveal-card" style="--card-index:${index};">
 
           <a
-            href="product.html?id=${encodeURIComponent(product.id)}"
+            href="product.html?id=${safeId}"
             class="product-image"
+            aria-label="View ${escapeHtml(name)}"
           >
-
             <img
-              src="${image}"
-              alt="${name}"
+              src="${escapeHtml(image)}"
+              alt="${escapeHtml(name)}"
               loading="lazy"
+              onerror="this.onerror=null;this.src='product-placeholder.svg';"
             >
-
-            <span>${category}</span>
-
+            <span>${escapeHtml(category)}</span>
           </a>
 
-
           <div class="product-info">
-
             <small>WHOLESALE</small>
 
-            <h3>${name}</h3>
+            <h3>${escapeHtml(name)}</h3>
 
-            <p>
-              ${description}
-            </p>
-
+            <p>${escapeHtml(description)}</p>
 
             <div class="product-bottom">
+              <strong>MOQ: ${escapeHtml(moq)}</strong>
 
-              <strong>
-                MOQ: ${moq}
-              </strong>
-
-              <a
-                href="product.html?id=${encodeURIComponent(product.id)}"
-              >
+              <a href="product.html?id=${safeId}">
                 View →
               </a>
-
             </div>
-
           </div>
 
         </article>
-
       `;
 
     }).join('');
 
+    /*
+      Reveal cards safely after rendering.
+    */
 
-    /* -----------------------------------------
-       PRODUCT CARD ANIMATION
-    ----------------------------------------- */
-
-    const productCards =
-      grid.querySelectorAll('.product-card');
-
-
-    productCards.forEach(function (card, index) {
-
-      /*
-        Small delay for premium stagger effect.
-        Content is NOT removed if animation fails.
-      */
-
+    grid.querySelectorAll('.product-card').forEach(function (card, index) {
       setTimeout(function () {
-
         card.classList.add('show');
-
-      }, 100 + (index * 120));
-
+      }, 80 + (index * 100));
     });
-
 
   } catch (error) {
 
     console.error('Trade Hub Home Products Error:', error);
 
-
-    /*
-      Do NOT leave the homepage looking broken.
-    */
-
     grid.innerHTML = `
       <p style="color:#77736b;">
         Products are temporarily unavailable.
-        Please check the full catalogue.
+        Please explore the full catalogue or contact us on WhatsApp.
       </p>
     `;
-
   }
+}
 
+
+/* Escape database content before inserting it into HTML. */
+
+function escapeHtml(value) {
+  return String(value ?? '').replace(/[&<>"']/g, function (char) {
+    const entities = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;'
+    };
+
+    return entities[char];
+  });
 }
 
 
@@ -338,3 +375,4 @@ async function loadHomeProducts() {
 ========================================= */
 
 loadHomeProducts();
+
