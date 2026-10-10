@@ -1,30 +1,1035 @@
-<!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wholesale Catalogue | Trade Hub</title><link rel="icon" href="favicon.svg"><link rel="stylesheet" href="style.css"></head>
-<body>
-<header class="header"><a class="logo" href="index.html"><span>TH</span> TRADE HUB</a><nav><a href="index.html">Home</a><a class="active" href="catalogue.html">Catalogue</a><a href="about.html">About</a><a href="shipping.html">Wholesale & Shipping</a><a href="contact.html">Contact</a></nav><a class="nav-cta" href="contact.html">Request Quote</a></header>
-<main>
-<section class="page-hero"><p class="eyebrow">TRADE HUB CATALOGUE</p><h1>Wholesale products.<br><em>Selected for business.</em></h1><p>Explore our product categories. Pricing is available by wholesale enquiry; every product listing shows its minimum order quantity.</p></section>
-<section class="section catalogue-section">
-<div class="filters"><button class="filter active" data-filter="all">All</button><button class="filter" data-filter="perfumes">Perfumes</button><button class="filter" data-filter="fashion">Fashion</button><button class="filter" data-filter="bags">Bags</button><button class="filter" data-filter="shoes">Shoes</button><button class="filter" data-filter="beauty">Beauty</button></div>
-<div id="productGrid" class="product-grid"></div>
-</section>
-</main>
-<footer class="footer"><div><a class="logo" href="index.html"><span>TH</span> TRADE HUB</a><p>UAE wholesale supply for businesses worldwide.</p></div><div class="footer-links"><a href="catalogue.html">Catalogue</a><a href="about.html">About</a><a href="shipping.html">Shipping</a><a href="contact.html">Contact</a></div><div>
-  <p>
-    WhatsApp / Phone:
-    <a href="https://wa.me/971558699837" target="_blank">
-      +971 55 869 9837
-    </a>
-  </p>
 
-  <p>
-    Instagram:
-    <a href="https://instagram.com/1rade.hub" target="_blank">
-      @1rade.hub
-    </a>
-  </p>
-</div><div class="copyright">© 2026 Trade Hub. All rights reserved.</div></footer>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#171613">
+  <meta name="description" content="Explore Trade Hub's wholesale catalogue across fragrances, fashion, bags, footwear and beauty. Contact us for MOQ, availability and wholesale enquiries.">
+  <title>Wholesale Catalogue | Trade Hub</title>
+
+  <link rel="icon" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* TRADE HUB CATALOGUE — STYLES ARE SCOPED TO THIS PAGE */
+    .catalogue-page {
+      --cat-black: #171613;
+      --cat-cream: #f5f1e8;
+      --cat-gold: #c8a66a;
+      --cat-muted: #777166;
+      background: var(--cat-cream);
+      color: var(--cat-black);
+      overflow: clip;
+    }
+
+    .catalogue-page *,
+    .catalogue-page *::before,
+    .catalogue-page *::after {
+      box-sizing: border-box;
+    }
+
+    .catalogue-page .cat-wrap {
+      width: min(1200px, calc(100% - 48px));
+      margin-inline: auto;
+    }
+
+    .catalogue-page .cat-eyebrow {
+      margin: 0 0 18px;
+      color: #a07c43;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      line-height: 1.8;
+    }
+
+    .catalogue-page .cat-heading {
+      margin: 0;
+      font-size: clamp(38px, 5.5vw, 68px);
+      font-weight: 600;
+      letter-spacing: -2.4px;
+      line-height: 1.05;
+    }
+
+    .catalogue-page .cat-heading em {
+      color: #a98245;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+    }
+
+    .catalogue-page .cat-copy {
+      color: var(--cat-muted);
+      font-size: 14px;
+      line-height: 1.95;
+    }
+
+    .catalogue-page .cat-btn {
+      display: inline-flex;
+      min-height: 49px;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 14px 22px;
+      border: 1px solid var(--cat-gold);
+      background: var(--cat-gold);
+      color: #171613;
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform .3s ease, background .3s ease;
+    }
+
+    .catalogue-page .cat-btn:hover {
+      transform: translateY(-3px);
+      background: #dfc38e;
+    }
+
+    /* HERO */
+    .catalogue-page .cat-hero {
+      position: relative;
+      display: flex;
+      min-height: 545px;
+      align-items: center;
+      isolation: isolate;
+      padding: 82px 0;
+      background: #171613;
+      color: #f5f1e8;
+    }
+
+    .catalogue-page .cat-hero::before {
+      position: absolute;
+      z-index: -2;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(18,17,14,.94) 0%,
+        rgba(18,17,14,.77) 50%, rgba(18,17,14,.28) 100%),
+        url("https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=1900&q=85")
+        center 48% / cover no-repeat;
+      content: "";
+    }
+
+    .catalogue-page .cat-hero-content {
+      max-width: 760px;
+    }
+
+    .catalogue-page .cat-hero .cat-eyebrow {
+      color: #ddc18a;
+    }
+
+    .catalogue-page .cat-hero h1 {
+      margin: 0;
+      font-size: clamp(46px, 7vw, 82px);
+      font-weight: 500;
+      letter-spacing: -3px;
+      line-height: 1.02;
+    }
+
+    .catalogue-page .cat-hero h1 em {
+      display: block;
+      margin-top: 8px;
+      color: #d7b779;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+    }
+
+    .catalogue-page .cat-hero p:not(.cat-eyebrow) {
+      max-width: 580px;
+      margin: 25px 0 29px;
+      color: #ded8cd;
+      font-size: 14px;
+      line-height: 1.95;
+    }
+
+    .catalogue-page .cat-hero-note {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 23px;
+      margin-top: 34px;
+      color: #e8dfce;
+      font-size: 11px;
+      letter-spacing: .7px;
+    }
+
+    .catalogue-page .cat-hero-note span::before {
+      margin-right: 8px;
+      color: #d7b779;
+      content: "✦";
+    }
+
+    /* QUICK BENEFITS */
+    .catalogue-page .cat-highlights {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-bottom: 1px solid #ded7c9;
+      background: #fffdf8;
+    }
+
+    .catalogue-page .cat-highlight {
+      padding: 27px 20px;
+      text-align: center;
+    }
+
+    .catalogue-page .cat-highlight + .cat-highlight {
+      border-left: 1px solid #e7dfd2;
+    }
+
+    .catalogue-page .cat-highlight strong {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 13px;
+    }
+
+    .catalogue-page .cat-highlight span {
+      color: var(--cat-muted);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    /* CATALOGUE AREA */
+    .catalogue-page .cat-section {
+      padding: 86px 0 100px;
+    }
+
+    .catalogue-page .cat-section-head {
+      display: grid;
+      grid-template-columns: 1fr .8fr;
+      align-items: end;
+      gap: 35px;
+      margin-bottom: 35px;
+    }
+
+    .catalogue-page .cat-section-head .cat-copy {
+      max-width: 480px;
+      margin: 0 0 5px auto;
+    }
+
+    /* FILTERS */
+    .catalogue-page .cat-filter-wrap {
+      margin-bottom: 35px;
+      padding: 18px 0;
+      border-top: 1px solid #ded7c9;
+      border-bottom: 1px solid #ded7c9;
+    }
+
+    .catalogue-page .cat-filter-label {
+      margin: 0 0 13px;
+      color: #837b6e;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .catalogue-page .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .catalogue-page .filters .filter {
+      min-height: 40px;
+      padding: 10px 17px;
+      border: 1px solid #d9d0c0;
+      border-radius: 0;
+      background: transparent;
+      color: #5d584e;
+      cursor: pointer;
+      font: inherit;
+      font-size: 12px;
+      transition: background .25s ease, color .25s ease,
+                  border-color .25s ease, transform .25s ease;
+    }
+
+    .catalogue-page .filters .filter:hover {
+      border-color: #ad8a50;
+      transform: translateY(-2px);
+    }
+
+    .catalogue-page .filters .filter.active {
+      border-color: #171613;
+      background: #171613;
+      color: #f5f1e8;
+    }
+
+    .catalogue-page .cat-results-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      margin: 0 0 21px;
+    }
+
+    .catalogue-page .cat-results-row p {
+      margin: 0;
+      color: var(--cat-muted);
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .catalogue-page .cat-results-row strong {
+      color: #302d27;
+    }
+
+    /* EXISTING DYNAMIC PRODUCT GRID */
+    .catalogue-page #productGrid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      align-items: stretch;
+      gap: 25px;
+    }
+
+    .catalogue-page #productGrid > * {
+      min-width: 0;
+      animation: catCardIn .6s ease both;
+    }
+
+    @keyframes catCardIn {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Enhance the common product-card elements without replacing
+       the markup generated by the existing catalogue.js. */
+    .catalogue-page #productGrid .product-card,
+    .catalogue-page #productGrid .product-item,
+    .catalogue-page #productGrid .product {
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid #e4ddcf;
+      background: #fffdf8;
+      transition: transform .35s ease, box-shadow .35s ease;
+    }
+
+    .catalogue-page #productGrid .product-card:hover,
+    .catalogue-page #productGrid .product-item:hover,
+    .catalogue-page #productGrid .product:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 17px 36px rgba(36, 29, 17, .09);
+    }
+
+    .catalogue-page #productGrid img {
+      max-width: 100%;
+      transition: transform .65s ease;
+    }
+
+    .catalogue-page #productGrid .product-card:hover img,
+    .catalogue-page #productGrid .product-item:hover img,
+    .catalogue-page #productGrid .product:hover img {
+      transform: scale(1.035);
+    }
+
+    .catalogue-page #productGrid h2,
+    .catalogue-page #productGrid h3 {
+      color: #211f1a;
+      line-height: 1.4;
+    }
+
+    .catalogue-page #productGrid p {
+      color: #777166;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .catalogue-page #productGrid a {
+      transition: color .25s ease, background .25s ease;
+    }
+
+    .catalogue-page .cat-grid-note {
+      margin-top: 30px;
+      color: #777166;
+      font-size: 12px;
+      line-height: 1.9;
+    }
+
+    /* WHOLESALE MESSAGE */
+    .catalogue-page .cat-wholesale {
+      padding: 83px 0;
+      background: #eae4d8;
+    }
+
+    .catalogue-page .cat-wholesale-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      align-items: center;
+      gap: 70px;
+    }
+
+    .catalogue-page .cat-wholesale-image {
+      min-height: 390px;
+      overflow: hidden;
+      background: #d8cebd;
+    }
+
+    .catalogue-page .cat-wholesale-image img {
+      width: 100%;
+      height: 100%;
+      min-height: 390px;
+      object-fit: cover;
+      transition: transform .7s ease;
+    }
+
+    .catalogue-page .cat-wholesale-image:hover img {
+      transform: scale(1.04);
+    }
+
+    .catalogue-page .cat-wholesale-copy .cat-copy {
+      margin: 20px 0 27px;
+    }
+
+    .catalogue-page .cat-points {
+      display: grid;
+      gap: 13px;
+      margin: 25px 0 30px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .catalogue-page .cat-points li {
+      display: grid;
+      grid-template-columns: 22px 1fr;
+      gap: 10px;
+      color: #554f44;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .catalogue-page .cat-points li::before {
+      color: #96713b;
+      content: "✓";
+      font-weight: 700;
+    }
+
+    /* CATEGORY INTRO CARDS */
+    .catalogue-page .cat-category-section {
+      padding: 85px 0;
+      background: #fffdf8;
+    }
+
+    .catalogue-page .cat-category-head {
+      max-width: 750px;
+      margin: 0 auto 42px;
+      text-align: center;
+    }
+
+    .catalogue-page .cat-category-head .cat-copy {
+      max-width: 620px;
+      margin: 20px auto 0;
+    }
+
+    .catalogue-page .cat-category-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .catalogue-page .cat-category {
+      padding: 27px 24px;
+      border: 1px solid #e3dccf;
+      background: #fffdf8;
+      transition: transform .3s ease, border-color .3s ease;
+    }
+
+    .catalogue-page .cat-category:hover {
+      transform: translateY(-5px);
+      border-color: #c8a66a;
+    }
+
+    .catalogue-page .cat-category .cat-number {
+      display: block;
+      margin-bottom: 20px;
+      color: #a98245;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 27px;
+    }
+
+    .catalogue-page .cat-category h3 {
+      margin: 0 0 10px;
+      font-size: 17px;
+    }
+
+    .catalogue-page .cat-category p {
+      margin: 0;
+      color: var(--cat-muted);
+      font-size: 12px;
+      line-height: 1.9;
+    }
+
+    /* FINAL CTA */
+    .catalogue-page .cat-cta {
+      position: relative;
+      padding: 88px 24px;
+      overflow: hidden;
+      background: #d9c39a;
+      text-align: center;
+    }
+
+    .catalogue-page .cat-cta::before,
+    .catalogue-page .cat-cta::after {
+      position: absolute;
+      width: 230px;
+      height: 230px;
+      border: 1px solid rgba(84,65,35,.2);
+      border-radius: 50%;
+      content: "";
+      pointer-events: none;
+    }
+
+    .catalogue-page .cat-cta::before {
+      top: -130px;
+      left: -85px;
+    }
+
+    .catalogue-page .cat-cta::after {
+      right: -85px;
+      bottom: -145px;
+      width: 300px;
+      height: 300px;
+    }
+
+    .catalogue-page .cat-cta-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 770px;
+      margin: 0 auto;
+    }
+
+    .catalogue-page .cat-cta .cat-copy {
+      max-width: 620px;
+      margin: 19px auto 27px;
+      color: #5f5441;
+    }
+
+    .catalogue-page .cat-cta .cat-btn {
+      border-color: #171613;
+      background: #171613;
+      color: #fffaf0;
+    }
+
+    .catalogue-page .cat-cta .cat-btn:hover {
+      background: #39352d;
+    }
+
+    /* SCROLL REVEAL */
+    .catalogue-page .cat-reveal {
+      opacity: 1;
+      transform: none;
+    }
+
+    .catalogue-page.cat-motion-ready .cat-reveal {
+      opacity: 0;
+      transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1);
+    }
+
+    .catalogue-page.cat-motion-ready .cat-from-left {
+      transform: translate3d(-55px, 0, 0);
+    }
+
+    .catalogue-page.cat-motion-ready .cat-from-right {
+      transform: translate3d(55px, 0, 0);
+    }
+
+    .catalogue-page.cat-motion-ready .cat-from-bottom {
+      transform: translate3d(0, 30px, 0);
+    }
+
+    .catalogue-page.cat-motion-ready .cat-reveal.cat-visible {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+
+    .catalogue-page .cat-delay-1 { transition-delay: .1s !important; }
+    .catalogue-page .cat-delay-2 { transition-delay: .2s !important; }
+
+    @media (max-width: 900px) {
+      .catalogue-page #productGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .catalogue-page .cat-section-head {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .catalogue-page .cat-section-head .cat-copy {
+        margin: 0;
+      }
+
+      .catalogue-page .cat-wholesale-grid {
+        gap: 35px;
+      }
+
+      .catalogue-page .cat-category-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 600px) {
+      .catalogue-page .cat-wrap {
+        width: min(100% - 34px, 1200px);
+      }
+
+      .catalogue-page .cat-hero {
+        min-height: 530px;
+        padding: 65px 0;
+      }
+
+      .catalogue-page .cat-hero::before {
+        background:
+          linear-gradient(90deg, rgba(18,17,14,.91), rgba(18,17,14,.52)),
+          url("https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=1000&q=80")
+          center / cover no-repeat;
+      }
+
+      .catalogue-page .cat-hero h1 {
+        font-size: clamp(43px, 11.5vw, 60px);
+        letter-spacing: -2px;
+      }
+
+      .catalogue-page .cat-hero p:not(.cat-eyebrow) {
+        font-size: 13px;
+      }
+
+      .catalogue-page .cat-highlights {
+        grid-template-columns: 1fr;
+      }
+
+      .catalogue-page .cat-highlight {
+        padding: 21px 17px;
+      }
+
+      .catalogue-page .cat-highlight + .cat-highlight {
+        border-top: 1px solid #e7dfd2;
+        border-left: 0;
+      }
+
+      .catalogue-page .cat-section,
+      .catalogue-page .cat-category-section {
+        padding: 62px 0;
+      }
+
+      .catalogue-page .cat-heading {
+        font-size: clamp(35px, 9vw, 46px);
+        letter-spacing: -1.3px;
+      }
+
+      .catalogue-page #productGrid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .catalogue-page .filters {
+        gap: 7px;
+      }
+
+      .catalogue-page .filters .filter {
+        padding: 9px 12px;
+        font-size: 11px;
+      }
+
+      .catalogue-page .cat-results-row {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .catalogue-page .cat-wholesale {
+        padding: 62px 0;
+      }
+
+      .catalogue-page .cat-wholesale-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .catalogue-page .cat-wholesale-image,
+      .catalogue-page .cat-wholesale-image img {
+        min-height: 280px;
+      }
+
+      .catalogue-page .cat-category-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .catalogue-page .cat-cta {
+        padding: 67px 19px;
+      }
+
+      .catalogue-page .cat-from-left,
+      .catalogue-page .cat-from-right {
+        transform: translate3d(0, 20px, 0);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .catalogue-page *,
+      .catalogue-page *::before,
+      .catalogue-page *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+
+      .catalogue-page.cat-motion-ready .cat-reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="header">
+  <a class="logo" href="index.html"><span>TH</span> TRADE HUB</a>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a class="active" href="catalogue.html">Catalogue</a>
+    <a href="about.html">About</a>
+    <a href="shipping.html">Wholesale & Shipping</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <a class="nav-cta" href="contact.html">Request Quote</a>
+</header>
+
+<main class="catalogue-page" id="cataloguePage">
+
+  <!-- HERO -->
+  <section class="cat-hero">
+    <div class="cat-wrap">
+      <div class="cat-hero-content cat-reveal cat-from-left">
+        <p class="cat-eyebrow">TRADE HUB · WHOLESALE COLLECTION</p>
+
+        <h1>
+          A world of products.
+          <em>One trade partner.</em>
+        </h1>
+
+        <p>
+          Discover product categories for your business, from fragrances
+          and fashion to accessories and beauty. Explore the catalogue,
+          identify your requirements and contact us to discuss wholesale
+          availability and minimum order quantities.
+        </p>
+
+        <a class="cat-btn" href="#browseCatalogue">
+          Explore Catalogue <span>↓</span>
+        </a>
+
+        <div class="cat-hero-note">
+          <span>Wholesale enquiries</span>
+          <span>MOQ discussions</span>
+          <span>UAE-based sourcing</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS -->
+  <div class="cat-highlights">
+    <div class="cat-highlight cat-reveal cat-from-bottom">
+      <strong>Curated Categories</strong>
+      <span>Explore products across multiple business sectors</span>
+    </div>
+
+    <div class="cat-highlight cat-reveal cat-from-bottom cat-delay-1">
+      <strong>Wholesale Focus</strong>
+      <span>Discuss MOQ, availability and bulk requirements</span>
+    </div>
+
+    <div class="cat-highlight cat-reveal cat-from-bottom cat-delay-2">
+      <strong>International Enquiries</strong>
+      <span>Tell us your destination and sourcing needs</span>
+    </div>
+  </div>
+
+  <!-- DYNAMIC CATALOGUE -->
+  <section class="cat-section" id="browseCatalogue">
+    <div class="cat-wrap">
+
+      <div class="cat-section-head cat-reveal cat-from-bottom">
+        <div>
+          <p class="cat-eyebrow">THE PRODUCT COLLECTION</p>
+          <h2 class="cat-heading">
+            Find what your
+            <em>market needs.</em>
+          </h2>
+        </div>
+
+        <p class="cat-copy">
+          Browse our published product listings below. Product details,
+          photos and minimum order quantities are shown where provided.
+          If a product interests you, contact our team to discuss
+          availability and wholesale requirements.
+        </p>
+      </div>
+
+      <div class="cat-filter-wrap cat-reveal cat-from-bottom">
+        <p class="cat-filter-label">BROWSE BY CATEGORY</p>
+
+        <!-- Keep existing data-filter values for catalogue.js -->
+        <div class="filters" role="group" aria-label="Filter products by category">
+          <button type="button" class="filter active" data-filter="all" aria-pressed="true">All Products</button>
+          <button type="button" class="filter" data-filter="perfumes" aria-pressed="false">Perfumes</button>
+          <button type="button" class="filter" data-filter="fashion" aria-pressed="false">Fashion</button>
+          <button type="button" class="filter" data-filter="bags" aria-pressed="false">Bags</button>
+          <button type="button" class="filter" data-filter="shoes" aria-pressed="false">Shoes</button>
+          <button type="button" class="filter" data-filter="beauty" aria-pressed="false">Beauty</button>
+        </div>
+      </div>
+
+      <div class="cat-results-row cat-reveal cat-from-bottom">
+        <p><strong>Wholesale catalogue</strong> · Explore available listings</p>
+        <p>Pricing by enquiry · MOQ varies by product</p>
+      </div>
+
+      <!-- IMPORTANT: catalogue.js continues to populate this element -->
+      <div id="productGrid" class="product-grid" aria-live="polite"></div>
+
+      <p class="cat-grid-note cat-reveal cat-from-bottom">
+        Product availability, specifications, minimum order quantities and
+        shipping arrangements should be confirmed with Trade Hub before
+        placing an order. Public retail pricing is not displayed here.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- WHOLESALE INFORMATION -->
+  <section class="cat-wholesale">
+    <div class="cat-wrap">
+      <div class="cat-wholesale-grid">
+
+        <div class="cat-wholesale-image cat-reveal cat-from-left">
+          <img
+            src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1100&q=85"
+            alt="Warehouse and organized goods representing wholesale supply"
+            loading="lazy">
+        </div>
+
+        <div class="cat-wholesale-copy cat-reveal cat-from-right">
+          <p class="cat-eyebrow">A WHOLESALE-FOCUSED APPROACH</p>
+
+          <h2 class="cat-heading">
+            More than a
+            <em>product listing.</em>
+          </h2>
+
+          <p class="cat-copy">
+            Choosing products for a business means considering more than
+            appearance alone. Buyers may need to review the product range,
+            order quantity, availability and destination before making
+            a purchasing decision.
+          </p>
+
+          <p class="cat-copy">
+            Trade Hub invites wholesale buyers to share their requirements
+            so the relevant product and supply details can be discussed.
+            For larger orders, container-based supply requirements can
+            also be explored where suitable.
+          </p>
+
+          <ul class="cat-points">
+            <li>Tell us which products and categories interest you.</li>
+            <li>Share your estimated quantity or order size.</li>
+            <li>Confirm MOQ, availability and relevant specifications.</li>
+            <li>Discuss your destination and shipping arrangements.</li>
+          </ul>
+
+          <a class="cat-btn" href="contact.html">
+            Discuss Your Requirement <span>↗</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORY GUIDE -->
+  <section class="cat-category-section">
+    <div class="cat-wrap">
+
+      <div class="cat-category-head cat-reveal cat-from-bottom">
+        <p class="cat-eyebrow">EXPLORE THE RANGE</p>
+        <h2 class="cat-heading">
+          Different categories.
+          <em>Business possibilities.</em>
+        </h2>
+        <p class="cat-copy">
+          Whether you're expanding an existing range or exploring a new
+          product category, start with the products relevant to your
+          customers and market.
+        </p>
+      </div>
+
+      <div class="cat-category-grid">
+        <article class="cat-category cat-reveal cat-from-left">
+          <span class="cat-number">01</span>
+          <h3>Perfumes & Fragrances</h3>
+          <p>
+            Explore fragrance listings and discuss product options,
+            quantities and availability for your market.
+          </p>
+        </article>
+
+        <article class="cat-category cat-reveal cat-from-bottom cat-delay-1">
+          <span class="cat-number">02</span>
+          <h3>Fashion & Trousers</h3>
+          <p>
+            Discuss apparel requirements and the product selection
+            appropriate for your business.
+          </p>
+        </article>
+
+        <article class="cat-category cat-reveal cat-from-right cat-delay-2">
+          <span class="cat-number">03</span>
+          <h3>Ladies' Bags</h3>
+          <p>
+            Explore accessory categories and share your preferred
+            styles and estimated wholesale quantities.
+          </p>
+        </article>
+
+        <article class="cat-category cat-reveal cat-from-left">
+          <span class="cat-number">04</span>
+          <h3>Shoes & Sneakers</h3>
+          <p>
+            Tell us the footwear categories you're looking for and
+            discuss the relevant order requirements.
+          </p>
+        </article>
+
+        <article class="cat-category cat-reveal cat-from-bottom cat-delay-1">
+          <span class="cat-number">05</span>
+          <h3>Skincare</h3>
+          <p>
+            Discuss skincare sourcing requirements, product availability
+            and destination-specific considerations.
+          </p>
+        </article>
+
+        <article class="cat-category cat-reveal cat-from-right cat-delay-2">
+          <span class="cat-number">06</span>
+          <h3>Makeup & Beauty</h3>
+          <p>
+            Explore cosmetics and beauty categories for your business
+            and enquire about product availability.
+          </p>
+        </article>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cat-cta">
+    <div class="cat-cta-inner cat-reveal cat-from-bottom">
+      <p class="cat-eyebrow">YOUR NEXT WHOLESALE ENQUIRY</p>
+
+      <h2 class="cat-heading">
+        Found a category?
+        <em>Let's talk business.</em>
+      </h2>
+
+      <p class="cat-copy">
+        Share the products you're interested in, your estimated order
+        quantity and your destination. Our team can discuss the relevant
+        wholesale requirements with you.
+      </p>
+
+      <a class="cat-btn" href="contact.html">
+        Request a Wholesale Quote <span>↗</span>
+      </a>
+
+      <p style="margin:20px 0 0;color:#5f5441;font-size:12px;">
+        Prefer WhatsApp?
+        <a
+          href="https://wa.me/971558699837?text=Hello%20Trade%20Hub%2C%20I%20would%20like%20to%20discuss%20a%20wholesale%20product%20enquiry."
+          target="_blank"
+          rel="noopener noreferrer"
+          style="color:#171613;font-weight:700;">
+          Message our team
+        </a>
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div>
+    <a class="logo" href="index.html"><span>TH</span> TRADE HUB</a>
+    <p>UAE wholesale supply for businesses worldwide.</p>
+  </div>
+
+  <div class="footer-links">
+    <a href="catalogue.html">Catalogue</a>
+    <a href="about.html">About</a>
+    <a href="shipping.html">Shipping</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <div>
+    <p>
+      WhatsApp / Phone:
+      <a href="https://wa.me/971558699837" target="_blank" rel="noopener noreferrer">
+        +971 55 869 9837
+      </a>
+    </p>
+    <p>
+      Instagram:
+      <a href="https://instagram.com/1rade.hub" target="_blank" rel="noopener noreferrer">
+        @1rade.hub
+      </a>
+    </p>
+  </div>
+
+  <div class="copyright">© 2026 Trade Hub. All rights reserved.</div>
+</footer>
+
+<!-- Keep the existing product scripts -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="products.js"></script>
-<script src="catalogue.js"></script></body></html>
+<script src="catalogue.js"></script>
+
+<script>
+  (function () {
+    const page = document.getElementById("cataloguePage");
+    if (!page) return;
+
+    const items = page.querySelectorAll(".cat-reveal");
+
+    if (
+      !("IntersectionObserver" in window) ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      return;
+    }
+
+    page.classList.add("cat-motion-ready");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("cat-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: "0px 0px -30px 0px"
+    });
+
+    items.forEach((item) => observer.observe(item));
+  })();
+</script>
+
+</body>
+</html>
+
