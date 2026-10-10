@@ -1,34 +1,979 @@
-<!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>About Trade Hub</title><link rel="icon" href="favicon.svg"><link rel="stylesheet" href="style.css"></head>
-<body>
-<header class="header"><a class="logo" href="index.html"><span>TH</span> TRADE HUB</a><nav><a href="index.html">Home</a><a href="catalogue.html">Catalogue</a><a class="active" href="about.html">About</a><a href="shipping.html">Wholesale & Shipping</a><a href="contact.html">Contact</a></nav><a class="nav-cta" href="contact.html">Request Quote</a></header>
-<main>
-<section class="page-hero"><p class="eyebrow">ABOUT TRADE HUB</p><h1>A wholesale partner<br><em>built for long-term trade.</em></h1><p>Trade Hub is a Dubai and Sharjah based wholesale trading company with more than 10 years of experience connecting businesses with products from the UAE.</p></section>
-<section class="section"><div class="story-grid"><div><p class="eyebrow">OUR STORY</p><h2>From the UAE to<br><em>markets worldwide.</em></h2></div><div class="prose"><p>Trade Hub operates across Dubai and Sharjah, two of the UAE's key commercial and wholesale hubs. Our business is built around dependable sourcing, clear communication and long-term relationships.</p><p>We supply a broad range of wholesale categories including perfumes, junior and adult trousers, ladies' premium bags, formal shoes, sneakers, skincare and makeup.</p><p>Over the years, we have developed business relationships and supported deliveries into markets including Oman, Pakistan and Saudi Arabia, along with other international destinations.</p><p>For larger requirements, our container-based supply model is designed to support serious wholesale buyers and businesses looking for consistent UAE sourcing.</p></div></div></section>
-<section class="dark-section"><div class="center"><p class="eyebrow">OUR APPROACH</p><h2>Professional sourcing.<br><em>Practical wholesale.</em></h2><p>We believe wholesale should be straightforward: understand the requirement, confirm the MOQ and availability, coordinate the supply, and support the buyer through the next step.</p></div></section>
-<section class="section"><div class="values"><div><span>01</span><h3>Experience</h3><p>10+ years of practical wholesale experience.</p></div><div><span>02</span><h3>Range</h3><p>Multiple high-demand product categories under one trading partner.</p></div><div><span>03</span><h3>Reach</h3><p>UAE operations with international wholesale relationships.</p></div><div><span>04</span><h3>Trust</h3><p>Clear communication and long-term business relationships.</p></div></div></section>
-</main>
-<footer class="footer">
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>About Trade Hub | UAE Wholesale Trading</title>
+  <meta name="description" content="Discover Trade Hub, a UAE wholesale trading company based in Dubai and Sharjah, connecting businesses with wholesale sourcing and international supply.">
+  <meta name="theme-color" content="#171715">
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* ABOUT PAGE ONLY — does not change other pages */
+
+    .about-page {
+      --ab-black: #191916;
+      --ab-ivory: #f5f1e8;
+      --ab-gold: #b99a60;
+      --ab-muted: #77736b;
+      --ab-line: #e2dcd0;
+      overflow: hidden;
+      background: var(--ab-ivory);
+      color: var(--ab-black);
+    }
+
+    .about-page img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .about-page a {
+      transition: color .3s ease, background .3s ease,
+                  border-color .3s ease, transform .3s ease;
+    }
+
+    .about-page .ab-eyebrow {
+      margin: 0 0 18px;
+      color: var(--ab-gold);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.8px;
+      line-height: 1.8;
+      text-transform: uppercase;
+    }
+
+    .about-page h1,
+    .about-page h2,
+    .about-page h3,
+    .about-page p {
+      overflow-wrap: anywhere;
+    }
+
+    .about-page h1,
+    .about-page h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      letter-spacing: -1.2px;
+      line-height: 1.12;
+    }
+
+    .about-page h1 em,
+    .about-page h2 em {
+      color: var(--ab-gold);
+      font-weight: 400;
+    }
+
+    .about-page .ab-copy {
+      color: var(--ab-muted);
+      font-size: 15px;
+      line-height: 1.95;
+    }
+
+    .about-page .ab-copy p {
+      margin: 0 0 18px;
+    }
+
+    /* Hero */
+
+    .about-page .ab-hero {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.02fr .98fr;
+      align-items: center;
+      gap: 55px;
+      padding: 85px 7%;
+      min-height: 540px;
+      background: var(--ab-black);
+      color: var(--ab-ivory);
+    }
+
+    .about-page .ab-hero-copy {
+      position: relative;
+      z-index: 2;
+    }
+
+    .about-page .ab-hero h1 {
+      margin: 0 0 24px;
+      font-size: clamp(42px, 5.3vw, 70px);
+    }
+
+    .about-page .ab-hero .ab-copy {
+      max-width: 540px;
+      color: #d0c9bd;
+    }
+
+    .about-page .ab-hero-image {
+      position: relative;
+      height: 400px;
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid rgba(185,154,96,.5);
+    }
+
+    .about-page .ab-hero-image img {
+      transition: transform 1s ease;
+    }
+
+    .about-page .ab-hero-image:hover img {
+      transform: scale(1.045);
+    }
+
+    .about-page .ab-hero-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(25,25,22,.16), transparent 60%),
+                  linear-gradient(0deg, rgba(25,25,22,.22), transparent 55%);
+      pointer-events: none;
+    }
+
+    .about-page .ab-hero-caption {
+      position: absolute;
+      z-index: 1;
+      right: 18px;
+      bottom: 18px;
+      padding: 10px 14px;
+      border: 1px solid rgba(255,255,255,.35);
+      background: rgba(25,25,22,.75);
+      color: white;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .about-page .ab-hero-line {
+      width: 65px;
+      height: 2px;
+      margin: 28px 0 0;
+      background: var(--ab-gold);
+    }
+
+    /* Intro strip */
+
+    .about-page .ab-facts {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 25px;
+      padding: 30px 7%;
+      border-bottom: 1px solid var(--ab-line);
+      background: #fffdf8;
+    }
+
+    .about-page .ab-fact {
+      padding: 8px 18px;
+      border-right: 1px solid var(--ab-line);
+    }
+
+    .about-page .ab-fact:last-child {
+      border-right: 0;
+    }
+
+    .about-page .ab-fact strong {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--ab-black);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 23px;
+      font-weight: 400;
+    }
+
+    .about-page .ab-fact span {
+      color: var(--ab-muted);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    /* Alternating story sections */
+
+    .about-page .ab-story {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      align-items: center;
+      gap: clamp(35px, 7vw, 95px);
+      padding: 95px 8%;
+    }
+
+    .about-page .ab-story:nth-of-type(even) {
+      background: #fffdf8;
+    }
+
+    .about-page .ab-story.ab-reverse .ab-story-image {
+      order: 2;
+    }
+
+    .about-page .ab-story.ab-reverse .ab-story-copy {
+      order: 1;
+    }
+
+    .about-page .ab-story-copy h2 {
+      margin: 0 0 24px;
+      font-size: clamp(32px, 4vw, 49px);
+    }
+
+    .about-page .ab-story-image {
+      position: relative;
+      height: 390px;
+      min-width: 0;
+      overflow: hidden;
+      background: #e4ded2;
+    }
+
+    .about-page .ab-story-image img {
+      transition: transform .8s ease, filter .8s ease;
+    }
+
+    .about-page .ab-story-image:hover img {
+      transform: scale(1.045);
+      filter: contrast(1.04);
+    }
+
+    .about-page .ab-image-label {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      max-width: 85%;
+      padding: 13px 18px;
+      background: var(--ab-black);
+      color: var(--ab-ivory);
+      font-size: 10px;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+    }
+
+    .about-page .ab-number {
+      display: inline-block;
+      margin-bottom: 16px;
+      color: var(--ab-gold);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 15px;
+    }
+
+    /* Approach banner */
+
+    .about-page .ab-approach {
+      position: relative;
+      padding: 100px 8%;
+      overflow: hidden;
+      background: var(--ab-black);
+      color: var(--ab-ivory);
+      text-align: center;
+    }
+
+    .about-page .ab-approach::before,
+    .about-page .ab-approach::after {
+      content: "";
+      position: absolute;
+      width: 230px;
+      height: 230px;
+      border: 1px solid rgba(185,154,96,.2);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .about-page .ab-approach::before {
+      top: -125px;
+      left: -80px;
+    }
+
+    .about-page .ab-approach::after {
+      right: -100px;
+      bottom: -145px;
+    }
+
+    .about-page .ab-approach-inner {
+      position: relative;
+      max-width: 850px;
+      margin: auto;
+    }
+
+    .about-page .ab-approach h2 {
+      margin: 0 0 22px;
+      font-size: clamp(34px, 4.5vw, 53px);
+    }
+
+    .about-page .ab-approach p:not(.ab-eyebrow) {
+      max-width: 720px;
+      margin: 0 auto;
+      color: #d0c9bd;
+      font-size: 15px;
+      line-height: 2;
+    }
+
+    /* Values */
+
+    .about-page .ab-values-section {
+      padding: 90px 7%;
+      background: #fffdf8;
+    }
+
+    .about-page .ab-section-heading {
+      max-width: 720px;
+      margin: 0 auto 45px;
+      text-align: center;
+    }
+
+    .about-page .ab-section-heading h2 {
+      margin: 0 0 18px;
+      font-size: clamp(33px, 4vw, 48px);
+    }
+
+    .about-page .ab-values {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .about-page .ab-value {
+      padding: 30px 22px;
+      border: 1px solid var(--ab-line);
+      background: var(--ab-ivory);
+      transition: transform .3s ease, border-color .3s ease,
+                  box-shadow .3s ease;
+    }
+
+    .about-page .ab-value:hover {
+      transform: translateY(-6px);
+      border-color: var(--ab-gold);
+      box-shadow: 0 12px 30px rgba(25,25,22,.06);
+    }
+
+    .about-page .ab-value span {
+      color: var(--ab-gold);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 25px;
+    }
+
+    .about-page .ab-value h3 {
+      margin: 18px 0 12px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 21px;
+      font-weight: 400;
+    }
+
+    .about-page .ab-value p {
+      margin: 0;
+      color: var(--ab-muted);
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    /* Working process */
+
+    .about-page .ab-process {
+      padding: 90px 8%;
+    }
+
+    .about-page .ab-process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 35px;
+      margin-top: 45px;
+    }
+
+    .about-page .ab-process-item {
+      padding-top: 22px;
+      border-top: 1px solid var(--ab-gold);
+    }
+
+    .about-page .ab-process-item span {
+      color: var(--ab-gold);
+      font-size: 11px;
+      letter-spacing: 2px;
+    }
+
+    .about-page .ab-process-item h3 {
+      margin: 14px 0 12px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 22px;
+      font-weight: 400;
+    }
+
+    .about-page .ab-process-item p {
+      margin: 0;
+      color: var(--ab-muted);
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    /* Closing CTA */
+
+    .about-page .ab-cta {
+      padding: 78px 7%;
+      background: #eae3d6;
+      text-align: center;
+    }
+
+    .about-page .ab-cta h2 {
+      margin: 0 0 18px;
+      font-size: clamp(32px, 4vw, 47px);
+    }
+
+    .about-page .ab-cta p:not(.ab-eyebrow) {
+      max-width: 650px;
+      margin: 0 auto 28px;
+      color: var(--ab-muted);
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    .about-page .ab-cta-link {
+      display: inline-block;
+      padding: 15px 25px;
+      border: 1px solid var(--ab-black);
+      background: var(--ab-black);
+      color: white;
+      font-size: 11px;
+      letter-spacing: 1.4px;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .about-page .ab-cta-link:hover {
+      border-color: var(--ab-gold);
+      background: var(--ab-gold);
+      color: var(--ab-black);
+      transform: translateY(-2px);
+    }
+
+    /* Scroll reveal: safe fallback keeps content visible without JS */
+
+    .about-page .ab-reveal {
+      opacity: 1;
+      transform: none;
+    }
+
+    .about-page.ab-motion-ready .ab-reveal {
+      opacity: 0;
+      transition: opacity .8s ease, transform .8s ease;
+    }
+
+    .about-page.ab-motion-ready .ab-reveal.ab-from-left {
+      transform: translateX(-45px);
+    }
+
+    .about-page.ab-motion-ready .ab-reveal.ab-from-right {
+      transform: translateX(45px);
+    }
+
+    .about-page.ab-motion-ready .ab-reveal.ab-from-bottom {
+      transform: translateY(28px);
+    }
+
+    .about-page.ab-motion-ready .ab-reveal.ab-visible {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .about-page *,
+      .about-page *::before,
+      .about-page *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+
+      .about-page.ab-motion-ready .ab-reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .about-page .ab-hero {
+        gap: 32px;
+        padding: 65px 6%;
+      }
+
+      .about-page .ab-hero-image {
+        height: 340px;
+      }
+
+      .about-page .ab-story {
+        gap: 35px;
+        padding: 70px 6%;
+      }
+
+      .about-page .ab-story-image {
+        height: 330px;
+      }
+
+      .about-page .ab-values {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .about-page .ab-hero {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 54px 6% 42px;
+      }
+
+      .about-page .ab-hero h1 {
+        font-size: clamp(39px, 11vw, 55px);
+      }
+
+      .about-page .ab-hero-image {
+        height: 260px;
+      }
+
+      .about-page .ab-facts {
+        grid-template-columns: 1fr;
+        gap: 0;
+        padding: 18px 6%;
+      }
+
+      .about-page .ab-fact {
+        padding: 17px 5px;
+        border-right: 0;
+        border-bottom: 1px solid var(--ab-line);
+      }
+
+      .about-page .ab-fact:last-child {
+        border-bottom: 0;
+      }
+
+      .about-page .ab-story {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding: 55px 6%;
+      }
+
+      .about-page .ab-story.ab-reverse .ab-story-image,
+      .about-page .ab-story.ab-reverse .ab-story-copy {
+        order: initial;
+      }
+
+      .about-page .ab-story-image {
+        height: 270px;
+      }
+
+      .about-page .ab-approach {
+        padding: 65px 6%;
+      }
+
+      .about-page .ab-values-section,
+      .about-page .ab-process {
+        padding: 60px 6%;
+      }
+
+      .about-page .ab-values {
+        grid-template-columns: 1fr;
+      }
+
+      .about-page .ab-value {
+        padding: 25px;
+      }
+
+      .about-page .ab-process-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+      .about-page .ab-cta {
+        padding: 60px 6%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="header">
+  <a class="logo" href="index.html"><span>TH</span> TRADE HUB</a>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="catalogue.html">Catalogue</a>
+    <a class="active" href="about.html">About</a>
+    <a href="shipping.html">Wholesale & Shipping</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <a class="nav-cta" href="contact.html">Request Quote</a>
+</header>
+
+<main class="about-page" id="aboutPage">
+
+  <!-- HERO -->
+  <section class="ab-hero">
+    <div class="ab-hero-copy ab-reveal ab-from-left">
+      <p class="ab-eyebrow">ABOUT TRADE HUB · DUBAI & SHARJAH</p>
+
+      <h1>
+        Connecting Markets.<br>
+        <em>Building Trade.</em>
+      </h1>
+
+      <div class="ab-copy">
+        <p>
+          Trade Hub is a UAE-based wholesale trading company focused on
+          connecting businesses with product sourcing and wholesale supply
+          opportunities from Dubai and Sharjah.
+        </p>
+        <p>
+          With more than 10 years of wholesale experience, our approach
+          centres on understanding buyer requirements, communicating
+          clearly and building business relationships designed to last.
+        </p>
+      </div>
+
+      <div class="ab-hero-line"></div>
+    </div>
+
+    <div class="ab-hero-image ab-reveal ab-from-right">
+      <img
+        src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=85"
+        alt="Modern Dubai skyline"
+        fetchpriority="high"
+      >
+      <span class="ab-hero-caption">Dubai · United Arab Emirates</span>
+    </div>
+  </section>
+
+  <!-- COMPANY OVERVIEW -->
+  <section class="ab-facts">
+    <div class="ab-fact ab-reveal ab-from-bottom">
+      <strong>10+ Years</strong>
+      <span>Wholesale experience and practical market knowledge</span>
+    </div>
+
+    <div class="ab-fact ab-reveal ab-from-bottom">
+      <strong>Dubai & Sharjah</strong>
+      <span>Our UAE business locations and trading focus</span>
+    </div>
+
+    <div class="ab-fact ab-reveal ab-from-bottom">
+      <strong>Global Trade</strong>
+      <span>Wholesale supply for buyers and businesses across markets</span>
+    </div>
+  </section>
+
+  <!-- OUR STORY -->
+  <section class="ab-story">
+    <div class="ab-story-copy ab-reveal ab-from-left">
+      <span class="ab-number">01 / OUR STORY</span>
+      <p class="ab-eyebrow">WHO WE ARE</p>
+
+      <h2>Rooted in the UAE.<br><em>Focused on relationships.</em></h2>
+
+      <div class="ab-copy">
+        <p>
+          Trade Hub operates with a focus on wholesale trading from Dubai
+          and Sharjah. These locations form an important part of the UAE's
+          commercial landscape and provide a base for connecting buyers
+          with product sourcing opportunities.
+        </p>
+        <p>
+          We understand that every business has different priorities.
+          Some buyers are exploring new product categories, while others
+          need to plan larger orders around quantity, availability and
+          destination requirements.
+        </p>
+        <p>
+          Our aim is to make the initial wholesale conversation clear and
+          practical: understand what the buyer needs, discuss the relevant
+          product categories, and identify the next steps for a potential
+          order.
+        </p>
+      </div>
+    </div>
+
+    <div class="ab-story-image ab-reveal ab-from-right">
+      <img
+        src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=1100&q=85"
+        alt="Contemporary city skyline and commercial district"
+        loading="lazy"
+      >
+      <span class="ab-image-label">Our UAE Business Focus</span>
+    </div>
+  </section>
+
+  <!-- WHAT WE DO -->
+  <section class="ab-story ab-reverse">
+    <div class="ab-story-copy ab-reveal ab-from-right">
+      <span class="ab-number">02 / WHAT WE DO</span>
+      <p class="ab-eyebrow">WHOLESALE SOURCING</p>
+
+      <h2>Products and supply<br><em>for business buyers.</em></h2>
+
+      <div class="ab-copy">
+        <p>
+          Trade Hub works across multiple wholesale categories, helping
+          buyers discuss their product requirements through one business
+          contact. Our categories include fragrances, junior and adult
+          trousers, ladies' bags, formal shoes, sneakers, skincare and makeup.
+        </p>
+        <p>
+          The wholesale process begins with the buyer's preferred category,
+          product requirements and intended order quantity. Minimum order
+          quantities, availability and other order details should be
+          confirmed for the specific products being considered.
+        </p>
+        <p>
+          For larger-volume requirements, container-based supply can be
+          discussed according to the products, quantities, destination
+          and agreed commercial arrangements.
+        </p>
+        <p>
+          Product specifications and availability can vary. We encourage
+          buyers to share clear requirements so that the relevant details
+          can be discussed before proceeding.
+        </p>
+      </div>
+    </div>
+
+    <div class="ab-story-image ab-reveal ab-from-left">
+      <img
+        src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1100&q=85"
+        alt="Organized warehouse and goods prepared for distribution"
+        loading="lazy"
+      >
+      <span class="ab-image-label">Wholesale Supply</span>
+    </div>
+  </section>
+
+  <!-- GLOBAL REACH -->
+  <section class="ab-story">
+    <div class="ab-story-copy ab-reveal ab-from-left">
+      <span class="ab-number">03 / GLOBAL REACH</span>
+      <p class="ab-eyebrow">INTERNATIONAL TRADE</p>
+
+      <h2>Local connections.<br><em>International ambitions.</em></h2>
+
+      <div class="ab-copy">
+        <p>
+          Wholesale trade extends beyond a single location. Buyers need
+          to consider product availability, order size, destination,
+          shipping arrangements and the practical requirements of moving
+          goods across borders.
+        </p>
+        <p>
+          Trade Hub has developed business relationships and supported
+          deliveries into markets including Oman, Pakistan and Saudi Arabia,
+          alongside other international destinations.
+        </p>
+        <p>
+          Every destination can have different shipping, documentation
+          and import requirements. These details must be reviewed for the
+          particular order and destination rather than assumed to be the
+          same for every shipment.
+        </p>
+        <p>
+          Our focus is to help buyers begin that conversation with a clear
+          understanding of their requirements and the arrangements that
+          need to be confirmed.
+        </p>
+      </div>
+    </div>
+
+    <div class="ab-story-image ab-reveal ab-from-right">
+      <img
+        src="https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&w=1100&q=85"
+        alt="Freight containers and international shipping operations"
+        loading="lazy"
+      >
+      <span class="ab-image-label">International Supply</span>
+    </div>
+  </section>
+
+  <!-- OUR APPROACH -->
+  <section class="ab-approach">
+    <div class="ab-approach-inner ab-reveal ab-from-bottom">
+      <p class="ab-eyebrow">OUR APPROACH</p>
+
+      <h2>Professional sourcing.<br><em>Practical wholesale.</em></h2>
+
+      <p>
+        We believe a productive wholesale relationship begins with clear
+        expectations. Understanding the buyer's needs, discussing product
+        requirements, confirming availability and clarifying commercial
+        arrangements help both sides determine the right next step.
+      </p>
+    </div>
+  </section>
+
+  <!-- WORKING WITH BUYERS -->
+  <section class="ab-story ab-reverse">
+    <div class="ab-story-copy ab-reveal ab-from-right">
+      <span class="ab-number">04 / WORKING WITH BUYERS</span>
+      <p class="ab-eyebrow">CLEAR COMMUNICATION</p>
+
+      <h2>Every order starts<br><em>with a conversation.</em></h2>
+
+      <div class="ab-copy">
+        <p>
+          A successful wholesale enquiry starts with the right information.
+          Buyers can tell us which products they are interested in, the
+          quantity they have in mind, their destination and any particular
+          requirements for their business.
+        </p>
+        <p>
+          From there, the relevant product details, minimum order quantity,
+          availability and possible shipping arrangements can be discussed.
+          Pricing and terms should be confirmed directly for the specific
+          enquiry before an order is agreed.
+        </p>
+        <p>
+          This approach helps establish realistic expectations from the
+          beginning and gives both sides a clearer basis for discussing
+          a potential business relationship.
+        </p>
+      </div>
+    </div>
+
+    <div class="ab-story-image ab-reveal ab-from-left">
+      <img
+        src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1100&q=85"
+        alt="Business professionals collaborating in a modern office"
+        loading="lazy"
+      >
+      <span class="ab-image-label">Business Relationships</span>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="ab-values-section">
+    <div class="ab-section-heading ab-reveal ab-from-bottom">
+      <p class="ab-eyebrow">WHAT GUIDES US</p>
+      <h2>Principles behind<br><em>every business conversation.</em></h2>
+      <div class="ab-copy">
+        <p>
+          Our approach to wholesale is guided by practical communication,
+          clear expectations and respect for the requirements of each buyer.
+        </p>
+      </div>
+    </div>
+
+    <div class="ab-values">
+      <article class="ab-value ab-reveal ab-from-bottom">
+        <span>01</span>
+        <h3>Experience</h3>
+        <p>
+          More than a decade of wholesale experience informs our
+          understanding of buyer needs and commercial discussions.
+        </p>
+      </article>
+
+      <article class="ab-value ab-reveal ab-from-bottom">
+        <span>02</span>
+        <h3>Clarity</h3>
+        <p>
+          Product requirements, MOQ, availability and order terms should
+          be discussed clearly before moving forward.
+        </p>
+      </article>
+
+      <article class="ab-value ab-reveal ab-from-bottom">
+        <span>03</span>
+        <h3>Relationships</h3>
+        <p>
+          Professional communication and mutual understanding provide
+          a foundation for long-term business relationships.
+        </p>
+      </article>
+
+      <article class="ab-value ab-reveal ab-from-bottom">
+        <span>04</span>
+        <h3>Global Outlook</h3>
+        <p>
+          We work with an international perspective, recognising that
+          every market and destination can have different requirements.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- HOW WE WORK -->
+  <section class="ab-process">
+    <div class="ab-section-heading ab-reveal ab-from-bottom">
+      <p class="ab-eyebrow">HOW WE WORK</p>
+      <h2>A straightforward path<br><em>from enquiry to planning.</em></h2>
+      <div class="ab-copy">
+        <p>
+          Each order is different, but these are the key points buyers
+          can expect to discuss with Trade Hub.
+        </p>
+      </div>
+    </div>
+
+    <div class="ab-process-grid">
+      <article class="ab-process-item ab-reveal ab-from-left">
+        <span>STEP 01</span>
+        <h3>Share Your Requirements</h3>
+        <p>
+          Tell us the product category, quantity, destination and any
+          specifications relevant to your business.
+        </p>
+      </article>
+
+      <article class="ab-process-item ab-reveal ab-from-bottom">
+        <span>STEP 02</span>
+        <h3>Discuss the Details</h3>
+        <p>
+          Confirm product availability, MOQ, commercial terms and
+          potential supply arrangements for your enquiry.
+        </p>
+      </article>
+
+      <article class="ab-process-item ab-reveal ab-from-right">
+        <span>STEP 03</span>
+        <h3>Plan the Next Step</h3>
+        <p>
+          Review the agreed order details and discuss shipping and
+          documentation requirements for the intended destination.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="ab-cta">
+    <div class="ab-reveal ab-from-bottom">
+      <p class="ab-eyebrow">LET'S TALK BUSINESS</p>
+
+      <h2>Looking for a wholesale partner?</h2>
+
+      <p>
+        Share your product requirements, expected quantities and
+        destination with Trade Hub. We can discuss the relevant
+        categories, availability and potential next steps for your enquiry.
+      </p>
+
+      <a class="ab-cta-link" href="contact.html">
+        Discuss Your Requirements →
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
   <div>
     <a class="logo" href="index.html">
       <span>TH</span> TRADE HUB
     </a>
-
     <p>Your Gateway to UAE Wholesale.</p>
   </div>
 
   <div>
     <p>
       WhatsApp / Phone:
-      <a href="https://wa.me/971558699837" target="_blank">
+      <a href="https://wa.me/971558699837" target="_blank" rel="noopener noreferrer">
         +971 55 869 9837
       </a>
     </p>
 
     <p>
       Instagram:
-      <a href="https://instagram.com/1rade.hub" target="_blank">
+      <a href="https://instagram.com/1rade.hub" target="_blank" rel="noopener noreferrer">
         @1rade.hub
       </a>
     </p>
@@ -37,5 +982,40 @@
   <div class="copyright">
     © 2026 Trade Hub. All rights reserved.
   </div>
+</footer>
 
-</footer></body></html>
+<script>
+  (function () {
+    const page = document.getElementById("aboutPage");
+    if (!page) return;
+
+    const items = page.querySelectorAll(".ab-reveal");
+
+    if (
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      !("IntersectionObserver" in window)
+    ) {
+      items.forEach(item => item.classList.add("ab-visible"));
+      return;
+    }
+
+    page.classList.add("ab-motion-ready");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("ab-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: "0px 0px -35px 0px"
+    });
+
+    items.forEach(item => observer.observe(item));
+  })();
+</script>
+
+</body>
+</html>
