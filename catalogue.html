@@ -4,19 +4,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#171613">
-  <meta name="description" content="Explore Trade Hub's wholesale catalogue across fragrances, fashion, bags, footwear and beauty. Contact us for MOQ, availability and wholesale enquiries.">
+  <meta name="theme-color" content="#101110">
+  <meta name="description" content="Explore Trade Hub's UAE wholesale catalogue of perfumes, fashion, bags, footwear, skincare and makeup. Contact us for MOQ and wholesale enquiries.">
   <title>Wholesale Catalogue | Trade Hub</title>
 
-  <link rel="icon" href="favicon.svg">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="style.css">
 
   <style>
-    /* TRADE HUB CATALOGUE — STYLES ARE SCOPED TO THIS PAGE */
     .catalogue-page {
-      --cat-black: #171613;
-      --cat-cream: #f5f1e8;
-      --cat-gold: #c8a66a;
+      --cat-black: #101110;
+      --cat-cream: #f7f3eb;
+      --cat-gold: #d7b779;
       --cat-muted: #777166;
       background: var(--cat-cream);
       color: var(--cat-black);
@@ -48,7 +47,7 @@
       font-size: clamp(38px, 5.5vw, 68px);
       font-weight: 600;
       letter-spacing: -2.4px;
-      line-height: 1.05;
+      line-height: 1.08;
     }
 
     .catalogue-page .cat-heading em {
@@ -69,7 +68,7 @@
       align-items: center;
       justify-content: center;
       gap: 12px;
-      padding: 14px 22px;
+      padding: 14px 23px;
       border: 1px solid var(--cat-gold);
       background: var(--cat-gold);
       color: #171613;
@@ -81,19 +80,19 @@
 
     .catalogue-page .cat-btn:hover {
       transform: translateY(-3px);
-      background: #dfc38e;
+      background: #e6ca92;
     }
 
     /* HERO */
     .catalogue-page .cat-hero {
       position: relative;
       display: flex;
-      min-height: 545px;
+      min-height: 510px;
       align-items: center;
       isolation: isolate;
-      padding: 82px 0;
-      background: #171613;
-      color: #f5f1e8;
+      padding: 76px 0;
+      background: #101110;
+      color: #f7f3eb;
     }
 
     .catalogue-page .cat-hero::before {
@@ -101,24 +100,38 @@
       z-index: -2;
       inset: 0;
       background:
-        linear-gradient(90deg, rgba(18,17,14,.94) 0%,
-        rgba(18,17,14,.77) 50%, rgba(18,17,14,.28) 100%),
+        linear-gradient(
+          90deg,
+          rgba(12, 12, 11, .97) 0%,
+          rgba(12, 12, 11, .91) 27%,
+          rgba(12, 12, 11, .68) 47%,
+          rgba(12, 12, 11, .15) 100%
+        ),
         url("https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=1900&q=85")
         center 48% / cover no-repeat;
       content: "";
     }
 
+    .catalogue-page .cat-hero::after {
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(10,10,9,.45), transparent 28%);
+      content: "";
+      pointer-events: none;
+    }
+
     .catalogue-page .cat-hero-content {
-      max-width: 760px;
+      max-width: 720px;
     }
 
     .catalogue-page .cat-hero .cat-eyebrow {
-      color: #ddc18a;
+      color: #e5c889;
     }
 
     .catalogue-page .cat-hero h1 {
       margin: 0;
-      font-size: clamp(46px, 7vw, 82px);
+      font-size: clamp(46px, 6.6vw, 78px);
       font-weight: 500;
       letter-spacing: -3px;
       line-height: 1.02;
@@ -133,9 +146,9 @@
     }
 
     .catalogue-page .cat-hero p:not(.cat-eyebrow) {
-      max-width: 580px;
-      margin: 25px 0 29px;
-      color: #ded8cd;
+      max-width: 510px;
+      margin: 24px 0 28px;
+      color: #e3ddd2;
       font-size: 14px;
       line-height: 1.95;
     }
@@ -143,11 +156,11 @@
     .catalogue-page .cat-hero-note {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px 23px;
-      margin-top: 34px;
+      gap: 10px 21px;
+      margin-top: 28px;
       color: #e8dfce;
       font-size: 11px;
-      letter-spacing: .7px;
+      letter-spacing: .4px;
     }
 
     .catalogue-page .cat-hero-note span::before {
@@ -156,7 +169,70 @@
       content: "✦";
     }
 
-    /* QUICK BENEFITS */
+    /* SIX CATEGORY SHORTCUTS */
+    .catalogue-page .cat-category-strip {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      background: #101110;
+      color: #f7f0e4;
+      border-top: 1px solid rgba(215,183,121,.4);
+      border-bottom: 1px solid #302b22;
+    }
+
+    .catalogue-page .cat-category-strip > a {
+      display: flex;
+      min-width: 0;
+      min-height: 150px;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 23px 20px 20px;
+      border-right: 1px solid #302b22;
+      color: inherit;
+      text-decoration: none;
+      transition: background .3s ease;
+    }
+
+    .catalogue-page .cat-category-strip > a:last-child {
+      border-right: 0;
+    }
+
+    .catalogue-page .cat-category-strip > a:hover {
+      background: #211e17;
+    }
+
+    .catalogue-page .cat-strip-icon {
+      margin-bottom: 11px;
+      color: #dfbd78;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 28px;
+      line-height: 1;
+    }
+
+    .catalogue-page .cat-category-strip strong {
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .catalogue-page .cat-category-strip small {
+      margin-top: 6px;
+      color: #b9b1a3;
+      font-size: 10px;
+      line-height: 1.7;
+    }
+
+    .catalogue-page .cat-strip-arrow {
+      margin-top: auto;
+      padding-top: 9px;
+      color: #dfbd78;
+      font-size: 18px;
+      transition: transform .25s ease;
+    }
+
+    .catalogue-page .cat-category-strip a:hover .cat-strip-arrow {
+      transform: translateX(5px);
+    }
+
+    /* HIGHLIGHTS */
     .catalogue-page .cat-highlights {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -165,7 +241,7 @@
     }
 
     .catalogue-page .cat-highlight {
-      padding: 27px 20px;
+      padding: 25px 20px;
       text-align: center;
     }
 
@@ -185,9 +261,9 @@
       line-height: 1.7;
     }
 
-    /* CATALOGUE AREA */
+    /* CATALOGUE */
     .catalogue-page .cat-section {
-      padding: 86px 0 100px;
+      padding: 78px 0 95px;
     }
 
     .catalogue-page .cat-section-head {
@@ -195,7 +271,7 @@
       grid-template-columns: 1fr .8fr;
       align-items: end;
       gap: 35px;
-      margin-bottom: 35px;
+      margin-bottom: 32px;
     }
 
     .catalogue-page .cat-section-head .cat-copy {
@@ -203,9 +279,8 @@
       margin: 0 0 5px auto;
     }
 
-    /* FILTERS */
     .catalogue-page .cat-filter-wrap {
-      margin-bottom: 35px;
+      margin-bottom: 30px;
       padding: 18px 0;
       border-top: 1px solid #ded7c9;
       border-bottom: 1px solid #ded7c9;
@@ -250,6 +325,12 @@
       color: #f5f1e8;
     }
 
+    .catalogue-page .filters .filter:focus-visible,
+    .catalogue-page .cat-category-strip a:focus-visible {
+      outline: 2px solid #b48b4c;
+      outline-offset: 3px;
+    }
+
     .catalogue-page .cat-results-row {
       display: flex;
       align-items: center;
@@ -283,18 +364,10 @@
     }
 
     @keyframes catCardIn {
-      from {
-        opacity: 0;
-        transform: translateY(16px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Enhance the common product-card elements without replacing
-       the markup generated by the existing catalogue.js. */
     .catalogue-page #productGrid .product-card,
     .catalogue-page #productGrid .product-item,
     .catalogue-page #productGrid .product {
@@ -309,7 +382,7 @@
     .catalogue-page #productGrid .product-item:hover,
     .catalogue-page #productGrid .product:hover {
       transform: translateY(-6px);
-      box-shadow: 0 17px 36px rgba(36, 29, 17, .09);
+      box-shadow: 0 17px 36px rgba(36,29,17,.09);
     }
 
     .catalogue-page #productGrid img {
@@ -346,9 +419,9 @@
       line-height: 1.9;
     }
 
-    /* WHOLESALE MESSAGE */
+    /* WHOLESALE INFORMATION */
     .catalogue-page .cat-wholesale {
-      padding: 83px 0;
+      padding: 78px 0;
       background: #eae4d8;
     }
 
@@ -356,7 +429,7 @@
       display: grid;
       grid-template-columns: .9fr 1.1fr;
       align-items: center;
-      gap: 70px;
+      gap: 65px;
     }
 
     .catalogue-page .cat-wholesale-image {
@@ -366,6 +439,7 @@
     }
 
     .catalogue-page .cat-wholesale-image img {
+      display: block;
       width: 100%;
       height: 100%;
       min-height: 390px;
@@ -378,7 +452,7 @@
     }
 
     .catalogue-page .cat-wholesale-copy .cat-copy {
-      margin: 20px 0 27px;
+      margin: 20px 0;
     }
 
     .catalogue-page .cat-points {
@@ -404,9 +478,9 @@
       font-weight: 700;
     }
 
-    /* CATEGORY INTRO CARDS */
+    /* CATEGORY GUIDE */
     .catalogue-page .cat-category-section {
-      padding: 85px 0;
+      padding: 82px 0;
       background: #fffdf8;
     }
 
@@ -462,7 +536,7 @@
     /* FINAL CTA */
     .catalogue-page .cat-cta {
       position: relative;
-      padding: 88px 24px;
+      padding: 82px 24px;
       overflow: hidden;
       background: #d9c39a;
       text-align: center;
@@ -514,7 +588,7 @@
       background: #39352d;
     }
 
-    /* SCROLL REVEAL */
+    /* REVEAL ANIMATIONS */
     .catalogue-page .cat-reveal {
       opacity: 1;
       transform: none;
@@ -526,28 +600,42 @@
     }
 
     .catalogue-page.cat-motion-ready .cat-from-left {
-      transform: translate3d(-55px, 0, 0);
+      transform: translate3d(-35px,0,0);
     }
 
     .catalogue-page.cat-motion-ready .cat-from-right {
-      transform: translate3d(55px, 0, 0);
+      transform: translate3d(35px,0,0);
     }
 
     .catalogue-page.cat-motion-ready .cat-from-bottom {
-      transform: translate3d(0, 30px, 0);
+      transform: translate3d(0,24px,0);
     }
 
     .catalogue-page.cat-motion-ready .cat-reveal.cat-visible {
       opacity: 1;
-      transform: translate3d(0, 0, 0);
+      transform: translate3d(0,0,0);
     }
 
     .catalogue-page .cat-delay-1 { transition-delay: .1s !important; }
     .catalogue-page .cat-delay-2 { transition-delay: .2s !important; }
 
+    @media (max-width: 1000px) {
+      .catalogue-page .cat-category-strip > a {
+        padding: 20px 13px;
+      }
+
+      .catalogue-page .cat-category-strip strong {
+        font-size: 11px;
+      }
+
+      .catalogue-page .cat-category-strip small {
+        font-size: 9px;
+      }
+    }
+
     @media (max-width: 900px) {
       .catalogue-page #productGrid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(2, minmax(0,1fr));
         gap: 18px;
       }
 
@@ -565,7 +653,15 @@
       }
 
       .catalogue-page .cat-category-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(2, minmax(0,1fr));
+      }
+
+      .catalogue-page .cat-category-strip {
+        grid-template-columns: repeat(3, minmax(0,1fr));
+      }
+
+      .catalogue-page .cat-category-strip > a {
+        border-bottom: 1px solid #302b22;
       }
     }
 
@@ -575,19 +671,24 @@
       }
 
       .catalogue-page .cat-hero {
-        min-height: 530px;
-        padding: 65px 0;
+        min-height: 520px;
+        padding: 58px 0;
       }
 
       .catalogue-page .cat-hero::before {
         background:
-          linear-gradient(90deg, rgba(18,17,14,.91), rgba(18,17,14,.52)),
+          linear-gradient(
+            90deg,
+            rgba(12,12,11,.96) 0%,
+            rgba(12,12,11,.83) 58%,
+            rgba(12,12,11,.55) 100%
+          ),
           url("https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=1000&q=80")
           center / cover no-repeat;
       }
 
       .catalogue-page .cat-hero h1 {
-        font-size: clamp(43px, 11.5vw, 60px);
+        font-size: clamp(42px, 11vw, 59px);
         letter-spacing: -2px;
       }
 
@@ -595,12 +696,25 @@
         font-size: 13px;
       }
 
+      .catalogue-page .cat-hero-note {
+        gap: 9px 15px;
+      }
+
+      .catalogue-page .cat-category-strip {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+      }
+
+      .catalogue-page .cat-category-strip > a {
+        min-height: 140px;
+        padding: 18px 15px;
+      }
+
       .catalogue-page .cat-highlights {
         grid-template-columns: 1fr;
       }
 
       .catalogue-page .cat-highlight {
-        padding: 21px 17px;
+        padding: 20px 17px;
       }
 
       .catalogue-page .cat-highlight + .cat-highlight {
@@ -610,7 +724,7 @@
 
       .catalogue-page .cat-section,
       .catalogue-page .cat-category-section {
-        padding: 62px 0;
+        padding: 60px 0;
       }
 
       .catalogue-page .cat-heading {
@@ -638,17 +752,17 @@
       }
 
       .catalogue-page .cat-wholesale {
-        padding: 62px 0;
+        padding: 60px 0;
       }
 
       .catalogue-page .cat-wholesale-grid {
         grid-template-columns: 1fr;
-        gap: 30px;
+        gap: 28px;
       }
 
       .catalogue-page .cat-wholesale-image,
       .catalogue-page .cat-wholesale-image img {
-        min-height: 280px;
+        min-height: 260px;
       }
 
       .catalogue-page .cat-category-grid {
@@ -656,12 +770,12 @@
       }
 
       .catalogue-page .cat-cta {
-        padding: 67px 19px;
+        padding: 65px 19px;
       }
 
-      .catalogue-page .cat-from-left,
-      .catalogue-page .cat-from-right {
-        transform: translate3d(0, 20px, 0);
+      .catalogue-page.cat-motion-ready .cat-from-left,
+      .catalogue-page.cat-motion-ready .cat-from-right {
+        transform: translate3d(0,20px,0);
       }
     }
 
@@ -700,42 +814,88 @@
 
 <main class="catalogue-page" id="cataloguePage">
 
-  <!-- HERO -->
+  <!-- PREMIUM MULTI-CATEGORY HERO -->
   <section class="cat-hero">
     <div class="cat-wrap">
       <div class="cat-hero-content cat-reveal cat-from-left">
-        <p class="cat-eyebrow">TRADE HUB · WHOLESALE COLLECTION</p>
+        <p class="cat-eyebrow">TRADE HUB · WHOLESALE CATALOGUE</p>
 
         <h1>
-          A world of products.
-          <em>One trade partner.</em>
+          Premium Products
+          <em>for Global Business.</em>
         </h1>
 
         <p>
-          Discover product categories for your business, from fragrances
-          and fashion to accessories and beauty. Explore the catalogue,
-          identify your requirements and contact us to discuss wholesale
-          availability and minimum order quantities.
+          Explore our complete range of wholesale products — perfumes,
+          fashion, bags, shoes, skincare and makeup. Quality products,
+          reliable supply and a sourcing partner based in the UAE.
         </p>
 
         <a class="cat-btn" href="#browseCatalogue">
-          Explore Catalogue <span>↓</span>
+          Browse All Products <span>→</span>
         </a>
 
         <div class="cat-hero-note">
+          <span>Multiple categories</span>
           <span>Wholesale enquiries</span>
-          <span>MOQ discussions</span>
           <span>UAE-based sourcing</span>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- CATEGORY SHORTCUTS -->
+  <section class="cat-category-strip" aria-label="Wholesale product categories">
+
+    <a href="catalogue.html?category=perfumes">
+      <span class="cat-strip-icon">♙</span>
+      <strong>Perfumes</strong>
+      <small>Fragrances for every style</small>
+      <span class="cat-strip-arrow">→</span>
+    </a>
+
+    <a href="catalogue.html?category=fashion">
+      <span class="cat-strip-icon">♧</span>
+      <strong>Trousers & Fashion</strong>
+      <small>Styles for all ages</small>
+      <span class="cat-strip-arrow">→</span>
+    </a>
+
+    <a href="catalogue.html?category=bags">
+      <span class="cat-strip-icon">◇</span>
+      <strong>Bags</strong>
+      <small>Accessories for your market</small>
+      <span class="cat-strip-arrow">→</span>
+    </a>
+
+    <a href="catalogue.html?category=shoes">
+      <span class="cat-strip-icon">⌁</span>
+      <strong>Shoes & Sneakers</strong>
+      <small>Comfort meets style</small>
+      <span class="cat-strip-arrow">→</span>
+    </a>
+
+    <a href="catalogue.html?category=beauty">
+      <span class="cat-strip-icon">✧</span>
+      <strong>Skincare</strong>
+      <small>Beauty and skincare</small>
+      <span class="cat-strip-arrow">→</span>
+    </a>
+
+    <a href="catalogue.html?category=beauty">
+      <span class="cat-strip-icon">✦</span>
+      <strong>Makeup</strong>
+      <small>Beauty essentials</small>
+      <span class="cat-strip-arrow">→</span>
+    </a>
+
+  </section>
+
   <!-- HIGHLIGHTS -->
-  <div class="cat-highlights">
+  <section class="cat-highlights" aria-label="Wholesale highlights">
     <div class="cat-highlight cat-reveal cat-from-bottom">
-      <strong>Curated Categories</strong>
-      <span>Explore products across multiple business sectors</span>
+      <strong>Multiple Product Categories</strong>
+      <span>Explore products across different business sectors</span>
     </div>
 
     <div class="cat-highlight cat-reveal cat-from-bottom cat-delay-1">
@@ -747,7 +907,7 @@
       <strong>International Enquiries</strong>
       <span>Tell us your destination and sourcing needs</span>
     </div>
-  </div>
+  </section>
 
   <!-- DYNAMIC CATALOGUE -->
   <section class="cat-section" id="browseCatalogue">
@@ -765,15 +925,13 @@
         <p class="cat-copy">
           Browse our published product listings below. Product details,
           photos and minimum order quantities are shown where provided.
-          If a product interests you, contact our team to discuss
-          availability and wholesale requirements.
+          Contact our team to discuss availability and wholesale requirements.
         </p>
       </div>
 
       <div class="cat-filter-wrap cat-reveal cat-from-bottom">
         <p class="cat-filter-label">BROWSE BY CATEGORY</p>
 
-        <!-- Keep existing data-filter values for catalogue.js -->
         <div class="filters" role="group" aria-label="Filter products by category">
           <button type="button" class="filter active" data-filter="all" aria-pressed="true">All Products</button>
           <button type="button" class="filter" data-filter="perfumes" aria-pressed="false">Perfumes</button>
@@ -789,7 +947,7 @@
         <p>Pricing by enquiry · MOQ varies by product</p>
       </div>
 
-      <!-- IMPORTANT: catalogue.js continues to populate this element -->
+      <!-- Keep this ID: catalogue.js fills it with Supabase products -->
       <div id="productGrid" class="product-grid" aria-live="polite"></div>
 
       <p class="cat-grid-note cat-reveal cat-from-bottom">
@@ -824,15 +982,13 @@
           <p class="cat-copy">
             Choosing products for a business means considering more than
             appearance alone. Buyers may need to review the product range,
-            order quantity, availability and destination before making
-            a purchasing decision.
+            order quantity, availability and destination before purchasing.
           </p>
 
           <p class="cat-copy">
-            Trade Hub invites wholesale buyers to share their requirements
-            so the relevant product and supply details can be discussed.
-            For larger orders, container-based supply requirements can
-            also be explored where suitable.
+            Share your requirements with Trade Hub so the relevant product
+            and supply details can be discussed. Container-based supply
+            requirements can also be explored where suitable.
           </p>
 
           <ul class="cat-points">
@@ -872,62 +1028,44 @@
         <article class="cat-category cat-reveal cat-from-left">
           <span class="cat-number">01</span>
           <h3>Perfumes & Fragrances</h3>
-          <p>
-            Explore fragrance listings and discuss product options,
-            quantities and availability for your market.
-          </p>
+          <p>Explore fragrance listings and discuss product options, quantities and availability.</p>
         </article>
 
         <article class="cat-category cat-reveal cat-from-bottom cat-delay-1">
           <span class="cat-number">02</span>
           <h3>Fashion & Trousers</h3>
-          <p>
-            Discuss apparel requirements and the product selection
-            appropriate for your business.
-          </p>
+          <p>Discuss apparel requirements and the product selection appropriate for your business.</p>
         </article>
 
         <article class="cat-category cat-reveal cat-from-right cat-delay-2">
           <span class="cat-number">03</span>
           <h3>Ladies' Bags</h3>
-          <p>
-            Explore accessory categories and share your preferred
-            styles and estimated wholesale quantities.
-          </p>
+          <p>Explore accessories and share your preferred styles and estimated wholesale quantities.</p>
         </article>
 
         <article class="cat-category cat-reveal cat-from-left">
           <span class="cat-number">04</span>
           <h3>Shoes & Sneakers</h3>
-          <p>
-            Tell us the footwear categories you're looking for and
-            discuss the relevant order requirements.
-          </p>
+          <p>Tell us the footwear categories you're looking for and discuss order requirements.</p>
         </article>
 
         <article class="cat-category cat-reveal cat-from-bottom cat-delay-1">
           <span class="cat-number">05</span>
           <h3>Skincare</h3>
-          <p>
-            Discuss skincare sourcing requirements, product availability
-            and destination-specific considerations.
-          </p>
+          <p>Discuss skincare sourcing requirements, product availability and destination considerations.</p>
         </article>
 
         <article class="cat-category cat-reveal cat-from-right cat-delay-2">
           <span class="cat-number">06</span>
           <h3>Makeup & Beauty</h3>
-          <p>
-            Explore cosmetics and beauty categories for your business
-            and enquire about product availability.
-          </p>
+          <p>Explore cosmetics and beauty categories and enquire about product availability.</p>
         </article>
       </div>
 
     </div>
   </section>
 
-  <!-- CTA -->
+  <!-- FINAL CTA -->
   <section class="cat-cta">
     <div class="cat-cta-inner cat-reveal cat-from-bottom">
       <p class="cat-eyebrow">YOUR NEXT WHOLESALE ENQUIRY</p>
@@ -976,6 +1114,7 @@
   </div>
 
   <div>
+    <p>Dubai & Sharjah, UAE</p>
     <p>
       WhatsApp / Phone:
       <a href="https://wa.me/971558699837" target="_blank" rel="noopener noreferrer">
@@ -993,43 +1132,44 @@
   <div class="copyright">© 2026 Trade Hub. All rights reserved.</div>
 </footer>
 
-<!-- Keep the existing product scripts -->
+<!-- Existing product scripts — keep these filenames unchanged -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="products.js"></script>
 <script src="catalogue.js"></script>
 
 <script>
-  (function () {
-    const page = document.getElementById("cataloguePage");
-    if (!page) return;
+(function () {
+  const page = document.getElementById("cataloguePage");
+  if (!page) return;
 
-    const items = page.querySelectorAll(".cat-reveal");
+  const items = page.querySelectorAll(".cat-reveal");
 
-    if (
-      !("IntersectionObserver" in window) ||
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    ) {
-      return;
-    }
+  if (
+    !("IntersectionObserver" in window) ||
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ) {
+    return;
+  }
 
-    page.classList.add("cat-motion-ready");
+  page.classList.add("cat-motion-ready");
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("cat-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.12,
-      rootMargin: "0px 0px -30px 0px"
+  const observer = new IntersectionObserver((entries, currentObserver) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("cat-visible");
+        currentObserver.unobserve(entry.target);
+      }
     });
+  }, {
+    threshold: 0.08,
+    rootMargin: "0px 0px -25px 0px"
+  });
 
-    items.forEach((item) => observer.observe(item));
-  })();
+  items.forEach((item) => observer.observe(item));
+})();
 </script>
 
 </body>
 </html>
+
 
