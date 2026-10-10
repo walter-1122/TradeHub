@@ -1,450 +1,1997 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#171713">
+  <meta name="description" content="Discover wholesale perfumes, fashion, ladies' bags, shoes, skincare and makeup through Trade Hub in Dubai and Sharjah, UAE. Enquire about wholesale availability, MOQ and international shipping.">
+  <title>Trade Hub | Premium UAE Wholesale Supply</title>
 
-<title>Trade Hub | UAE Wholesale Trading</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
 
-<meta name="description" content="Trade Hub is a Dubai and Sharjah based wholesale trading company supplying perfumes, fashion, bags, shoes, skincare and makeup worldwide.">
+  <style>
+    /* ==================================================
+       TRADE HUB HOMEPAGE — PAGE-SPECIFIC PREMIUM STYLES
+       ================================================== */
 
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="stylesheet" href="style.css">
+    .th-home {
+      --th-black: #171713;
+      --th-black-soft: #22221c;
+      --th-cream: #f6f3ec;
+      --th-paper: #fffdf8;
+      --th-gold: #b79a62;
+      --th-gold-light: #d7c59d;
+      --th-muted: #77746c;
+      --th-line: #e2ddd2;
+      overflow: clip;
+      color: var(--th-black);
+      background: var(--th-cream);
+    }
+
+    .th-home *,
+    .th-home *::before,
+    .th-home *::after {
+      box-sizing: border-box;
+    }
+
+    .th-home img {
+      max-width: 100%;
+    }
+
+    .th-home a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .th-home .th-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 18px;
+      color: var(--th-gold);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2.7px;
+      line-height: 1.8;
+      text-transform: uppercase;
+    }
+
+    .th-home .th-eyebrow::before {
+      width: 24px;
+      height: 1px;
+      background: currentColor;
+      content: "";
+    }
+
+    .th-home .th-serif {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      letter-spacing: -1.4px;
+    }
+
+    .th-home .th-serif em {
+      color: var(--th-gold);
+      font-weight: 400;
+    }
+
+    .th-home .th-button {
+      display: inline-flex;
+      min-height: 52px;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      padding: 15px 21px;
+      border: 1px solid transparent;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.25px;
+      line-height: 1.5;
+      text-align: center;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition:
+        background .25s ease,
+        color .25s ease,
+        border-color .25s ease,
+        transform .25s ease;
+    }
+
+    .th-home .th-button:hover {
+      transform: translateY(-3px);
+    }
+
+    .th-home .th-button-gold {
+      border-color: var(--th-gold);
+      background: var(--th-gold);
+      color: #171713;
+    }
+
+    .th-home .th-button-gold:hover {
+      border-color: var(--th-gold-light);
+      background: var(--th-gold-light);
+    }
+
+    .th-home .th-button-outline {
+      border-color: rgba(255,255,255,.55);
+      background: transparent;
+      color: #fffdf8;
+    }
+
+    .th-home .th-button-outline:hover {
+      border-color: var(--th-gold);
+      background: var(--th-gold);
+      color: var(--th-black);
+    }
+
+    .th-home .th-section {
+      width: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 105px 7%;
+    }
+
+    .th-home .th-section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 35px;
+      margin-bottom: 45px;
+    }
+
+    .th-home .th-section-heading h2 {
+      margin: 0;
+      font-size: clamp(35px, 4.2vw, 56px);
+      line-height: 1.13;
+    }
+
+    .th-home .th-section-heading > div > p:last-child {
+      max-width: 560px;
+      margin: 18px 0 0;
+      color: var(--th-muted);
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    .th-home .th-text-link {
+      display: inline-flex;
+      flex-shrink: 0;
+      align-items: center;
+      gap: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--th-gold);
+      color: var(--th-black);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color .25s ease;
+    }
+
+    .th-home .th-text-link:hover {
+      color: #947746;
+    }
+
+    /* HERO */
+
+    .th-home .th-hero {
+      position: relative;
+      isolation: isolate;
+      display: grid;
+      min-height: 690px;
+      grid-template-columns: minmax(0, .94fr) minmax(0, 1.06fr);
+      align-items: center;
+      gap: 25px;
+      padding: 82px 7% 75px;
+      background: #171713;
+      color: #fffdf8;
+    }
+
+    .th-home .th-hero::before {
+      position: absolute;
+      z-index: -2;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 75% 48%, rgba(183,154,98,.14), transparent 43%),
+        linear-gradient(110deg, #171713 0%, #1c1b16 55%, #252119 100%);
+      content: "";
+    }
+
+    .th-home .th-hero::after {
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 72px 72px;
+      opacity: .42;
+      content: "";
+      pointer-events: none;
+    }
+
+    .th-home .th-hero-copy {
+      position: relative;
+      z-index: 2;
+      max-width: 620px;
+      padding: 10px 0;
+      animation: thHeroIntro .8s ease both;
+    }
+
+    .th-home .th-hero .th-eyebrow {
+      color: var(--th-gold-light);
+    }
+
+    .th-home .th-hero h1 {
+      margin: 0;
+      font-size: clamp(46px, 5.8vw, 78px);
+      line-height: 1.04;
+    }
+
+    .th-home .th-hero h1 .th-heading-top {
+      display: block;
+      color: #fffdf8;
+    }
+
+    .th-home .th-hero h1 em {
+      display: block;
+      margin-top: 7px;
+      color: var(--th-gold-light);
+      font-style: italic;
+    }
+
+    .th-home .th-hero-description {
+      max-width: 485px;
+      margin: 24px 0 0;
+      color: #d0cdc3;
+      font-size: 14px;
+      line-height: 2;
+    }
+
+    .th-home .th-hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .th-home .th-hero-caption {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 30px;
+      color: #b9b4a8;
+      font-size: 10px;
+      letter-spacing: 1.15px;
+      line-height: 1.8;
+      text-transform: uppercase;
+    }
+
+    .th-home .th-caption-line {
+      width: 32px;
+      height: 1px;
+      background: var(--th-gold);
+    }
+
+    /* The hero shows multiple categories, not just fragrance. */
+
+    .th-home .th-hero-gallery {
+      position: relative;
+      width: 100%;
+      max-width: 610px;
+      min-width: 0;
+      min-height: 510px;
+      justify-self: end;
+      animation: thGalleryIntro 1s .12s ease both;
+    }
+
+    .th-home .th-gallery-main {
+      position: absolute;
+      top: 4%;
+      right: 0;
+      width: 68%;
+      height: 75%;
+      overflow: hidden;
+      background: #373126;
+    }
+
+    .th-home .th-gallery-main img,
+    .th-home .th-gallery-small img,
+    .th-home .th-category-image img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .8s cubic-bezier(.2,.7,.2,1);
+    }
+
+    .th-home .th-gallery-main img {
+      object-position: center;
+    }
+
+    .th-home .th-gallery-main::after {
+      position: absolute;
+      inset: 45% 0 0;
+      background: linear-gradient(transparent, rgba(0,0,0,.55));
+      content: "";
+      pointer-events: none;
+    }
+
+    .th-home .th-gallery-main-caption {
+      position: absolute;
+      z-index: 2;
+      right: 20px;
+      bottom: 20px;
+      left: 20px;
+      color: #fffdf8;
+    }
+
+    .th-home .th-gallery-main-caption span {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--th-gold-light);
+      font-size: 9px;
+      letter-spacing: 2px;
+    }
+
+    .th-home .th-gallery-main-caption strong {
+      display: block;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(20px, 2.5vw, 30px);
+      font-weight: 400;
+    }
+
+    .th-home .th-gallery-small {
+      position: absolute;
+      z-index: 2;
+      width: 43%;
+      overflow: hidden;
+      border: 5px solid #1b1a15;
+      background: #353025;
+    }
+
+    .th-home .th-gallery-small-one {
+      top: 0;
+      left: 0;
+      height: 37%;
+    }
+
+    .th-home .th-gallery-small-two {
+      bottom: 1%;
+      left: 6%;
+      height: 40%;
+    }
+
+    .th-home .th-gallery-small-three {
+      right: 0;
+      bottom: 0;
+      width: 45%;
+      height: 20%;
+      border: 0;
+    }
+
+    .th-home .th-gallery-stamp {
+      position: absolute;
+      z-index: 3;
+      top: 44%;
+      left: 0;
+      display: flex;
+      width: 105px;
+      height: 105px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(215,197,157,.65);
+      border-radius: 50%;
+      background: #1c1b16;
+      color: var(--th-gold-light);
+      text-align: center;
+      transform: translate(-4%, -4%);
+    }
+
+    .th-home .th-gallery-stamp strong {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 25px;
+      font-weight: 400;
+    }
+
+    .th-home .th-gallery-stamp span {
+      max-width: 70px;
+      margin-top: 4px;
+      font-size: 8px;
+      letter-spacing: 1.1px;
+      line-height: 1.6;
+      text-transform: uppercase;
+    }
+
+    /* TRUST STRIP */
+
+    .th-home .th-trust-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      border-bottom: 1px solid #e0d9cc;
+      background: var(--th-paper);
+    }
+
+    .th-home .th-trust-item {
+      display: flex;
+      min-height: 112px;
+      align-items: center;
+      justify-content: center;
+      gap: 13px;
+      padding: 23px 16px;
+      border-right: 1px solid #e8e1d5;
+    }
+
+    .th-home .th-trust-item:last-child {
+      border-right: 0;
+    }
+
+    .th-home .th-trust-number {
+      color: var(--th-gold);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 27px;
+      line-height: 1;
+    }
+
+    .th-home .th-trust-item strong {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 1px;
+      line-height: 1.8;
+      text-transform: uppercase;
+    }
+
+    .th-home .th-trust-item small {
+      display: block;
+      margin-top: 4px;
+      color: var(--th-muted);
+      font-size: 11px;
+      line-height: 1.7;
+    }
+
+    /* CATEGORY CARDS */
+
+    .th-home .th-categories {
+      background: var(--th-cream);
+    }
+
+    .th-home .th-category-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 19px;
+    }
+
+    .th-home .th-category-card {
+      position: relative;
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid #e3ddd1;
+      background: var(--th-paper);
+      color: var(--th-black);
+      text-decoration: none;
+      transform: translateZ(0);
+    }
+
+    .th-home .th-category-image {
+      position: relative;
+      height: 275px;
+      overflow: hidden;
+      background: #e5dfd2;
+    }
+
+    .th-home .th-category-image::after {
+      position: absolute;
+      inset: 50% 0 0;
+      background: linear-gradient(transparent, rgba(0,0,0,.25));
+      content: "";
+      pointer-events: none;
+    }
+
+    .th-home .th-category-card:hover .th-category-image img {
+      transform: scale(1.065);
+    }
+
+    .th-home .th-category-index {
+      position: absolute;
+      z-index: 1;
+      top: 16px;
+      left: 16px;
+      display: grid;
+      width: 36px;
+      height: 36px;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,.7);
+      background: rgba(23,23,19,.55);
+      color: #fffdf8;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 14px;
+    }
+
+    .th-home .th-category-arrow {
+      position: absolute;
+      z-index: 2;
+      right: 16px;
+      bottom: 16px;
+      display: grid;
+      width: 39px;
+      height: 39px;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,.7);
+      border-radius: 50%;
+      color: #fffdf8;
+      font-size: 19px;
+      transition: background .25s ease, color .25s ease;
+    }
+
+    .th-home .th-category-card:hover .th-category-arrow {
+      border-color: var(--th-gold);
+      background: var(--th-gold);
+      color: var(--th-black);
+    }
+
+    .th-home .th-category-copy {
+      padding: 24px 22px 25px;
+    }
+
+    .th-home .th-category-copy small {
+      display: block;
+      margin-bottom: 10px;
+      color: #9c8252;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+    }
+
+    .th-home .th-category-copy h3 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 26px;
+      font-weight: 400;
+      line-height: 1.25;
+    }
+
+    .th-home .th-category-copy p {
+      margin: 10px 0 0;
+      color: var(--th-muted);
+      font-size: 12px;
+      line-height: 1.9;
+    }
+
+    /* CATEGORY PHOTO QUERIES are actual illustrative stock imagery.
+       Actual sellable items come from the live catalogue below. */
+
+    /* FEATURED PRODUCTS */
+
+    .th-home .th-featured {
+      background: #fffdf8;
+    }
+
+    .th-home .th-featured-topline {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+      color: #9b8050;
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .th-home .th-featured-topline::before {
+      width: 24px;
+      height: 1px;
+      background: currentColor;
+      content: "";
+    }
+
+    .th-home #homeProductGrid {
+      align-items: stretch;
+    }
+
+    .th-home #homeProductGrid .product-card {
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid #e7e1d6;
+      background: #fffdf8;
+      box-shadow: 0 5px 22px rgba(30,26,17,.025);
+      transition: transform .35s ease, box-shadow .35s ease;
+    }
+
+    .th-home #homeProductGrid .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 35px rgba(30,26,17,.09);
+    }
+
+    .th-home #homeProductGrid .product-image {
+      display: block;
+      overflow: hidden;
+      background: #eee9df;
+    }
+
+    .th-home #homeProductGrid .product-image img {
+      display: block;
+      width: 100%;
+      object-fit: cover;
+      transition: transform .65s ease;
+    }
+
+    .th-home #homeProductGrid .product-card:hover .product-image img {
+      transform: scale(1.045);
+    }
+
+    .th-home #homeProductGrid .product-info {
+      padding: 20px;
+    }
+
+    .th-home #homeProductGrid .product-info small {
+      color: #9b8050;
+      font-size: 9px;
+      letter-spacing: 1.6px;
+    }
+
+    .th-home #homeProductGrid .product-info h3 {
+      margin: 11px 0 8px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 22px;
+      font-weight: 400;
+    }
+
+    .th-home #homeProductGrid .product-info p {
+      color: var(--th-muted);
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .th-home #homeProductGrid .product-bottom {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 18px;
+      padding-top: 15px;
+      border-top: 1px solid #e8e2d7;
+    }
+
+    .th-home #homeProductGrid .product-bottom strong {
+      color: #6c624e;
+      font-size: 11px;
+    }
+
+    .th-home #homeProductGrid .product-bottom a {
+      color: var(--th-black);
+      font-size: 10px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .th-home #homeProductGrid .product-bottom a:hover {
+      color: #9b8050;
+    }
+
+    .th-home .th-catalogue-note {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-top: 28px;
+      padding: 20px 22px;
+      border: 1px solid #e5dfd3;
+      background: #f8f5ee;
+    }
+
+    .th-home .th-catalogue-note p {
+      margin: 0;
+      color: #716d64;
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .th-home .th-catalogue-note a {
+      flex-shrink: 0;
+      color: var(--th-black);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .7px;
+      text-decoration: none;
+    }
+
+    /* BUSINESS DIFFERENCE */
+
+    .th-home .th-business {
+      background: var(--th-black);
+      color: #fffdf8;
+    }
+
+    .th-home .th-business-inner {
+      display: grid;
+      grid-template-columns: minmax(0, .88fr) minmax(0, 1.12fr);
+      align-items: start;
+      gap: 85px;
+    }
+
+    .th-home .th-business-heading {
+      position: sticky;
+      top: 30px;
+    }
+
+    .th-home .th-business-heading h2 {
+      margin: 0;
+      font-size: clamp(38px, 4.5vw, 58px);
+      line-height: 1.15;
+    }
+
+    .th-home .th-business-heading > p:last-child {
+      max-width: 430px;
+      margin-top: 22px;
+      color: #c3beb2;
+      font-size: 13px;
+      line-height: 2;
+    }
+
+    .th-home .th-business-list {
+      border-top: 1px solid rgba(255,255,255,.17);
+    }
+
+    .th-home .th-business-row {
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr);
+      gap: 18px;
+      padding: 25px 0;
+      border-bottom: 1px solid rgba(255,255,255,.17);
+    }
+
+    .th-home .th-business-row > span:first-child {
+      padding-top: 3px;
+      color: var(--th-gold-light);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 19px;
+    }
+
+    .th-home .th-business-row h3 {
+      margin: 0 0 9px;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.7;
+    }
+
+    .th-home .th-business-row p {
+      max-width: 480px;
+      margin: 0;
+      color: #c3beb2;
+      font-size: 12px;
+      line-height: 1.9;
+    }
+
+    .th-home .th-business-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 30px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--th-gold);
+      color: var(--th-gold-light);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    /* HOW IT WORKS */
+
+    .th-home .th-process {
+      background: #eeeadf;
+    }
+
+    .th-home .th-process-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .th-home .th-process-card {
+      min-height: 215px;
+      padding: 28px;
+      border: 1px solid #dcd5c8;
+      background: rgba(255,253,248,.66);
+    }
+
+    .th-home .th-process-number {
+      display: block;
+      margin-bottom: 26px;
+      color: #9b8050;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 26px;
+    }
+
+    .th-home .th-process-card h3 {
+      margin: 0 0 10px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 23px;
+      font-weight: 400;
+    }
+
+    .th-home .th-process-card p {
+      margin: 0;
+      color: var(--th-muted);
+      font-size: 12px;
+      line-height: 1.9;
+    }
+
+    /* INTERNATIONAL SUPPLY */
+
+    .th-home .th-global {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      align-items: stretch;
+      background: var(--th-paper);
+    }
+
+    .th-home .th-global-image {
+      position: relative;
+      min-height: 420px;
+      overflow: hidden;
+      background: #39362c;
+    }
+
+    .th-home .th-global-image img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .th-home .th-global-copy {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      padding: clamp(35px, 6vw, 80px);
+    }
+
+    .th-home .th-global-copy h2 {
+      margin: 0;
+      font-size: clamp(35px, 4vw, 50px);
+      line-height: 1.15;
+    }
+
+    .th-home .th-global-copy > p:not(.th-eyebrow) {
+      max-width: 490px;
+      margin: 20px 0 0;
+      color: var(--th-muted);
+      font-size: 13px;
+      line-height: 2;
+    }
+
+    .th-home .th-destinations {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 23px;
+    }
+
+    .th-home .th-destinations span {
+      padding: 9px 12px;
+      border: 1px solid #e0d9cc;
+      color: #555146;
+      font-size: 10px;
+    }
+
+    .th-home .th-global-copy .th-button {
+      margin-top: 27px;
+    }
+
+    /* FINAL CTA */
+
+    .th-home .th-final-cta {
+      position: relative;
+      isolation: isolate;
+      padding: 90px 7%;
+      background: #1c1b16;
+      color: #fffdf8;
+      text-align: center;
+    }
+
+    .th-home .th-final-cta::before {
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 110%, rgba(183,154,98,.20), transparent 60%),
+        linear-gradient(135deg, #1c1b16, #242117);
+      content: "";
+    }
+
+    .th-home .th-final-cta .th-eyebrow {
+      justify-content: center;
+    }
+
+    .th-home .th-final-cta h2 {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: clamp(38px, 5.5vw, 67px);
+      line-height: 1.13;
+    }
+
+    .th-home .th-final-cta > p:not(.th-eyebrow) {
+      max-width: 610px;
+      margin: 21px auto 0;
+      color: #c7c2b6;
+      font-size: 13px;
+      line-height: 2;
+    }
+
+    .th-home .th-final-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    /* FOOTER ENHANCEMENT */
+
+    .th-home .th-home-footer {
+      background: #11110e;
+      color: #f6f3ec;
+    }
+
+    .th-home .th-home-footer .logo {
+      color: #f6f3ec;
+    }
+
+    .th-home .th-home-footer p {
+      color: #c3beb2;
+      font-size: 12px;
+      line-height: 1.9;
+    }
+
+    .th-home .th-home-footer a:not(.logo) {
+      color: #d2cbbd;
+      text-decoration: none;
+      transition: color .2s ease;
+    }
+
+    .th-home .th-home-footer a:not(.logo):hover {
+      color: var(--th-gold-light);
+    }
+
+    .th-home .th-footer-main {
+      display: grid;
+      grid-template-columns: 1.3fr .7fr 1fr;
+      gap: 50px;
+      padding: 55px 7% 40px;
+    }
+
+    .th-home .th-footer-brandline {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--th-gold-light);
+      font-size: 9px;
+      letter-spacing: 2px;
+      line-height: 1.8;
+      text-transform: uppercase;
+    }
+
+    .th-home .th-footer-heading {
+      display: block;
+      margin-bottom: 17px;
+      color: var(--th-gold-light);
+      font-size: 10px;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+    }
+
+    .th-home .th-footer-nav {
+      display: grid;
+      align-content: start;
+      gap: 12px;
+    }
+
+    .th-home .th-footer-nav a {
+      font-size: 12px;
+    }
+
+    .th-home .th-footer-contact p {
+      margin: 0 0 10px;
+    }
+
+    .th-home .th-footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 19px 7%;
+      border-top: 1px solid rgba(255,255,255,.12);
+      color: #9d988c;
+      font-size: 10px;
+      line-height: 1.8;
+    }
+
+    .th-home .th-footer-bottom p {
+      margin: 0;
+      font-size: 10px;
+    }
+
+    /* REVEAL ANIMATIONS */
+
+    .th-home .th-reveal {
+      opacity: 0;
+      transform: translateY(25px);
+      transition:
+        opacity .7s ease,
+        transform .7s cubic-bezier(.2,.7,.2,1);
+    }
+
+    .th-home .th-reveal.th-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .th-home .th-reveal-left {
+      transform: translateX(-25px);
+    }
+
+    .th-home .th-reveal-right {
+      transform: translateX(25px);
+    }
+
+    .th-home .th-reveal.th-visible.th-reveal-left,
+    .th-home .th-reveal.th-visible.th-reveal-right {
+      transform: translateX(0);
+    }
+
+    .th-home .th-delay-1 { transition-delay: .08s; }
+    .th-home .th-delay-2 { transition-delay: .15s; }
+    .th-home .th-delay-3 { transition-delay: .22s; }
+
+    @keyframes thHeroIntro {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes thGalleryIntro {
+      from { opacity: 0; transform: translateX(18px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    /* RESPONSIVE */
+
+    @media (min-width: 1500px) {
+      .th-home .th-hero {
+        padding-right: max(7%, calc((100% - 1260px) / 2));
+        padding-left: max(7%, calc((100% - 1260px) / 2));
+      }
+    }
+
+    @media (max-width: 1050px) {
+      .th-home .th-hero {
+        min-height: 610px;
+        padding-right: 5%;
+        padding-left: 5%;
+      }
+
+      .th-home .th-hero-gallery {
+        min-height: 440px;
+      }
+
+      .th-home .th-section {
+        padding-right: 5%;
+        padding-left: 5%;
+      }
+
+      .th-home .th-category-image {
+        height: 230px;
+      }
+
+      .th-home .th-business-inner {
+        gap: 45px;
+      }
+
+      .th-home .th-footer-main {
+        padding-right: 5%;
+        padding-left: 5%;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .th-home .th-hero {
+        grid-template-columns: 1fr;
+        gap: 38px;
+        padding: 65px 6% 55px;
+      }
+
+      .th-home .th-hero-copy {
+        max-width: 650px;
+      }
+
+      .th-home .th-hero h1 {
+        font-size: clamp(44px, 9vw, 67px);
+      }
+
+      .th-home .th-hero-gallery {
+        width: 100%;
+        max-width: 570px;
+        min-height: 440px;
+        justify-self: center;
+      }
+
+      .th-home .th-gallery-main {
+        width: 70%;
+        height: 76%;
+      }
+
+      .th-home .th-gallery-small-one {
+        height: 35%;
+      }
+
+      .th-home .th-gallery-small-two {
+        height: 38%;
+      }
+
+      .th-home .th-trust-strip {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .th-home .th-trust-item {
+        justify-content: flex-start;
+        padding-left: 8%;
+        border-bottom: 1px solid #e8e1d5;
+      }
+
+      .th-home .th-trust-item:nth-child(2) {
+        border-right: 0;
+      }
+
+      .th-home .th-trust-item:nth-child(3),
+      .th-home .th-trust-item:nth-child(4) {
+        border-bottom: 0;
+      }
+
+      .th-home .th-section {
+        padding: 72px 5%;
+      }
+
+      .th-home .th-section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 22px;
+        margin-bottom: 30px;
+      }
+
+      .th-home .th-category-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 13px;
+      }
+
+      .th-home .th-category-image {
+        height: 230px;
+      }
+
+      .th-home .th-category-copy {
+        padding: 19px 16px 21px;
+      }
+
+      .th-home .th-category-copy h3 {
+        font-size: 23px;
+      }
+
+      .th-home .th-business-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .th-home .th-business-heading {
+        position: static;
+      }
+
+      .th-home .th-process-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .th-home .th-process-card {
+        min-height: auto;
+        padding: 24px;
+      }
+
+      .th-home .th-process-number {
+        margin-bottom: 15px;
+      }
+
+      .th-home .th-global {
+        grid-template-columns: 1fr;
+      }
+
+      .th-home .th-global-image {
+        min-height: 350px;
+      }
+
+      .th-home .th-global-copy {
+        padding: 48px 6%;
+      }
+
+      .th-home .th-footer-main {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+        padding: 42px 6% 30px;
+      }
+
+      .th-home .th-footer-brand {
+        grid-column: 1 / -1;
+      }
+
+      .th-home .th-footer-bottom {
+        flex-direction: column;
+        padding-right: 6%;
+        padding-left: 6%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .th-home .th-hero {
+        padding: 48px 20px 42px;
+      }
+
+      .th-home .th-hero h1 {
+        font-size: clamp(40px, 11vw, 54px);
+        letter-spacing: -1.3px;
+      }
+
+      .th-home .th-hero-description {
+        font-size: 13px;
+      }
+
+      .th-home .th-hero-actions {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .th-home .th-hero-actions .th-button {
+        width: 100%;
+      }
+
+      .th-home .th-hero-gallery {
+        min-height: 330px;
+      }
+
+      .th-home .th-gallery-main {
+        width: 72%;
+        height: 76%;
+      }
+
+      .th-home .th-gallery-small {
+        border-width: 4px;
+      }
+
+      .th-home .th-gallery-small-one {
+        height: 34%;
+      }
+
+      .th-home .th-gallery-small-two {
+        height: 37%;
+      }
+
+      .th-home .th-gallery-small-three {
+        height: 20%;
+      }
+
+      .th-home .th-gallery-stamp {
+        width: 76px;
+        height: 76px;
+      }
+
+      .th-home .th-gallery-stamp strong {
+        font-size: 20px;
+      }
+
+      .th-home .th-gallery-stamp span {
+        font-size: 7px;
+      }
+
+      .th-home .th-gallery-main-caption {
+        right: 12px;
+        bottom: 13px;
+        left: 12px;
+      }
+
+      .th-home .th-gallery-main-caption strong {
+        font-size: 19px;
+      }
+
+      .th-home .th-trust-item {
+        gap: 9px;
+        padding: 18px 10px;
+      }
+
+      .th-home .th-trust-number {
+        font-size: 23px;
+      }
+
+      .th-home .th-trust-item strong {
+        font-size: 9px;
+      }
+
+      .th-home .th-trust-item small {
+        font-size: 10px;
+      }
+
+      .th-home .th-section {
+        padding: 57px 18px;
+      }
+
+      .th-home .th-section-heading h2 {
+        font-size: 37px;
+      }
+
+      .th-home .th-category-grid {
+        gap: 10px;
+      }
+
+      .th-home .th-category-image {
+        height: 175px;
+      }
+
+      .th-home .th-category-index {
+        top: 10px;
+        left: 10px;
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+      }
+
+      .th-home .th-category-arrow {
+        right: 10px;
+        bottom: 10px;
+        width: 32px;
+        height: 32px;
+      }
+
+      .th-home .th-category-copy {
+        padding: 15px 12px 17px;
+      }
+
+      .th-home .th-category-copy small {
+        font-size: 8px;
+        letter-spacing: 1px;
+      }
+
+      .th-home .th-category-copy h3 {
+        font-size: 20px;
+      }
+
+      .th-home .th-category-copy p {
+        font-size: 11px;
+      }
+
+      .th-home .th-catalogue-note {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .th-home .th-final-cta {
+        padding: 67px 20px;
+      }
+
+      .th-home .th-final-actions {
+        flex-direction: column;
+      }
+
+      .th-home .th-final-actions .th-button {
+        width: 100%;
+      }
+
+      .th-home .th-global-image {
+        min-height: 275px;
+      }
+
+      .th-home .th-footer-main {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding: 37px 22px 27px;
+      }
+
+      .th-home .th-footer-brand {
+        grid-column: auto;
+      }
+
+      .th-home .th-footer-bottom {
+        padding-right: 22px;
+        padding-left: 22px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .th-home *,
+      .th-home *::before,
+      .th-home *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+
+      .th-home .th-reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
 <header class="header">
-
-  <a class="logo" href="index.html">
-    <span>TH</span> TRADE HUB
-  </a>
+  <a class="logo" href="index.html"><span>TH</span> TRADE HUB</a>
 
   <nav>
     <a class="active" href="index.html">Home</a>
     <a href="catalogue.html">Catalogue</a>
     <a href="about.html">About</a>
-    <a href="shipping.html">Wholesale & Shipping</a>
+    <a href="shipping.html">Wholesale &amp; Shipping</a>
     <a href="contact.html">Contact</a>
   </nav>
 
-  <a class="nav-cta" href="contact.html">
-    Request Wholesale Quote
-  </a>
-
+  <a class="nav-cta" href="contact.html">Request Wholesale Quote</a>
 </header>
 
-<main>
+<main class="th-home">
 
-<!-- HERO -->
+  <!-- HERO: ALL MAJOR PRODUCT CATEGORIES -->
 
-<section class="hero">
+  <section class="th-hero">
+    <div class="th-hero-copy">
+      <p class="th-eyebrow">UAE WHOLESALE · DUBAI &amp; SHARJAH</p>
 
-  <div class="hero-content">
+      <h1 class="th-serif">
+        <span class="th-heading-top">More Categories.</span>
+        <em>More Opportunities.</em>
+      </h1>
 
-    <p class="eyebrow">
-      UAE WHOLESALE • DUBAI & SHARJAH
-    </p>
+      <p class="th-hero-description">
+        Your connection to wholesale products from the UAE.
+        Explore fragrances, fashion, bags, footwear, skincare and makeup
+        for your business — with wholesale requirements and shipping
+        discussed around your destination.
+      </p>
 
-    <h1>
-      Your Gateway to<br>
-      <em>UAE Wholesale.</em>
-    </h1>
+      <div class="th-hero-actions">
+        <a class="th-button th-button-gold" href="catalogue.html">
+          Explore Our Catalogue <span aria-hidden="true">↗</span>
+        </a>
 
-    <p class="hero-text">
-      Trade Hub connects international businesses with reliable wholesale
-      supply from the UAE — from fragrances and fashion to footwear,
-      bags, skincare and beauty.
-    </p>
+        <a class="th-button th-button-outline" href="contact.html">
+          Request Wholesale Quote <span aria-hidden="true">→</span>
+        </a>
+      </div>
 
-    <div class="hero-actions">
+      <div class="th-hero-caption">
+        <span class="th-caption-line"></span>
+        <span>Source with purpose. Build your business.</span>
+      </div>
+    </div>
 
-      <a class="btn btn-gold" href="catalogue.html">
-        Explore Catalogue
+    <div class="th-hero-gallery" aria-label="A visual overview of Trade Hub product categories">
+      <div class="th-gallery-main">
+        <img
+          src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1100&q=85"
+          alt="Fashion and accessories retail display"
+          fetchpriority="high"
+        >
+        <div class="th-gallery-main-caption">
+          <span>TRADE HUB COLLECTIONS</span>
+          <strong>Wholesale Without Borders.</strong>
+        </div>
+      </div>
+
+      <div class="th-gallery-small th-gallery-small-one">
+        <img
+          src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=650&q=85"
+          alt="Perfume bottles"
+          fetchpriority="high"
+        >
+      </div>
+
+      <div class="th-gallery-small th-gallery-small-two">
+        <img
+          src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=650&q=85"
+          alt="Ladies' handbag"
+          fetchpriority="high"
+        >
+      </div>
+
+      <div class="th-gallery-small th-gallery-small-three">
+        <img
+          src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=650&q=85"
+          alt="Sneaker footwear"
+          fetchpriority="high"
+        >
+      </div>
+
+      <div class="th-gallery-stamp">
+        <strong>TH</strong>
+        <span>UAE Wholesale Supply</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUSINESS OVERVIEW -->
+
+  <section class="th-trust-strip" aria-label="Trade Hub business overview">
+    <div class="th-trust-item">
+      <span class="th-trust-number">01</span>
+      <div>
+        <strong>Multiple Categories</strong>
+        <small>Products for different markets</small>
+      </div>
+    </div>
+
+    <div class="th-trust-item">
+      <span class="th-trust-number">02</span>
+      <div>
+        <strong>UAE Based</strong>
+        <small>Dubai &amp; Sharjah</small>
+      </div>
+    </div>
+
+    <div class="th-trust-item">
+      <span class="th-trust-number">03</span>
+      <div>
+        <strong>Wholesale First</strong>
+        <small>MOQ-based enquiries</small>
+      </div>
+    </div>
+
+    <div class="th-trust-item">
+      <span class="th-trust-number">04</span>
+      <div>
+        <strong>Global Ambition</strong>
+        <small>Discuss international supply</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT CATEGORIES -->
+
+  <section class="th-section th-categories">
+    <div class="th-section-heading th-reveal">
+      <div>
+        <p class="th-eyebrow">EXPLORE OUR WORLD</p>
+        <h2 class="th-serif">
+          One destination.<br>
+          <em>Multiple opportunities.</em>
+        </h2>
+        <p>
+          Explore our wholesale categories and discover the products
+          that fit your business, customer base and target market.
+        </p>
+      </div>
+
+      <a class="th-text-link" href="catalogue.html">
+        Explore all products <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+
+    <div class="th-category-grid">
+
+      <a class="th-category-card th-reveal"
+         href="catalogue.html?category=perfumes">
+        <div class="th-category-image">
+          <img
+            src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=850&q=85"
+            alt="Perfume bottles and fragrance collection"
+            loading="lazy"
+          >
+          <span class="th-category-index">01</span>
+          <span class="th-category-arrow" aria-hidden="true">↗</span>
+        </div>
+        <div class="th-category-copy">
+          <small>FRAGRANCE</small>
+          <h3>Perfumes</h3>
+          <p>Explore fragrance options for wholesale buyers and retailers.</p>
+        </div>
       </a>
 
-      <a class="btn btn-outline" href="contact.html">
-        Talk to Trade Hub
+      <a class="th-category-card th-reveal th-delay-1"
+         href="catalogue.html?category=fashion">
+        <div class="th-category-image">
+          <img
+            src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=850&q=85"
+            alt="Fashion clothing and apparel"
+            loading="lazy"
+          >
+          <span class="th-category-index">02</span>
+          <span class="th-category-arrow" aria-hidden="true">↗</span>
+        </div>
+        <div class="th-category-copy">
+          <small>APPAREL</small>
+          <h3>Trousers &amp; Fashion</h3>
+          <p>Junior and adult clothing selections for wholesale requirements.</p>
+        </div>
+      </a>
+
+      <a class="th-category-card th-reveal th-delay-2"
+         href="catalogue.html?category=bags">
+        <div class="th-category-image">
+          <img
+            src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=850&q=85"
+            alt="Ladies' handbag displayed against a neutral background"
+            loading="lazy"
+          >
+          <span class="th-category-index">03</span>
+          <span class="th-category-arrow" aria-hidden="true">↗</span>
+        </div>
+        <div class="th-category-copy">
+          <small>ACCESSORIES</small>
+          <h3>Ladies' Bags</h3>
+          <p>Explore handbag styles and discuss availability for your market.</p>
+        </div>
+      </a>
+
+      <a class="th-category-card th-reveal"
+         href="catalogue.html?category=shoes">
+        <div class="th-category-image">
+          <img
+            src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=850&q=85"
+            alt="Athletic sneaker footwear"
+            loading="lazy"
+          >
+          <span class="th-category-index">04</span>
+          <span class="th-category-arrow" aria-hidden="true">↗</span>
+        </div>
+        <div class="th-category-copy">
+          <small>FOOTWEAR</small>
+          <h3>Shoes &amp; Sneakers</h3>
+          <p>Footwear selections for retailers and wholesale businesses.</p>
+        </div>
+      </a>
+
+      <a class="th-category-card th-reveal th-delay-1"
+         href="catalogue.html?category=beauty">
+        <div class="th-category-image">
+          <img
+            src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=850&q=85"
+            alt="Skincare bottles and beauty products"
+            loading="lazy"
+          >
+          <span class="th-category-index">05</span>
+          <span class="th-category-arrow" aria-hidden="true">↗</span>
+        </div>
+        <div class="th-category-copy">
+          <small>SKINCARE</small>
+          <h3>Skincare</h3>
+          <p>Beauty and skincare options to discuss for your business.</p>
+        </div>
+      </a>
+
+      <a class="th-category-card th-reveal th-delay-2"
+         href="catalogue.html?category=beauty">
+        <div class="th-category-image">
+          <img
+            src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=850&q=85"
+            alt="Makeup and cosmetics collection"
+            loading="lazy"
+          >
+          <span class="th-category-index">06</span>
+          <span class="th-category-arrow" aria-hidden="true">↗</span>
+        </div>
+        <div class="th-category-copy">
+          <small>COSMETICS</small>
+          <h3>Makeup</h3>
+          <p>Cosmetics and beauty essentials for wholesale enquiries.</p>
+        </div>
       </a>
 
     </div>
+  </section>
 
-    <div class="hero-stats">
+  <!-- LIVE FEATURED PRODUCTS -->
+  <!-- Existing products.js and site.js can use this original ID. -->
 
+  <section class="th-section th-featured">
+    <div class="th-section-heading th-reveal">
       <div>
-        <strong>10+</strong>
-        <span>Years Experience</span>
+        <p class="th-featured-topline">TRADE HUB · UAE WHOLESALE</p>
+        <h2 class="th-serif">
+          Explore our featured<br>
+          <em>products.</em>
+        </h2>
+        <p>
+          Browse product details and minimum order quantities.
+          Contact us to discuss availability, destination and wholesale terms.
+        </p>
       </div>
 
-      <div>
-        <strong>UAE</strong>
-        <span>Dubai & Sharjah</span>
-      </div>
-
-      <div>
-        <strong>Global</strong>
-        <span>Wholesale Supply</span>
-      </div>
-
+      <a class="th-text-link" href="catalogue.html">
+        View full catalogue <span aria-hidden="true">↗</span>
+      </a>
     </div>
 
-  </div>
+    <div id="homeProductGrid" class="product-grid"></div>
 
-  <div class="hero-visual">
-
-    <div class="hero-card">
-
-      <span>TRADE HUB</span>
-
-      <h3>
-        Wholesale<br>
-        Without Borders.
-      </h3>
-
+    <div class="th-catalogue-note th-reveal">
       <p>
-        Source. Supply. Ship.
+        Looking for a specific product or larger-volume supply?
+        Tell us your category, approximate quantity and destination.
       </p>
+      <a href="contact.html">Discuss your requirements ↗</a>
+    </div>
+  </section>
 
+  <!-- WHY TRADE HUB -->
+
+  <section class="th-section th-business">
+    <div class="th-business-inner">
+      <div class="th-business-heading th-reveal th-reveal-left">
+        <p class="th-eyebrow">THE TRADE HUB APPROACH</p>
+        <h2 class="th-serif">
+          Trade starts with products.<br>
+          <em>Partnerships make it grow.</em>
+        </h2>
+        <p>
+          We welcome wholesale enquiries from businesses looking to
+          source products through the UAE. Tell us what you need so
+          we can discuss the appropriate next steps.
+        </p>
+        <a class="th-business-cta" href="about.html">
+          Discover Trade Hub <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+
+      <div class="th-business-list th-reveal th-reveal-right">
+        <div class="th-business-row">
+          <span>01</span>
+          <div>
+            <h3>Multiple Wholesale Categories</h3>
+            <p>
+              Explore fragrances, apparel, handbags, footwear,
+              skincare and makeup in one catalogue.
+            </p>
+          </div>
+        </div>
+
+        <div class="th-business-row">
+          <span>02</span>
+          <div>
+            <h3>UAE-Based Business</h3>
+            <p>
+              Trade Hub operates in the Dubai and Sharjah market
+              and welcomes enquiries from international buyers.
+            </p>
+          </div>
+        </div>
+
+        <div class="th-business-row">
+          <span>03</span>
+          <div>
+            <h3>Wholesale Requirements</h3>
+            <p>
+              Discuss product availability, minimum order quantities,
+              quantities needed and destination before proceeding.
+            </p>
+          </div>
+        </div>
+
+        <div class="th-business-row">
+          <span>04</span>
+          <div>
+            <h3>Supply &amp; Shipping Discussions</h3>
+            <p>
+              Share your delivery destination and order requirements
+              so that shipping arrangements can be discussed.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SIMPLE BUYER JOURNEY -->
+
+  <section class="th-section th-process">
+    <div class="th-section-heading th-reveal">
+      <div>
+        <p class="th-eyebrow">A CLEAR WAY TO START</p>
+        <h2 class="th-serif">
+          From enquiry to<br>
+          <em>wholesale discussion.</em>
+        </h2>
+        <p>
+          Start with your product needs. Our enquiry process is designed
+          to make the first conversation straightforward.
+        </p>
+      </div>
     </div>
 
-  </div>
+    <div class="th-process-grid">
+      <article class="th-process-card th-reveal">
+        <span class="th-process-number">01</span>
+        <h3>Explore</h3>
+        <p>
+          Browse categories and available product listings to identify
+          what your business is looking for.
+        </p>
+      </article>
 
-</section>
+      <article class="th-process-card th-reveal th-delay-1">
+        <span class="th-process-number">02</span>
+        <h3>Tell Us Your Needs</h3>
+        <p>
+          Share the product, estimated quantity, destination and
+          any relevant specifications.
+        </p>
+      </article>
 
+      <article class="th-process-card th-reveal th-delay-2">
+        <span class="th-process-number">03</span>
+        <h3>Discuss the Details</h3>
+        <p>
+          Contact Trade Hub to discuss availability, MOQ, wholesale
+          terms and potential shipping arrangements.
+        </p>
+      </article>
+    </div>
+  </section>
 
-<!-- WHAT WE SUPPLY -->
+  <!-- INTERNATIONAL WHOLESALE -->
 
-<section class="section">
+  <section class="th-global">
+    <div class="th-global-image th-reveal th-reveal-left">
+      <img
+        src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=85"
+        alt="Dubai skyline representing Trade Hub's UAE business base"
+        loading="lazy"
+      >
+    </div>
 
-  <div class="section-heading">
-
-    <div>
-
-      <p class="eyebrow">
-        WHAT WE SUPPLY
-      </p>
-
-      <h2>
-        Wholesale categories<br>
-        <em>built for business.</em>
+    <div class="th-global-copy th-reveal th-reveal-right">
+      <p class="th-eyebrow">FROM THE UAE TO YOUR MARKET</p>
+      <h2 class="th-serif">
+        Your market.<br>
+        Our <em>next conversation.</em>
       </h2>
-
-    </div>
-
-    <a class="text-link" href="catalogue.html">
-      View Full Catalogue →
-    </a>
-
-  </div>
-
-
-  <div class="category-grid">
-
-    <a class="category-card"
-       href="catalogue.html?category=perfumes">
-
-      <span>01</span>
-
-      <h3>Perfumes</h3>
-
       <p>
-        Fragrances for wholesale buyers and retailers.
+        Whether you are sourcing for a retail business, a distribution
+        operation or a larger-volume requirement, start by telling us
+        your destination and what you need.
       </p>
 
-    </a>
-
-
-    <a class="category-card"
-       href="catalogue.html?category=fashion">
-
-      <span>02</span>
-
-      <h3>Trousers & Fashion</h3>
-
-      <p>
-        Junior and adult styles for wholesale supply.
-      </p>
-
-    </a>
-
-
-    <a class="category-card"
-       href="catalogue.html?category=bags">
-
-      <span>03</span>
-
-      <h3>Premium Bags</h3>
-
-      <p>
-        Ladies' premium bags selected for the market.
-      </p>
-
-    </a>
-
-
-    <a class="category-card"
-       href="catalogue.html?category=shoes">
-
-      <span>04</span>
-
-      <h3>Footwear</h3>
-
-      <p>
-        Formal shoes and sneakers for wholesale orders.
-      </p>
-
-    </a>
-
-
-    <a class="category-card"
-       href="catalogue.html?category=beauty">
-
-      <span>05</span>
-
-      <h3>Skincare</h3>
-
-      <p>
-        Beauty and skincare products for growing businesses.
-      </p>
-
-    </a>
-
-
-    <a class="category-card"
-       href="catalogue.html?category=beauty">
-
-      <span>06</span>
-
-      <h3>Makeup</h3>
-
-      <p>
-        Beauty essentials available on wholesale terms.
-      </p>
-
-    </a>
-
-  </div>
-
-</section>
-
-
-<!-- FEATURED CATALOGUE -->
-
-<section class="section">
-
-  <div class="section-heading">
-
-    <div>
-
-      <p class="eyebrow">
-        TRADE HUB • CATALOGUE • WHOLESALE • UAE
-      </p>
-
-      <h2>
-        Featured wholesale<br>
-        <em>products.</em>
-      </h2>
-
-    </div>
-
-    <a class="text-link" href="catalogue.html">
-      View Full Catalogue →
-    </a>
-
-  </div>
-
-  <div id="homeProductGrid" class="product-grid"></div>
-
-</section>
-
-
-<!-- WHY TRADE HUB -->
-
-<section class="dark-section">
-
-  <div class="split">
-
-    <div>
-
-      <p class="eyebrow">
-        WHY TRADE HUB
-      </p>
-
-      <h2>
-        Built on experience.<br>
-        <em>Driven by relationships.</em>
-      </h2>
-
-    </div>
-
-
-    <div class="feature-list">
-
-      <div>
-
-        <b>01</b>
-
-        <span>
-
-          <strong>10+ Years in Wholesale</strong>
-
-          <small>
-            Experience built through real trade relationships.
-          </small>
-
-        </span>
-
+      <div class="th-destinations" aria-label="Example markets">
+        <span>Oman</span>
+        <span>Pakistan</span>
+        <span>Saudi Arabia</span>
+        <span>Other Markets</span>
       </div>
 
+      <p>
+        Product availability, order quantities and shipping options
+        should be confirmed for each enquiry.
+      </p>
 
-      <div>
-
-        <b>02</b>
-
-        <span>
-
-          <strong>Dubai & Sharjah Operations</strong>
-
-          <small>
-            Access to the UAE's major wholesale markets.
-          </small>
-
-        </span>
-
-      </div>
-
-
-      <div>
-
-        <b>03</b>
-
-        <span>
-
-          <strong>International Supply</strong>
-
-          <small>
-            Supporting buyers across Oman, Pakistan,
-            Saudi Arabia and other markets.
-          </small>
-
-        </span>
-
-      </div>
-
-
-      <div>
-
-        <b>04</b>
-
-        <span>
-
-          <strong>Container-Based Supply</strong>
-
-          <small>
-            Suitable for serious wholesale and larger-volume requirements.
-          </small>
-
-        </span>
-
-      </div>
-
+      <a class="th-button th-button-gold" href="shipping.html">
+        Wholesale &amp; Shipping <span aria-hidden="true">↗</span>
+      </a>
     </div>
+  </section>
 
-  </div>
+  <!-- FINAL CALL TO ACTION -->
 
-</section>
+  <section class="th-final-cta">
+    <p class="th-eyebrow">LET'S TALK WHOLESALE</p>
 
+    <h2 class="th-serif">
+      Have a product in mind?<br>
+      <em>Let's discuss your next order.</em>
+    </h2>
 
-<!-- QUOTE -->
+    <p>
+      Send us your product requirements, approximate quantity and
+      destination. We'll use those details to start a wholesale discussion.
+    </p>
 
-<section class="quote-banner">
+    <div class="th-final-actions">
+      <a class="th-button th-button-gold" href="contact.html">
+        Request a Wholesale Quote <span aria-hidden="true">↗</span>
+      </a>
 
-  <p class="eyebrow">
-    READY TO SOURCE?
-  </p>
-
-  <h2>
-    Tell us what your business needs.
-  </h2>
-
-  <p>
-    Public pricing is not displayed. Send us your requirements
-    and we will discuss availability, MOQ and wholesale arrangements.
-  </p>
-
-  <a class="btn btn-gold" href="contact.html">
-    Request a Wholesale Quote
-  </a>
-
-</section>
+      <a class="th-button th-button-outline"
+         href="https://wa.me/971558699837?text=Hello%20Trade%20Hub%2C%20I%27m%20interested%20in%20your%20wholesale%20products."
+         target="_blank"
+         rel="noopener noreferrer">
+        WhatsApp Trade Hub <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </section>
 
 </main>
 
-
 <!-- FOOTER -->
 
-<footer class="footer">
+<footer class="footer th-home-footer">
+  <div class="th-footer-main">
+    <div class="th-footer-brand">
+      <a class="logo" href="index.html"><span>TH</span> TRADE HUB</a>
+      <p>
+        Your gateway to UAE wholesale.<br>
+        Connecting product enquiries with wholesale discussions.
+      </p>
+      <span class="th-footer-brandline">Dubai &amp; Sharjah · UAE</span>
+    </div>
 
-  <div>
+    <div class="th-footer-nav">
+      <span class="th-footer-heading">Explore</span>
+      <a href="catalogue.html">Wholesale Catalogue</a>
+      <a href="about.html">About Trade Hub</a>
+      <a href="shipping.html">Wholesale &amp; Shipping</a>
+      <a href="contact.html">Contact Us</a>
+    </div>
 
-    <a class="logo" href="index.html">
-      <span>TH</span> TRADE HUB
-    </a>
-
-    <p>
-      UAE wholesale supply for businesses worldwide.
-    </p>
-
+    <div class="th-footer-contact">
+      <span class="th-footer-heading">Start a Conversation</span>
+      <p>
+        WhatsApp / Phone<br>
+        <a href="https://wa.me/971558699837"
+           target="_blank"
+           rel="noopener noreferrer">+971 55 869 9837</a>
+      </p>
+      <p>
+        Instagram<br>
+        <a href="https://instagram.com/1rade.hub"
+           target="_blank"
+           rel="noopener noreferrer">@1rade.hub</a>
+      </p>
+      <p>Wholesale enquiries welcome.</p>
+    </div>
   </div>
 
-
-  <div class="footer-links">
-
-    <a href="catalogue.html">Catalogue</a>
-    <a href="about.html">About</a>
-    <a href="shipping.html">Shipping</a>
-    <a href="contact.html">Contact</a>
-
+  <div class="th-footer-bottom">
+    <p>© 2026 Trade Hub. All rights reserved.</p>
+    <p>UAE wholesale supply for businesses worldwide.</p>
   </div>
-
-
-   <div>
-
-    <p>Dubai & Sharjah, UAE</p>
-    <p>Wholesale enquiries welcome.</p>
-
-    <p>
-      WhatsApp / Phone:
-      <a href="https://wa.me/971558699837" target="_blank">
-        +971 55 869 9837
-      </a>
-    </p>
-
-    <p>
-      Instagram:
-      <a href="https://instagram.com/1rade.hub" target="_blank">
-        @1rade.hub
-      </a>
-    </p>
-
-  </div>
-
-
-  <div class="copyright">
-
-    © 2026 Trade Hub. All rights reserved.
-
-  </div>
-
 </footer>
 
+<!-- PRESERVE THE EXISTING PRODUCT AND SITE SCRIPTS -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <script src="products.js"></script>
-
 <script src="site.js"></script>
+
+<script>
+  // Homepage-only scroll reveal. Does not replace site.js.
+  (function () {
+    const root = document.querySelector(".th-home");
+    if (!root) return;
+
+    const items = root.querySelectorAll(".th-reveal");
+
+    if (
+      !("IntersectionObserver" in window) ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      items.forEach(item => item.classList.add("th-visible"));
+      return;
+    }
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("th-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: "0px 0px 25px 0px"
+    });
+
+    items.forEach(item => revealObserver.observe(item));
+  })();
+</script>
 
 </body>
 </html>
-    
