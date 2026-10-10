@@ -1,47 +1,786 @@
+
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Contact Trade Hub</title><link rel="icon" href="favicon.svg"><link rel="stylesheet" href="style.css"></head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#151511">
+  <meta name="description" content="Contact Trade Hub for wholesale perfumes, fashion, bags, shoes, skincare and beauty products sourced from the UAE for international businesses.">
+  <title>Contact Us | Trade Hub Wholesale UAE</title>
+  <link rel="icon" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .contact-page {
+      --contact-ink: #191914;
+      --contact-muted: #77736b;
+      --contact-gold: #b69a62;
+      --contact-cream: #f5f2eb;
+      background: var(--contact-cream);
+      color: var(--contact-ink);
+      overflow: hidden;
+    }
+
+    .contact-page * {
+      box-sizing: border-box;
+    }
+
+    .contact-page a {
+      overflow-wrap: anywhere;
+    }
+
+    .contact-hero {
+      position: relative;
+      min-height: 470px;
+      display: flex;
+      align-items: center;
+      padding: 90px max(7%, calc((100% - 1200px) / 2));
+      color: #f8f5ed;
+      background:
+        linear-gradient(90deg, rgba(17,17,14,.94), rgba(17,17,14,.72) 55%, rgba(17,17,14,.38)),
+        url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=2000&q=85")
+        center/cover no-repeat;
+    }
+
+    .contact-hero-content {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 790px;
+    }
+
+    .contact-hero .eyebrow,
+    .contact-section .eyebrow {
+      color: var(--contact-gold);
+      font-size: 10px;
+      letter-spacing: 3px;
+      font-weight: 600;
+    }
+
+    .contact-hero h1 {
+      margin: 22px 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(42px, 6.4vw, 78px);
+      font-weight: 400;
+      letter-spacing: -2px;
+      line-height: 1.08;
+    }
+
+    .contact-hero h1 em,
+    .contact-intro h2 em {
+      color: var(--contact-gold);
+      font-weight: 400;
+    }
+
+    .contact-hero > div > p:last-child {
+      max-width: 540px;
+      color: #d3d0c8;
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    .contact-trust-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      border-bottom: 1px solid #ded8cb;
+      background: #fffdf8;
+    }
+
+    .contact-trust-item {
+      padding: 24px 15px;
+      text-align: center;
+      border-right: 1px solid #e7e0d4;
+    }
+
+    .contact-trust-item:last-child {
+      border-right: 0;
+    }
+
+    .contact-trust-item strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 12px;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    .contact-trust-item span {
+      color: var(--contact-muted);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .contact-section {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 90px 6%;
+    }
+
+    .contact-section-heading {
+      max-width: 650px;
+      margin-bottom: 42px;
+    }
+
+    .contact-section-heading h2 {
+      margin: 14px 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    .contact-section-heading > p:last-child {
+      color: var(--contact-muted);
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    .contact-main-grid {
+      display: grid;
+      grid-template-columns: minmax(0, .86fr) minmax(0, 1.14fr);
+      gap: 55px;
+      align-items: start;
+    }
+
+    .contact-intro {
+      position: relative;
+      padding: 38px;
+      background: #1b1b16;
+      color: #f8f5ed;
+    }
+
+    .contact-intro h2 {
+      margin: 15px 0 18px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(29px, 3.3vw, 42px);
+      font-weight: 400;
+      line-height: 1.28;
+    }
+
+    .contact-intro > p:not(.eyebrow) {
+      color: #c9c6bd;
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    .contact-details {
+      display: grid;
+      gap: 0;
+      margin-top: 30px;
+      border-top: 1px solid rgba(255,255,255,.15);
+    }
+
+    .contact-detail {
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr);
+      gap: 14px;
+      align-items: center;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(255,255,255,.15);
+    }
+
+    .contact-detail-icon {
+      display: grid;
+      width: 40px;
+      height: 40px;
+      place-items: center;
+      border: 1px solid rgba(182,154,98,.6);
+      color: var(--contact-gold);
+      font-size: 17px;
+    }
+
+    .contact-detail small {
+      display: block;
+      margin-bottom: 6px;
+      color: #b8b3a7;
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .contact-detail strong,
+    .contact-detail a {
+      color: #fffdf8;
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 1.7;
+      text-decoration: none;
+    }
+
+    .contact-detail a:hover {
+      color: var(--contact-gold);
+    }
+
+    .contact-social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    .contact-social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 44px;
+      padding: 11px 15px;
+      border: 1px solid rgba(182,154,98,.7);
+      color: #fffdf8;
+      font-size: 11px;
+      text-decoration: none;
+      transition: background .25s ease, color .25s ease;
+    }
+
+    .contact-social-links a:hover {
+      background: var(--contact-gold);
+      color: #171712;
+    }
+
+    .contact-form-panel {
+      padding: clamp(24px, 4vw, 43px);
+      border: 1px solid #e1dbcf;
+      background: #fffdf8;
+      box-shadow: 0 18px 55px rgba(36,31,20,.045);
+    }
+
+    .contact-form-panel h3 {
+      margin: 0 0 9px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 30px;
+      font-weight: 400;
+    }
+
+    .contact-form-panel > p {
+      margin: 0 0 27px;
+      color: var(--contact-muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 19px;
+    }
+
+    .contact-form .form-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .contact-form label {
+      display: grid;
+      gap: 9px;
+      color: #39372f;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .4px;
+    }
+
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea {
+      width: 100%;
+      min-width: 0;
+      padding: 14px 13px;
+      border: 1px solid #ddd7ca;
+      border-radius: 0;
+      outline: none;
+      background: #fffefa;
+      color: #25241f;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0;
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+
+    .contact-form input:focus,
+    .contact-form select:focus,
+    .contact-form textarea:focus {
+      border-color: var(--contact-gold);
+      box-shadow: 0 0 0 3px rgba(182,154,98,.12);
+    }
+
+    .contact-form textarea {
+      min-height: 125px;
+      resize: vertical;
+      line-height: 1.7;
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+      color: #a09b90;
+    }
+
+    .contact-submit {
+      display: flex;
+      width: 100%;
+      min-height: 52px;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 14px 20px;
+      border: 1px solid #b69a62;
+      background: #b69a62;
+      color: #191914;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.3px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background .25s ease, color .25s ease;
+    }
+
+    .contact-submit:hover {
+      background: #191914;
+      color: #fffdf8;
+    }
+
+    .contact-form-note {
+      margin: 0;
+      color: #77736b;
+      font-size: 11px;
+      line-height: 1.7;
+    }
+
+    .contact-next-step {
+      padding: 60px 6%;
+      background: #eae5da;
+      text-align: center;
+    }
+
+    .contact-next-step h2 {
+      margin: 12px 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(30px, 4vw, 44px);
+      font-weight: 400;
+    }
+
+    .contact-next-step > p:not(.eyebrow) {
+      max-width: 620px;
+      margin: 0 auto 24px;
+      color: #68645c;
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    .contact-next-step a {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 15px 22px;
+      background: #191914;
+      color: #fffdf8;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-decoration: none;
+      transition: background .25s ease;
+    }
+
+    .contact-next-step a:hover {
+      background: #927746;
+    }
+
+    .contact-reveal {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1);
+    }
+
+    .contact-reveal.contact-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .contact-from-left {
+      transform: translateX(-28px);
+    }
+
+    .contact-from-right {
+      transform: translateX(28px);
+    }
+
+    .contact-reveal.contact-from-left.contact-visible,
+    .contact-reveal.contact-from-right.contact-visible {
+      transform: translateX(0);
+    }
+
+    @media (max-width: 850px) {
+      .contact-hero {
+        min-height: 390px;
+        padding: 75px 7%;
+      }
+
+      .contact-section {
+        padding: 65px 5%;
+      }
+
+      .contact-main-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+      .contact-intro {
+        padding: 30px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .contact-hero {
+        min-height: 360px;
+        padding: 60px 22px;
+      }
+
+      .contact-hero h1 {
+        letter-spacing: -1px;
+      }
+
+      .contact-trust-item {
+        padding: 18px 8px;
+      }
+
+      .contact-trust-item strong {
+        font-size: 10px;
+      }
+
+      .contact-trust-item span {
+        font-size: 10px;
+      }
+
+      .contact-section {
+        padding: 52px 18px;
+      }
+
+      .contact-intro {
+        padding: 25px 21px;
+      }
+
+      .contact-form-panel {
+        padding: 24px 18px;
+      }
+
+      .contact-form .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-social-links a {
+        flex: 1 1 100%;
+      }
+
+      .contact-next-step {
+        padding: 48px 20px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .contact-page *,
+      .contact-page *::before,
+      .contact-page *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+
+      .contact-reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
 <body>
-<header class="header"><a class="logo" href="index.html"><span>TH</span> TRADE HUB</a><nav><a href="index.html">Home</a><a href="catalogue.html">Catalogue</a><a href="about.html">About</a><a href="shipping.html">Wholesale & Shipping</a><a class="active" href="contact.html">Contact</a></nav><a class="nav-cta" href="#quoteForm">Request Quote</a></header>
-<main>
-<section class="page-hero"><p class="eyebrow">CONTACT TRADE HUB</p><h1>Let's discuss<br><em>your wholesale requirement.</em></h1><p>Send your product, quantity and destination details. We will use them to understand what you need.</p></section>
-<section class="section contact-grid">
-<div>
-  <p class="eyebrow">TRADE HUB</p>
+<header class="header">
+  <a class="logo" href="index.html"><span>TH</span> TRADE HUB</a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="catalogue.html">Catalogue</a>
+    <a href="about.html">About</a>
+    <a href="shipping.html">Wholesale &amp; Shipping</a>
+    <a class="active" href="contact.html">Contact</a>
+  </nav>
+  <a class="nav-cta" href="#quoteForm">Request Quote</a>
+</header>
 
-  <h2>
-    Dubai & Sharjah<br>
-    <em>United Arab Emirates</em>
-  </h2>
+<main class="contact-page">
+  <section class="contact-hero">
+    <div class="contact-hero-content">
+      <p class="eyebrow">LET'S BUILD A TRADE PARTNERSHIP</p>
+      <h1>Every great deal<br>starts with <em>a conversation.</em></h1>
+      <p>
+        Tell us what your business needs, the products you want to source
+        and your destination. Let's explore a wholesale supply solution
+        for your market.
+      </p>
+    </div>
+  </section>
 
-  <div class="contact-info">
+  <section class="contact-trust-strip" aria-label="Trade Hub information">
+    <div class="contact-trust-item">
+      <strong>UAE BASED</strong>
+      <span>Dubai &amp; Sharjah</span>
+    </div>
+    <div class="contact-trust-item">
+      <strong>WHOLESALE FOCUSED</strong>
+      <span>Business enquiries welcome</span>
+    </div>
+    <div class="contact-trust-item">
+      <strong>INTERNATIONAL</strong>
+      <span>Discuss your destination</span>
+    </div>
+  </section>
 
-    <div>
-      <small>WhatsApp</small>
-      <strong>
-        <a href="https://wa.me/971558699837" target="_blank">
-          +971 55 869 9837
-        </a>
-      </strong>
+  <section class="contact-section">
+    <div class="contact-section-heading contact-reveal">
+      <p class="eyebrow">GET IN TOUCH</p>
+      <h2>Tell us about your <em>business needs.</em></h2>
+      <p>
+        Whether you're sourcing perfumes, fashion, bags, shoes or beauty
+        products, share your requirements and contact our team directly.
+      </p>
     </div>
 
-    <div>
-      <small>Phone</small>
-      <strong>+971 55 869 9837</strong>
-    </div>
+    <div class="contact-main-grid">
+      <div class="contact-intro contact-reveal contact-from-left">
+        <p class="eyebrow">TRADE HUB · UAE</p>
+        <h2>Your wholesale connection in the <em>Emirates.</em></h2>
+        <p>
+          Start with a product enquiry, ask about minimum order quantities
+          or discuss shipping to your destination.
+        </p>
 
-    <div>
-      <small>Instagram</small>
-      <strong>
-        <a href="https://instagram.com/1rade.hub" target="_blank">
-          @1rade.hub
-        </a>
-      </strong>
-    </div>
+        <div class="contact-details">
+          <div class="contact-detail">
+            <span class="contact-detail-icon" aria-hidden="true">⌖</span>
+            <div>
+              <small>Location</small>
+              <strong>Dubai &amp; Sharjah, United Arab Emirates</strong>
+            </div>
+          </div>
 
-  </div>
-</div>
-<form id="quoteForm" class="quote-form"><label>Your Name<input required name="name" placeholder="Full name"></label><label>Business / Company<input name="company" placeholder="Company name"></label><label>Country / Destination<input required name="country" placeholder="e.g. Oman"></label><label>Products & Quantity<textarea required name="message" placeholder="Tell us what you want to source and approximate quantity"></textarea></label><button class="btn btn-gold" type="submit">Send Wholesale Enquiry</button><p id="formMessage"></p></form>
-</section>
+          <div class="contact-detail">
+            <span class="contact-detail-icon" aria-hidden="true">↗</span>
+            <div>
+              <small>WhatsApp / Phone</small>
+              <strong>
+                <a href="https://wa.me/971558699837" target="_blank" rel="noopener noreferrer">
+                  +971 55 869 9837
+                </a>
+              </strong>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <span class="contact-detail-icon" aria-hidden="true">◎</span>
+            <div>
+              <small>Instagram</small>
+              <strong>
+                <a href="https://instagram.com/1rade.hub" target="_blank" rel="noopener noreferrer">
+                  @1rade.hub
+                </a>
+              </strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-social-links">
+          <a href="https://wa.me/971558699837" target="_blank" rel="noopener noreferrer">
+            WhatsApp Us <span aria-hidden="true">↗</span>
+          </a>
+          <a href="https://instagram.com/1rade.hub" target="_blank" rel="noopener noreferrer">
+            Follow on Instagram <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-form-panel contact-reveal contact-from-right">
+        <h3>Wholesale enquiry</h3>
+        <p>
+          Complete the details below. Your enquiry will open in WhatsApp
+          so you can review and send it to our team.
+        </p>
+
+        <form id="quoteForm" class="contact-form">
+          <div class="form-row">
+            <label>
+              Your full name *
+              <input required name="name" autocomplete="name" placeholder="Enter your name">
+            </label>
+
+            <label>
+              Business / company
+              <input name="company" autocomplete="organization" placeholder="Company name">
+            </label>
+          </div>
+
+          <div class="form-row">
+            <label>
+              Country / destination *
+              <input required name="country" autocomplete="country-name" placeholder="e.g. Oman">
+            </label>
+
+            <label>
+              Product category *
+              <select required name="category">
+                <option value="">Select a category</option>
+                <option value="Perfumes">Perfumes</option>
+                <option value="Fashion / Trousers">Fashion / Trousers</option>
+                <option value="Ladies Bags">Ladies Bags</option>
+                <option value="Shoes / Sneakers">Shoes / Sneakers</option>
+                <option value="Skincare">Skincare</option>
+                <option value="Makeup">Makeup</option>
+                <option value="Mixed / Multiple Categories">Mixed / Multiple Categories</option>
+                <option value="Other">Other</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="form-row">
+            <label>
+              Estimated quantity *
+              <input required name="quantity" placeholder="e.g. 500 pieces or 100 units">
+            </label>
+
+            <label>
+              Preferred contact method
+              <select name="preferredContact">
+                <option value="WhatsApp">WhatsApp</option>
+                <option value="Phone call">Phone call</option>
+                <option value="Instagram">Instagram</option>
+              </select>
+            </label>
+          </div>
+
+          <label>
+            Tell us about your requirement *
+            <textarea required name="message" placeholder="Product details, brands or specifications, target budget if applicable, and any shipping questions..."></textarea>
+          </label>
+
+          <button class="contact-submit" type="submit">
+            Continue to WhatsApp <span aria-hidden="true">↗</span>
+          </button>
+
+          <p class="contact-form-note">
+            Your message is prepared for WhatsApp. You will need to press
+            Send in WhatsApp to submit the enquiry.
+          </p>
+
+          <p id="formMessage" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-next-step contact-reveal">
+    <p class="eyebrow">A DIRECT CONNECTION</p>
+    <h2>Prefer a quick conversation?</h2>
+    <p>
+      Message Trade Hub on WhatsApp with the products you're looking for
+      and your destination. You can discuss quantities and wholesale
+      requirements directly with our team.
+    </p>
+    <a href="https://wa.me/971558699837?text=Hello%20Trade%20Hub%2C%20I%27m%20interested%20in%20your%20wholesale%20products."
+       target="_blank" rel="noopener noreferrer">
+      Start a WhatsApp Enquiry <span aria-hidden="true">↗</span>
+    </a>
+  </section>
 </main>
-<footer class="footer"><div><a class="logo" href="index.html"><span>TH</span> TRADE HUB</a><p>Your Gateway to UAE Wholesale.</p></div><div class="copyright">© 2026 Trade Hub. All rights reserved.</div></footer>
-<script src="site.js"></script></body></html>
+
+<footer class="footer">
+  <div>
+    <a class="logo" href="index.html"><span>TH</span> TRADE HUB</a>
+    <p>Your Gateway to UAE Wholesale.</p>
+  </div>
+  <div class="footer-links">
+    <a href="catalogue.html">Catalogue</a>
+    <a href="about.html">About</a>
+    <a href="shipping.html">Wholesale &amp; Shipping</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div>
+    <p>WhatsApp:
+      <a href="https://wa.me/971558699837" target="_blank" rel="noopener noreferrer">
+        +971 55 869 9837
+      </a>
+    </p>
+    <p>Instagram:
+      <a href="https://instagram.com/1rade.hub" target="_blank" rel="noopener noreferrer">
+        @1rade.hub
+      </a>
+    </p>
+  </div>
+  <div class="copyright">© 2026 Trade Hub. All rights reserved.</div>
+</footer>
+
+<script src="site.js"></script>
+
+<script>
+  // Scroll reveal for this page only
+  (function () {
+    const elements = document.querySelectorAll(".contact-reveal");
+
+    if (!("IntersectionObserver" in window) ||
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      elements.forEach(element => element.classList.add("contact-visible"));
+      return;
+    }
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("contact-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    elements.forEach(element => revealObserver.observe(element));
+  })();
+
+  // Prepare the wholesale enquiry in WhatsApp
+  (function () {
+    const form = document.getElementById("quoteForm");
+    const message = document.getElementById("formMessage");
+
+    if (!form) return;
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      if (!form.reportValidity()) return;
+
+      const data = new FormData(form);
+      const enquiry = [
+        "Hello Trade Hub! I would like to make a wholesale enquiry.",
+        "",
+        "Name: " + (data.get("name") || ""),
+        "Business / Company: " + (data.get("company") || "Not provided"),
+        "Country / Destination: " + (data.get("country") || ""),
+        "Product Category: " + (data.get("category") || ""),
+        "Estimated Quantity: " + (data.get("quantity") || ""),
+        "Preferred Contact: " + (data.get("preferredContact") || "WhatsApp"),
+        "",
+        "Requirement:",
+        (data.get("message") || "")
+      ].join("\n");
+
+      const whatsappURL =
+        "https://wa.me/971558699837?text=" + encodeURIComponent(enquiry);
+
+      if (message) {
+        message.textContent =
+          "WhatsApp is opening with your enquiry. Please review the message and press Send.";
+        message.style.color = "#68645c";
+        message.style.marginTop = "4px";
+        message.style.fontSize = "12px";
+        message.style.lineHeight = "1.7";
+      }
+
+      window.open(whatsappURL, "_blank", "noopener,noreferrer");
+    });
+  })();
+</script>
+</body>
+</html>
+
