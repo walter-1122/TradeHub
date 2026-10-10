@@ -1,34 +1,1427 @@
-<!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Wholesale & Shipping | Trade Hub</title><link rel="icon" href="favicon.svg"><link rel="stylesheet" href="style.css"></head>
-<body>
-<header class="header"><a class="logo" href="index.html"><span>TH</span> TRADE HUB</a><nav><a href="index.html">Home</a><a href="catalogue.html">Catalogue</a><a href="about.html">About</a><a class="active" href="shipping.html">Wholesale & Shipping</a><a href="contact.html">Contact</a></nav><a class="nav-cta" href="contact.html">Request Quote</a></header>
-<main>
-<section class="page-hero"><p class="eyebrow">WHOLESALE & SHIPPING</p><h1>From sourcing<br><em>to your market.</em></h1><p>We support wholesale buyers from product selection and MOQ discussions through supply coordination and international shipping arrangements.</p></section>
-<section class="section"><div class="process-grid"><div><span>01</span><h3>Send Your Requirement</h3><p>Tell us the products, categories, quantities and destination you are looking for.</p></div><div><span>02</span><h3>Confirm Products & MOQ</h3><p>We discuss available products, minimum order quantities and wholesale requirements.</p></div><div><span>03</span><h3>Supply Planning</h3><p>For larger requirements, we can coordinate container-based wholesale supply.</p></div><div><span>04</span><h3>Shipping Coordination</h3><p>We support arrangements for international buyers and destination markets.</p></div></div></section>
-<section class="dark-section"><div class="split"><div><p class="eyebrow">INTERNATIONAL REACH</p><h2>Serving buyers beyond<br><em>the UAE.</em></h2></div><div class="prose"><p>Trade Hub has business relationships and delivery experience involving markets such as Oman, Pakistan and Saudi Arabia, as well as other international destinations.</p><p>Shipping terms and arrangements depend on the product, order size, destination and agreed wholesale requirements. Contact our team with your destination and order details for a tailored discussion.</p></div></div></section>
-<section class="quote-banner"><p class="eyebrow">WHOLESALE ONLY</p><h2>No public retail pricing.</h2><p>Our catalogue is designed for wholesale buyers. Contact us to discuss MOQ, availability and your sourcing requirement.</p><a class="btn btn-gold" href="contact.html">Start an Enquiry</a></section>
-</main>
-<footer <footer class="footer">
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#151411">
+  <meta name="description" content="Explore Trade Hub wholesale products, bulk sourcing, MOQ requirements and international shipping coordination from Dubai and Sharjah, UAE.">
+
+  <title>Wholesale & Shipping | Trade Hub</title>
+
+  <link rel="icon" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* SHIPPING PAGE — PAGE-SPECIFIC STYLES */
+    .shipping-page {
+      --sh-ink: #171613;
+      --sh-cream: #f5f1e8;
+      --sh-gold: #c8a66a;
+      --sh-muted: #777268;
+      overflow: clip;
+      background: var(--sh-cream);
+      color: var(--sh-ink);
+    }
+
+    .shipping-page *,
+    .shipping-page *::before,
+    .shipping-page *::after {
+      box-sizing: border-box;
+    }
+
+    .shipping-page img {
+      display: block;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .shipping-page a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .shipping-page .sh-wrap {
+      width: min(1180px, calc(100% - 48px));
+      margin-inline: auto;
+    }
+
+    .shipping-page .sh-eyebrow {
+      margin: 0 0 20px;
+      color: #9a7740;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      line-height: 1.8;
+    }
+
+    .shipping-page .sh-heading {
+      margin: 0;
+      font-size: clamp(34px, 5vw, 62px);
+      font-weight: 600;
+      letter-spacing: -2px;
+      line-height: 1.08;
+    }
+
+    .shipping-page .sh-heading em {
+      color: #a98245;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+    }
+
+    .shipping-page .sh-copy {
+      color: var(--sh-muted);
+      font-size: 15px;
+      line-height: 1.95;
+    }
+
+    .shipping-page .sh-btn {
+      display: inline-flex;
+      min-height: 50px;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 14px 23px;
+      border: 1px solid var(--sh-gold);
+      background: var(--sh-gold);
+      color: #171613;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .5px;
+      text-decoration: none;
+      transition: background .3s ease, color .3s ease,
+                  transform .3s ease, border-color .3s ease;
+    }
+
+    .shipping-page .sh-btn:hover {
+      transform: translateY(-3px);
+      border-color: #e0c38e;
+      background: #e0c38e;
+    }
+
+    .shipping-page .sh-btn-dark {
+      border-color: #b99a62;
+      background: transparent;
+      color: #f5f1e8;
+    }
+
+    .shipping-page .sh-btn-dark:hover {
+      background: #c8a66a;
+      color: #171613;
+    }
+
+    /* HERO */
+    .shipping-page .sh-hero {
+      position: relative;
+      display: flex;
+      min-height: 610px;
+      align-items: center;
+      isolation: isolate;
+      padding: 90px 0;
+      background: #191713;
+      color: #f5f1e8;
+    }
+
+    .shipping-page .sh-hero::before {
+      position: absolute;
+      z-index: -2;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(17,16,14,.94) 0%,
+        rgba(17,16,14,.79) 43%, rgba(17,16,14,.23) 100%),
+        url("https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=2000&q=85")
+        center 52% / cover no-repeat;
+      content: "";
+    }
+
+    .shipping-page .sh-hero::after {
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(17,16,14,.35), transparent 45%);
+      content: "";
+    }
+
+    .shipping-page .sh-hero-content {
+      max-width: 740px;
+    }
+
+    .shipping-page .sh-hero .sh-eyebrow {
+      color: #e1c48e;
+    }
+
+    .shipping-page .sh-hero h1 {
+      margin: 0;
+      font-size: clamp(45px, 7vw, 83px);
+      font-weight: 500;
+      letter-spacing: -3.5px;
+      line-height: 1.02;
+    }
+
+    .shipping-page .sh-hero h1 em {
+      display: block;
+      margin-top: 8px;
+      color: #d7b779;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+    }
+
+    .shipping-page .sh-hero p:not(.sh-eyebrow) {
+      max-width: 570px;
+      margin: 26px 0 30px;
+      color: #ded8cd;
+      font-size: 15px;
+      line-height: 1.95;
+    }
+
+    .shipping-page .sh-hero-note {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 25px;
+      margin-top: 38px;
+      color: #e8dfce;
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+
+    .shipping-page .sh-hero-note span::before {
+      margin-right: 9px;
+      color: #d7b779;
+      content: "✦";
+    }
+
+    /* INTRO STRIP */
+    .shipping-page .sh-intro-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-bottom: 1px solid #dfd8ca;
+      background: #fffdf8;
+    }
+
+    .shipping-page .sh-intro-item {
+      padding: 29px 24px;
+      text-align: center;
+    }
+
+    .shipping-page .sh-intro-item + .sh-intro-item {
+      border-left: 1px solid #e6dfd2;
+    }
+
+    .shipping-page .sh-intro-item strong {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 14px;
+    }
+
+    .shipping-page .sh-intro-item span {
+      color: var(--sh-muted);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    /* SECTION HEADINGS */
+    .shipping-page .sh-section {
+      padding: 105px 0;
+    }
+
+    .shipping-page .sh-section-head {
+      max-width: 740px;
+      margin: 0 auto 50px;
+      text-align: center;
+    }
+
+    .shipping-page .sh-section-head .sh-copy {
+      max-width: 650px;
+      margin: 20px auto 0;
+    }
+
+    /* PRODUCT CATEGORIES */
+    .shipping-page .sh-products {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .shipping-page .sh-product {
+      min-width: 0;
+      border: 1px solid #e4ddcf;
+      background: #fffdf8;
+      transition: transform .35s ease, box-shadow .35s ease;
+    }
+
+    .shipping-page .sh-product:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 18px 38px rgba(35, 29, 18, .09);
+    }
+
+    .shipping-page .sh-product-image {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+      background: #e6dfd2;
+    }
+
+    .shipping-page .sh-product-image img {
+      height: 100%;
+      transition: transform .7s cubic-bezier(.2,.7,.2,1);
+    }
+
+    .shipping-page .sh-product:hover .sh-product-image img {
+      transform: scale(1.055);
+    }
+
+    .shipping-page .sh-product-number {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      padding: 8px 11px;
+      background: rgba(20,19,16,.86);
+      color: #f5f1e8;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+    }
+
+    .shipping-page .sh-product-body {
+      padding: 25px 23px 26px;
+    }
+
+    .shipping-page .sh-product h3 {
+      margin: 0 0 11px;
+      font-size: 21px;
+      font-weight: 600;
+      letter-spacing: -.5px;
+    }
+
+    .shipping-page .sh-product p {
+      min-height: 78px;
+      margin: 0 0 22px;
+      color: var(--sh-muted);
+      font-size: 13px;
+      line-height: 1.85;
+    }
+
+    .shipping-page .sh-text-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #785b2f;
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .shipping-page .sh-text-link span {
+      transition: transform .25s ease;
+    }
+
+    .shipping-page .sh-text-link:hover span {
+      transform: translateX(5px);
+    }
+
+    .shipping-page .sh-product-disclaimer {
+      margin: 30px auto 0;
+      color: #777268;
+      font-size: 12px;
+      line-height: 1.8;
+      text-align: center;
+    }
+
+    /* WHOLESALE EXPLAINER */
+    .shipping-page .sh-wholesale {
+      background: #eae4d8;
+    }
+
+    .shipping-page .sh-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: clamp(38px, 7vw, 90px);
+    }
+
+    .shipping-page .sh-photo {
+      position: relative;
+      min-height: 480px;
+      overflow: hidden;
+      background: #d4cabb;
+    }
+
+    .shipping-page .sh-photo img {
+      position: absolute;
+      inset: 0;
+      height: 100%;
+    }
+
+    .shipping-page .sh-photo-caption {
+      position: absolute;
+      right: 18px;
+      bottom: 18px;
+      left: 18px;
+      padding: 18px 20px;
+      background: rgba(22,21,18,.87);
+      color: #f5f1e8;
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .shipping-page .sh-split-copy .sh-copy {
+      margin: 22px 0;
+    }
+
+    .shipping-page .sh-check-list {
+      display: grid;
+      gap: 15px;
+      margin: 27px 0 32px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .shipping-page .sh-check-list li {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 10px;
+      color: #4f4b43;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .shipping-page .sh-check-list li::before {
+      display: grid;
+      width: 21px;
+      height: 21px;
+      place-items: center;
+      border: 1px solid #c5a56d;
+      color: #84652f;
+      content: "✓";
+      font-size: 11px;
+    }
+
+    /* WHOLESALE MODEL CARDS */
+    .shipping-page .sh-model-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 42px;
+    }
+
+    .shipping-page .sh-model-card {
+      padding: 29px 25px;
+      border: 1px solid #ded6c7;
+      background: #fffdf8;
+    }
+
+    .shipping-page .sh-model-card .sh-model-index {
+      display: inline-block;
+      margin-bottom: 22px;
+      color: #9a7740;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 30px;
+    }
+
+    .shipping-page .sh-model-card h3 {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .shipping-page .sh-model-card p {
+      margin: 0;
+      color: var(--sh-muted);
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    /* SHIPPING SECTION */
+    .shipping-page .sh-shipping {
+      background: #171613;
+      color: #f5f1e8;
+    }
+
+    .shipping-page .sh-shipping .sh-eyebrow {
+      color: #d7b779;
+    }
+
+    .shipping-page .sh-shipping .sh-heading em {
+      color: #d7b779;
+    }
+
+    .shipping-page .sh-shipping .sh-copy {
+      color: #c2bbaf;
+    }
+
+    .shipping-page .sh-shipping .sh-photo {
+      min-height: 500px;
+      background: #29251e;
+    }
+
+    .shipping-page .sh-shipping .sh-photo-caption {
+      background: rgba(17,16,14,.88);
+    }
+
+    .shipping-page .sh-steps {
+      display: grid;
+      gap: 0;
+      margin: 27px 0 32px;
+    }
+
+    .shipping-page .sh-step {
+      display: grid;
+      grid-template-columns: 47px 1fr;
+      gap: 17px;
+      padding: 19px 0;
+      border-bottom: 1px solid rgba(255,255,255,.13);
+    }
+
+    .shipping-page .sh-step:first-child {
+      border-top: 1px solid rgba(255,255,255,.13);
+    }
+
+    .shipping-page .sh-step-num {
+      color: #d7b779;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 23px;
+    }
+
+    .shipping-page .sh-step h3 {
+      margin: 2px 0 7px;
+      font-size: 15px;
+    }
+
+    .shipping-page .sh-step p {
+      margin: 0;
+      color: #c2bbaf;
+      font-size: 12px;
+      line-height: 1.85;
+    }
+
+    /* DESTINATIONS */
+    .shipping-page .sh-destinations {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .shipping-page .sh-destination-image {
+      min-height: 360px;
+      overflow: hidden;
+      background: #ddd3c1;
+    }
+
+    .shipping-page .sh-destination-image img {
+      min-height: 360px;
+      height: 100%;
+    }
+
+    .shipping-page .sh-destination-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 25px 0;
+    }
+
+    .shipping-page .sh-destination-tags span {
+      padding: 10px 14px;
+      border: 1px solid #d5cbb9;
+      color: #5c5548;
+      font-size: 12px;
+    }
+
+    .shipping-page .sh-note {
+      padding: 17px 19px;
+      border-left: 3px solid #c8a66a;
+      background: #ebe4d7;
+      color: #6b6457;
+      font-size: 12px;
+      line-height: 1.9;
+    }
+
+    /* FAQ */
+    .shipping-page .sh-faq-section {
+      background: #fffdf8;
+    }
+
+    .shipping-page .sh-faq {
+      max-width: 850px;
+      margin: 0 auto;
+      border-top: 1px solid #ded7ca;
+    }
+
+    .shipping-page .sh-faq details {
+      border-bottom: 1px solid #ded7ca;
+    }
+
+    .shipping-page .sh-faq summary {
+      position: relative;
+      padding: 23px 40px 23px 0;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.7;
+      list-style: none;
+    }
+
+    .shipping-page .sh-faq summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .shipping-page .sh-faq summary::after {
+      position: absolute;
+      top: 22px;
+      right: 4px;
+      color: #a98245;
+      content: "+";
+      font-size: 23px;
+      font-weight: 400;
+    }
+
+    .shipping-page .sh-faq details[open] summary::after {
+      content: "−";
+    }
+
+    .shipping-page .sh-faq details p {
+      max-width: 750px;
+      margin: 0;
+      padding: 0 20px 23px 0;
+      color: var(--sh-muted);
+      font-size: 13px;
+      line-height: 1.95;
+    }
+
+    /* FINAL CTA */
+    .shipping-page .sh-final-cta {
+      position: relative;
+      padding: 95px 24px;
+      overflow: hidden;
+      background: #d9c39a;
+      text-align: center;
+    }
+
+    .shipping-page .sh-final-cta::before,
+    .shipping-page .sh-final-cta::after {
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border: 1px solid rgba(84,65,35,.18);
+      border-radius: 50%;
+      content: "";
+      pointer-events: none;
+    }
+
+    .shipping-page .sh-final-cta::before {
+      top: -125px;
+      left: -75px;
+    }
+
+    .shipping-page .sh-final-cta::after {
+      right: -75px;
+      bottom: -135px;
+      width: 280px;
+      height: 280px;
+    }
+
+    .shipping-page .sh-final-cta .sh-heading {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .shipping-page .sh-final-cta .sh-copy {
+      max-width: 620px;
+      margin: 20px auto 28px;
+      color: #5e5340;
+    }
+
+    .shipping-page .sh-final-cta .sh-btn {
+      border-color: #171613;
+      background: #171613;
+      color: #fffaf0;
+    }
+
+    .shipping-page .sh-final-cta .sh-btn:hover {
+      border-color: #39352d;
+      background: #39352d;
+    }
+
+    /* SCROLL ANIMATIONS */
+    .shipping-page .sh-reveal {
+      opacity: 1;
+      transform: none;
+    }
+
+    .shipping-page.sh-motion-ready .sh-reveal {
+      opacity: 0;
+      transition: opacity .85s ease, transform .85s cubic-bezier(.2,.7,.2,1);
+      will-change: opacity, transform;
+    }
+
+    .shipping-page.sh-motion-ready .sh-from-left {
+      transform: translate3d(-65px, 0, 0);
+    }
+
+    .shipping-page.sh-motion-ready .sh-from-right {
+      transform: translate3d(65px, 0, 0);
+    }
+
+    .shipping-page.sh-motion-ready .sh-from-bottom {
+      transform: translate3d(0, 35px, 0);
+    }
+
+    .shipping-page.sh-motion-ready .sh-reveal.sh-visible {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+      will-change: auto;
+    }
+
+    .shipping-page .sh-delay-1 { transition-delay: .10s !important; }
+    .shipping-page .sh-delay-2 { transition-delay: .20s !important; }
+    .shipping-page .sh-delay-3 { transition-delay: .30s !important; }
+
+    @media (max-width: 850px) {
+      .shipping-page .sh-section {
+        padding: 78px 0;
+      }
+
+      .shipping-page .sh-products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 17px;
+      }
+
+      .shipping-page .sh-split {
+        gap: 34px;
+      }
+
+      .shipping-page .sh-photo,
+      .shipping-page .sh-shipping .sh-photo {
+        min-height: 410px;
+      }
+
+      .shipping-page .sh-model-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .shipping-page .sh-destinations {
+        gap: 30px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .shipping-page .sh-wrap {
+        width: min(100% - 34px, 1180px);
+      }
+
+      .shipping-page .sh-hero {
+        min-height: 570px;
+        padding: 75px 0;
+      }
+
+      .shipping-page .sh-hero::before {
+        background:
+          linear-gradient(90deg, rgba(17,16,14,.88), rgba(17,16,14,.48)),
+          url("https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1000&q=80")
+          center / cover no-repeat;
+      }
+
+      .shipping-page .sh-hero h1 {
+        font-size: clamp(43px, 12vw, 62px);
+        letter-spacing: -2px;
+      }
+
+      .shipping-page .sh-hero p:not(.sh-eyebrow) {
+        font-size: 14px;
+      }
+
+      .shipping-page .sh-hero-note {
+        gap: 12px;
+        line-height: 1.8;
+      }
+
+      .shipping-page .sh-intro-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .shipping-page .sh-intro-item {
+        padding: 22px 17px;
+      }
+
+      .shipping-page .sh-intro-item + .sh-intro-item {
+        border-top: 1px solid #e6dfd2;
+        border-left: 0;
+      }
+
+      .shipping-page .sh-section {
+        padding: 65px 0;
+      }
+
+      .shipping-page .sh-heading {
+        font-size: clamp(34px, 9vw, 46px);
+        letter-spacing: -1.4px;
+      }
+
+      .shipping-page .sh-section-head {
+        margin-bottom: 32px;
+      }
+
+      .shipping-page .sh-products {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+
+      .shipping-page .sh-product-image {
+        aspect-ratio: 5 / 3;
+      }
+
+      .shipping-page .sh-product p {
+        min-height: auto;
+      }
+
+      .shipping-page .sh-split,
+      .shipping-page .sh-destinations {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .shipping-page .sh-photo,
+      .shipping-page .sh-shipping .sh-photo {
+        min-height: 350px;
+      }
+
+      .shipping-page .sh-shipping .sh-photo {
+        order: 2;
+      }
+
+      .shipping-page .sh-destination-image,
+      .shipping-page .sh-destination-image img {
+        min-height: 260px;
+      }
+
+      .shipping-page .sh-final-cta {
+        padding: 70px 19px;
+      }
+
+      .shipping-page .sh-final-cta::before,
+      .shipping-page .sh-final-cta::after {
+        opacity: .5;
+      }
+
+      .shipping-page .sh-from-left,
+      .shipping-page .sh-from-right {
+        transform: translate3d(0, 22px, 0);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .shipping-page *,
+      .shipping-page *::before,
+      .shipping-page *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+
+      .shipping-page.sh-motion-ready .sh-reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+<header class="header">
+  <a class="logo" href="index.html"><span>TH</span> TRADE HUB</a>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="catalogue.html">Catalogue</a>
+    <a href="about.html">About</a>
+    <a class="active" href="shipping.html">Wholesale & Shipping</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <a class="nav-cta" href="contact.html">Request Quote</a>
+</header>
+
+<main class="shipping-page" id="shippingPage">
+
+  <!-- HERO -->
+  <section class="sh-hero">
+    <div class="sh-wrap">
+      <div class="sh-hero-content sh-reveal sh-from-left">
+        <p class="sh-eyebrow">WHOLESALE SOURCING · INTERNATIONAL TRADE</p>
+
+        <h1>
+          From sourcing
+          <em>to your market.</em>
+        </h1>
+
+        <p>
+          Trade Hub connects wholesale buyers with product categories,
+          sourcing discussions and supply coordination from Dubai and
+          Sharjah, UAE. Whether you're exploring a new category or
+          planning a bulk requirement, start with a conversation about
+          your market and business needs.
+        </p>
+
+        <a class="sh-btn" href="contact.html">
+          Discuss Your Requirement <span>↗</span>
+        </a>
+
+        <div class="sh-hero-note">
+          <span>Wholesale enquiries</span>
+          <span>Bulk sourcing discussions</span>
+          <span>International destinations</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO STRIP -->
+  <div class="sh-intro-strip">
+    <div class="sh-intro-item sh-reveal sh-from-bottom">
+      <strong>Product Selection</strong>
+      <span>Explore categories for your business</span>
+    </div>
+
+    <div class="sh-intro-item sh-reveal sh-from-bottom sh-delay-1">
+      <strong>MOQ Discussions</strong>
+      <span>Discuss quantities and order requirements</span>
+    </div>
+
+    <div class="sh-intro-item sh-reveal sh-from-bottom sh-delay-2">
+      <strong>Shipping Coordination</strong>
+      <span>Discuss delivery arrangements for your destination</span>
+    </div>
+  </div>
+
+  <!-- PRODUCT CATEGORIES -->
+  <section class="sh-section">
+    <div class="sh-wrap">
+      <div class="sh-section-head sh-reveal sh-from-bottom">
+        <p class="sh-eyebrow">EXPLORE OUR CATEGORIES</p>
+        <h2 class="sh-heading">
+          Products for
+          <em>different markets.</em>
+        </h2>
+        <p class="sh-copy">
+          Browse the product categories available through our wholesale
+          catalogue. Share the items you're interested in, your expected
+          quantity and your destination so we can discuss the relevant
+          requirements with you.
+        </p>
+      </div>
+
+      <div class="sh-products">
+
+        <article class="sh-product sh-reveal sh-from-left">
+          <div class="sh-product-image">
+            <img
+              src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=900&q=85"
+              alt="Perfume bottles displayed as a fragrance product category"
+              loading="lazy">
+            <span class="sh-product-number">CATEGORY 01</span>
+          </div>
+          <div class="sh-product-body">
+            <h3>Perfumes & Fragrances</h3>
+            <p>
+              Explore fragrance options for wholesale sourcing.
+              Discuss product selection, quantities and availability
+              for your intended market.
+            </p>
+            <a class="sh-text-link" href="catalogue.html">
+              Explore Catalogue <span>→</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="sh-product sh-reveal sh-from-bottom sh-delay-1">
+          <div class="sh-product-image">
+            <img
+              src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=85"
+              alt="Fashion apparel representing clothing wholesale categories"
+              loading="lazy">
+            <span class="sh-product-number">CATEGORY 02</span>
+          </div>
+          <div class="sh-product-body">
+            <h3>Men's & Junior Trousers</h3>
+            <p>
+              Discuss apparel requirements for your customer base,
+              including the types, quantities and product selection
+              suitable for your business.
+            </p>
+            <a class="sh-text-link" href="catalogue.html">
+              Explore Catalogue <span>→</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="sh-product sh-reveal sh-from-right sh-delay-2">
+          <div class="sh-product-image">
+            <img
+              src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=900&q=85"
+              alt="Premium handbag representing ladies' bag categories"
+              loading="lazy">
+            <span class="sh-product-number">CATEGORY 03</span>
+          </div>
+          <div class="sh-product-body">
+            <h3>Ladies' Bags</h3>
+            <p>
+              Explore bag styles for retail businesses and resellers.
+              Share your preferred category and estimated order size
+              for a wholesale discussion.
+            </p>
+            <a class="sh-text-link" href="catalogue.html">
+              Explore Catalogue <span>→</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="sh-product sh-reveal sh-from-left">
+          <div class="sh-product-image">
+            <img
+              src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=85"
+              alt="Footwear representing shoes and sneakers"
+              loading="lazy">
+            <span class="sh-product-number">CATEGORY 04</span>
+          </div>
+          <div class="sh-product-body">
+            <h3>Shoes & Sneakers</h3>
+            <p>
+              Tell us which footwear categories you're looking for
+              and what quantities you may need for your market.
+            </p>
+            <a class="sh-text-link" href="catalogue.html">
+              Explore Catalogue <span>→</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="sh-product sh-reveal sh-from-bottom sh-delay-1">
+          <div class="sh-product-image">
+            <img
+              src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=900&q=85"
+              alt="Skincare products arranged for product category presentation"
+              loading="lazy">
+            <span class="sh-product-number">CATEGORY 05</span>
+          </div>
+          <div class="sh-product-body">
+            <h3>Skincare</h3>
+            <p>
+              Discuss skincare sourcing requirements, product
+              preferences and destination-specific documentation
+              before confirming an order.
+            </p>
+            <a class="sh-text-link" href="catalogue.html">
+              Explore Catalogue <span>→</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="sh-product sh-reveal sh-from-right sh-delay-2">
+          <div class="sh-product-image">
+            <img
+              src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=900&q=85"
+              alt="Makeup and beauty products representing cosmetics categories"
+              loading="lazy">
+            <span class="sh-product-number">CATEGORY 06</span>
+          </div>
+          <div class="sh-product-body">
+            <h3>Makeup & Beauty</h3>
+            <p>
+              Explore beauty and cosmetics categories for your
+              business. Product selection and availability are
+              discussed according to your requirements.
+            </p>
+            <a class="sh-text-link" href="catalogue.html">
+              Explore Catalogue <span>→</span>
+            </a>
+          </div>
+        </article>
+
+      </div>
+
+      <p class="sh-product-disclaimer sh-reveal sh-from-bottom">
+        Images are illustrative category photography. Actual products,
+        specifications, availability and minimum order quantities must
+        be confirmed with Trade Hub.
+      </p>
+    </div>
+  </section>
+
+  <!-- WHOLESALE EXPLAINED -->
+  <section class="sh-section sh-wholesale">
+    <div class="sh-wrap">
+      <div class="sh-split">
+
+        <div class="sh-photo sh-reveal sh-from-left">
+          <img
+            src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1100&q=85"
+            alt="Organized goods in a warehouse representing wholesale supply"
+            loading="lazy">
+
+          <div class="sh-photo-caption">
+            Wholesale supply starts with the right products, clear
+            quantities and a shared understanding of your requirements.
+          </div>
+        </div>
+
+        <div class="sh-split-copy sh-reveal sh-from-right">
+          <p class="sh-eyebrow">HOW WHOLESALE WORKS</p>
+
+          <h2 class="sh-heading">
+            Built around
+            <em>your order.</em>
+          </h2>
+
+          <p class="sh-copy">
+            Wholesale purchasing is different from buying a single
+            retail item. Product choice, quantity, availability,
+            destination and shipping arrangements all help determine
+            the right approach for an order.
+          </p>
+
+          <p class="sh-copy">
+            At Trade Hub, buyers can explain what they need and discuss
+            the relevant options with our team before moving forward.
+            For larger requirements, container-based supply can also
+            be discussed where suitable.
+          </p>
+
+          <ul class="sh-check-list">
+            <li>Tell us the product category and items you want.</li>
+            <li>Share your expected quantity or target order size.</li>
+            <li>Discuss minimum order quantity (MOQ) and availability.</li>
+            <li>Confirm destination and shipping requirements.</li>
+            <li>Review the agreed order details before proceeding.</li>
+          </ul>
+
+          <a class="sh-btn" href="contact.html">
+            Start a Wholesale Enquiry <span>↗</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- BUYING OPTIONS -->
+  <section class="sh-section">
+    <div class="sh-wrap">
+      <div class="sh-section-head sh-reveal sh-from-bottom">
+        <p class="sh-eyebrow">FLEXIBLE REQUIREMENTS</p>
+        <h2 class="sh-heading">
+          Start with a clear
+          <em>business brief.</em>
+        </h2>
+        <p class="sh-copy">
+          Every buyer has different goals. A focused enquiry helps
+          us understand what you need and which details must be
+          confirmed before an order can be planned.
+        </p>
+      </div>
+
+      <div class="sh-model-grid">
+        <article class="sh-model-card sh-reveal sh-from-left">
+          <span class="sh-model-index">01</span>
+          <h3>Product Enquiry</h3>
+          <p>
+            You have a specific product or category in mind.
+            Share the product name, preferred options and destination
+            so the relevant details can be discussed.
+          </p>
+        </article>
+
+        <article class="sh-model-card sh-reveal sh-from-bottom sh-delay-1">
+          <span class="sh-model-index">02</span>
+          <h3>Bulk Order Planning</h3>
+          <p>
+            You are considering a larger wholesale purchase.
+            Share your estimated quantities and product mix to
+            discuss MOQ, availability and order requirements.
+          </p>
+        </article>
+
+        <article class="sh-model-card sh-reveal sh-from-right sh-delay-2">
+          <span class="sh-model-index">03</span>
+          <h3>Container-Based Supply</h3>
+          <p>
+            You have a substantial supply requirement.
+            Discuss the intended product mix, destination,
+            shipment planning and relevant order conditions.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHIPPING PROCESS -->
+  <section class="sh-section sh-shipping">
+    <div class="sh-wrap">
+      <div class="sh-split">
+
+        <div class="sh-split-copy sh-reveal sh-from-left">
+          <p class="sh-eyebrow">FROM UAE TO YOUR DESTINATION</p>
+
+          <h2 class="sh-heading">
+            Shipping starts
+            <em>with clarity.</em>
+          </h2>
+
+          <p class="sh-copy">
+            International shipping depends on the goods, order volume,
+            destination, transport method and applicable regulations.
+            We discuss the requirements with buyers so the relevant
+            arrangements can be considered before an order is finalized.
+          </p>
+
+          <div class="sh-steps">
+            <div class="sh-step">
+              <span class="sh-step-num">01</span>
+              <div>
+                <h3>Share Your Destination</h3>
+                <p>
+                  Tell us the destination country and, where available,
+                  the city or delivery location.
+                </p>
+              </div>
+            </div>
+
+            <div class="sh-step">
+              <span class="sh-step-num">02</span>
+              <div>
+                <h3>Discuss the Order</h3>
+                <p>
+                  Confirm the product category, estimated quantity,
+                  availability and any relevant product restrictions.
+                </p>
+              </div>
+            </div>
+
+            <div class="sh-step">
+              <span class="sh-step-num">03</span>
+              <div>
+                <h3>Review Shipping Arrangements</h3>
+                <p>
+                  Discuss possible shipping methods, costs, documents
+                  and the responsibilities of each party.
+                </p>
+              </div>
+            </div>
+
+            <div class="sh-step">
+              <span class="sh-step-num">04</span>
+              <div>
+                <h3>Confirm Before Proceeding</h3>
+                <p>
+                  Review the agreed product, order, payment and shipping
+                  details before the transaction moves forward.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <a class="sh-btn sh-btn-dark" href="contact.html">
+            Discuss Shipping <span>↗</span>
+          </a>
+        </div>
+
+        <div class="sh-photo sh-reveal sh-from-right">
+          <img
+            src="https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&w=1100&q=85"
+            alt="Cargo containers and international freight logistics"
+            loading="lazy">
+
+          <div class="sh-photo-caption">
+            Destination, cargo details and agreed shipping terms
+            help determine the appropriate arrangement.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERNATIONAL REACH -->
+  <section class="sh-section">
+    <div class="sh-wrap">
+      <div class="sh-destinations">
+
+        <div class="sh-destination-image sh-reveal sh-from-left">
+          <img
+            src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=85"
+            alt="Dubai skyline representing Trade Hub's UAE base"
+            loading="lazy">
+        </div>
+
+        <div class="sh-reveal sh-from-right">
+          <p class="sh-eyebrow">INTERNATIONAL REACH</p>
+
+          <h2 class="sh-heading">
+            Connected from
+            <em>the UAE.</em>
+          </h2>
+
+          <p class="sh-copy">
+            Based in Dubai and Sharjah, Trade Hub works with wholesale
+            buyers looking to discuss product sourcing and international
+            supply. Our business relationships and delivery experience
+            involve markets including Oman, Pakistan and Saudi Arabia,
+            alongside other destinations.
+          </p>
+
+          <div class="sh-destination-tags">
+            <span>United Arab Emirates</span>
+            <span>Oman</span>
+            <span>Pakistan</span>
+            <span>Saudi Arabia</span>
+            <span>Other destinations</span>
+          </div>
+
+          <p class="sh-note">
+            Destination coverage, product eligibility, shipping options,
+            documentation and delivery estimates must be confirmed for
+            each enquiry. Listing a destination does not guarantee that
+            every product can be shipped there.
+          </p>
+
+          <a class="sh-text-link" href="contact.html">
+            Tell Us Your Destination <span>→</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="sh-section sh-faq-section">
+    <div class="sh-wrap">
+      <div class="sh-section-head sh-reveal sh-from-bottom">
+        <p class="sh-eyebrow">WHOLESALE QUESTIONS</p>
+        <h2 class="sh-heading">
+          Before you
+          <em>enquire.</em>
+        </h2>
+        <p class="sh-copy">
+          Here are a few useful details for buyers considering a
+          wholesale requirement with Trade Hub.
+        </p>
+      </div>
+
+      <div class="sh-faq sh-reveal sh-from-bottom">
+        <details>
+          <summary>Does Trade Hub display public retail prices?</summary>
+          <p>
+            This website is designed for wholesale enquiries rather
+            than public retail pricing. Contact us with the product
+            you are interested in, the estimated quantity and your
+            destination to discuss the relevant wholesale details.
+          </p>
+        </details>
+
+        <details>
+          <summary>What does MOQ mean?</summary>
+          <p>
+            MOQ means minimum order quantity. It is the minimum
+            quantity applicable to a particular product or order.
+            MOQ can vary by product and supply conditions, so please
+            confirm it with our team before making a purchasing decision.
+          </p>
+        </details>
+
+        <details>
+          <summary>Can I enquire about more than one product category?</summary>
+          <p>
+            Yes. Include all the product categories you are interested
+            in and, if possible, the quantities you have in mind.
+            This helps us understand your requirements more clearly.
+          </p>
+        </details>
+
+        <details>
+          <summary>Can I discuss container-based wholesale supply?</summary>
+          <p>
+            You can enquire about larger and container-based
+            requirements. The feasibility, product mix, quantities,
+            availability and shipping arrangements need to be reviewed
+            for your particular order.
+          </p>
+        </details>
+
+        <details>
+          <summary>How much will international shipping cost?</summary>
+          <p>
+            Shipping costs depend on the destination, shipment size,
+            product type, shipping method and agreed terms. Share your
+            destination and estimated order details so the relevant
+            arrangements can be discussed.
+          </p>
+        </details>
+
+        <details>
+          <summary>What information should I send with my enquiry?</summary>
+          <p>
+            Include the product or category, estimated quantity,
+            destination country, any preferred specifications and
+            your business contact details. If you are still exploring,
+            simply tell us what you are looking for.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="sh-final-cta">
+    <div class="sh-wrap sh-reveal sh-from-bottom">
+      <p class="sh-eyebrow">LET'S DISCUSS YOUR REQUIREMENT</p>
+
+      <h2 class="sh-heading">
+        Have a market to serve?
+        <em>Let's talk wholesale.</em>
+      </h2>
+
+      <p class="sh-copy">
+        Tell Trade Hub what products you need, the quantities you
+        are considering and where your order needs to go. Start a
+        conversation about your wholesale sourcing requirements.
+      </p>
+
+      <a class="sh-btn" href="contact.html">
+        Request a Wholesale Quote <span>↗</span>
+      </a>
+
+      <p style="margin:20px 0 0;font-size:12px;color:#5e5340;">
+        Prefer WhatsApp?
+        <a
+          href="https://wa.me/971558699837?text=Hello%20Trade%20Hub%2C%20I%20would%20like%20to%20discuss%20a%20wholesale%20enquiry."
+          target="_blank"
+          rel="noopener noreferrer"
+          style="color:#171613;font-weight:700;">
+          Message our team
+        </a>
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
   <div>
     <a class="logo" href="index.html">
       <span>TH</span> TRADE HUB
     </a>
-
     <p>Dubai & Sharjah, UAE.</p>
   </div>
 
   <div>
     <p>
       WhatsApp / Phone:
-      <a href="https://wa.me/971558699837" target="_blank">
+      <a href="https://wa.me/971558699837" target="_blank" rel="noopener noreferrer">
         +971 55 869 9837
       </a>
     </p>
 
     <p>
       Instagram:
-      <a href="https://instagram.com/1rade.hub" target="_blank">
+      <a href="https://instagram.com/1rade.hub" target="_blank" rel="noopener noreferrer">
         @1rade.hub
       </a>
     </p>
@@ -37,5 +1430,39 @@
   <div class="copyright">
     © 2026 Trade Hub. All rights reserved.
   </div>
+</footer>
 
-</footer></body></html>
+<script>
+  (function () {
+    const page = document.getElementById("shippingPage");
+    if (!page) return;
+
+    const items = page.querySelectorAll(".sh-reveal");
+
+    /* If the browser doesn't support scroll observation,
+       show all content normally. */
+    if (!("IntersectionObserver" in window) ||
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
+    page.classList.add("sh-motion-ready");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("sh-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: "0px 0px -35px 0px"
+    });
+
+    items.forEach((item) => observer.observe(item));
+  })();
+</script>
+
+</body>
+</html>
